@@ -1,2 +1,4 @@
 # Zerblobben-Blobbageddon
-A Unity based physics Game controlled by Occulus Rift and Razer Hydras
+A Unity based physics Game controlled by Oculus Rift and Razer Hydras
+
+The Player is a Blobb and reeks havok upon his surroundings with a magnitude of different items.
