@@ -4,14 +4,23 @@ using System.Collections;
 public class Controls : MonoBehaviour 
 {
 	public bool isRightHydra;
+	public GameObject hand;
 
 	public float controllerOffsetY = 1.5f;
 	public float controllerOffsetZ = 1.5f;
 
 	public Transform targets;
 
+	public bool itemInTrigger{get; set;}
+	public GameObject item{get; set;}
+	Collider itemCollider;
+	Rigidbody itemRigid;
+
+	Vector3 previousControllerPosition =  Vector3.zero;
+	Vector3 controllerPosition;
+
 	public Transform target;
-	private SpringJoint springJoint;
+	private ConfigurableJoint configJoint;
 	private Grab targetGrab;
 	private Rigidbody targetRigid;
 
@@ -21,6 +30,9 @@ public class Controls : MonoBehaviour
 
 	public bool hydraActive = true;
 
+	JointDrive jDrive = new JointDrive();
+
+	Vector3 testV = Vector3.zero;
 
 	Rigidbody rigid;
 
@@ -29,20 +41,25 @@ public class Controls : MonoBehaviour
 		targetGrab = target.GetComponent<Grab>();
 		if(isRightHydra)
 		{
-			springJoint = this.GetComponents<SpringJoint>()[0];
+			configJoint = this.GetComponents<ConfigurableJoint>()[0];
 		}
 		else
 		{
-			springJoint = this.GetComponents<SpringJoint>()[1];
+			configJoint = this.GetComponents<ConfigurableJoint>()[1];
 		}
 		targetRigid = target.GetComponent<Rigidbody>();
 
 		rigid = this.GetComponent<Rigidbody>();
 
+		jDrive.positionSpring = 50.0f;
+		jDrive.maximumForce = Mathf.Infinity;
+
 	}
 
 	void Update () 
 	{
+		this.transform.eulerAngles = new Vector3(0.0f,this.transform.eulerAngles.y,0.0f);
+
 		if(isRightHydra)
 		{
 			hydra = SixenseInput.Controllers[1];
@@ -51,8 +68,12 @@ public class Controls : MonoBehaviour
 		{
 			hydra = SixenseInput.Controllers[0];
 		}
+
 		MoveHands();
 		Grab();
+		previousControllerPosition = controllerPosition;
+
+		Debug.DrawLine(this.transform.position,testV);
 	}
 
 
@@ -62,8 +83,17 @@ public class Controls : MonoBehaviour
 		if(hydra.GetButtonDown(SixenseButtons.TRIGGER))
 		{
 			print (isRightHydra+"Trigger");
+			if(itemInTrigger && item != null)
+			{
+				item.transform.parent = hand.transform;
+				item.transform.localPosition = new Vector3(-0.5f,0,0);
+				itemCollider = item.GetComponent<Collider>();
+				itemCollider.isTrigger = true;
+				itemRigid = item.GetComponent<Rigidbody>();
+				itemRigid.isKinematic = true;
 
-			if(targetGrab.worldTrigger)
+			}
+			else if(targetGrab.worldTrigger)
 			{
 				hydraActive = false;
 				targetRigid.constraints = RigidbodyConstraints.FreezePosition;
@@ -76,20 +106,42 @@ public class Controls : MonoBehaviour
 		}
 		else if(hydra.GetButtonUp(SixenseButtons.TRIGGER))
 		{
+			if(itemInTrigger && item != null)
+			{
 
-			target.transform.parent = targets;
-			hydraActive = true;
-			springJoint.minDistance = 1000.0f;
-			springJoint.maxDistance = 0.0f;
+				itemRigid.isKinematic = false;
 
+				Vector3 resultingForce = controllerPosition - previousControllerPosition;
+				print (resultingForce.normalized*1000.0f);
+				item.transform.localEulerAngles = Vector3.zero;
+				testV = resultingForce;
+				itemRigid.AddForce(-item.transform.forward * 1000.0f);
+				itemCollider.isTrigger = false;
+				itemCollider = null;
+				item.transform.parent = null;
+				item = null;
+				itemRigid = null;
+
+			}
+			else if(targetGrab.worldTrigger)
+			{
+				target.transform.parent = targets;
+				hydraActive = true;
+
+				jDrive.mode = JointDriveMode.None;
+
+				configJoint.xDrive = jDrive;
+				configJoint.yDrive = jDrive;
+				configJoint.zDrive = jDrive;
+			}
 		}
 	}
 
 	void MoveHands()
 	{
-		Vector3 controllerPosition = new Vector3(hydra.Position.x * Sensitivity.x,
-		                                         hydra.Position.y * Sensitivity.y,
-		                                         hydra.Position.z * Sensitivity.z );
+		controllerPosition = new Vector3(hydra.Position.x * Sensitivity.x,
+		                                 hydra.Position.y * Sensitivity.y,
+		                                 hydra.Position.z * Sensitivity.z );
 		controllerPosition.y -= controllerOffsetY;
 		controllerPosition.z += controllerOffsetZ;
 		
@@ -102,10 +154,15 @@ public class Controls : MonoBehaviour
 		else
 		{
 			float currentDistance = Vector3.Distance(this.transform.position,controllerPosition + this.transform.position);
-			springJoint.minDistance = currentDistance/2;
-			springJoint.maxDistance = currentDistance/2 - 0.01f;
+			configJoint.targetPosition = controllerPosition;
+			jDrive.mode = JointDriveMode.Position;
+			
+			configJoint.xDrive = jDrive;
+			configJoint.yDrive = jDrive;
+			configJoint.zDrive = jDrive;
 		}
-	}
 
+
+	}
 
 }

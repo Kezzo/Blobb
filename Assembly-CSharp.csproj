@@ -50,6 +50,7 @@
      <Compile Include="Assets\Player\Scripts\Grab.cs" />
      <Compile Include="Assets\Player\Scripts\IK.cs" />
      <Compile Include="Assets\Player\Scripts\TargetsFollowBlobb.cs" />
+     <Compile Include="Assets\Player\Scripts\Trigger.cs" />
      <Compile Include="Assets\SixenseInput\Scripts\SixenseInput.cs" />
      <Compile Include="Assets\SixenseInput\Scripts\SixensePlugin.cs" />
      <None Include="Assets\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
