@@ -18,7 +18,7 @@ public class Grab : MonoBehaviour {
 	
 	}
 
-	void OnTriggerEnter(Collider info)
+	void OnTriggerStay(Collider info)
 	{
 		//print ("TriggerEnter"+info.tag);
 
@@ -41,7 +41,13 @@ public class Grab : MonoBehaviour {
 	void OnTriggerExit(Collider info)
 	{
 		print ("TriggerExit"+info.tag);
-		worldTrigger = false;
-		itemTrigger = false;
+		if(info.tag == "World")
+		{
+			worldTrigger = false;
+		}
+		else if(info.tag == "Item")
+		{
+			itemTrigger = false;
+		}
 	}
 }

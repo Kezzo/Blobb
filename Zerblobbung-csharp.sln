@@ -1,7 +1,7 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
-Project("{7A142C85-7562-617A-CE74-9C47B0150C3F}") = "Zerblobbung", "Assembly-CSharp.csproj", "{015F5D29-C6E9-C3B6-6731-458A404D8A2C}"
+Project("{7A142C85-7562-617A-CE74-9C47B0150C3F}") = "Zerblobbung", "Assembly-CSharp-vs.csproj", "{015F5D29-C6E9-C3B6-6731-458A404D8A2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,7 +17,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																		GlobalSection(MonoDevelopProperties) = preSolution
+																					GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
