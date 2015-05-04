@@ -1,9 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Player\Scripts\InventoryHandler.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Player\Scripts\Controls.cs">
     <Files>
-      <File FileName="Assets\Player\Scripts\Controls.cs" Line="183" Column="4" />
-      <File FileName="Assets\Player\Scripts\InventoryHandler.cs" Line="54" Column="55" />
+      <File FileName="Assets\Items\Item.cs" Line="6" Column="2" />
+      <File FileName="Assets\Items\PrimitiveCannon\PrimitiveCannon.cs" Line="32" Column="8" />
+      <File FileName="Assets\Player\Scripts\Controls.cs" Line="181" Column="18" />
+      <File FileName="Assets\Player\Scripts\ItemTrigger.cs" Line="29" Column="29" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

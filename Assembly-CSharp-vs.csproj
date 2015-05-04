@@ -46,6 +46,9 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Items\Item.cs" />
+     <Compile Include="Assets\Items\PrimitiveCannon\PrimitiveCannon.cs" />
+     <Compile Include="Assets\Items\SimplePool.cs" />
      <Compile Include="Assets\OVR\Scripts\OVRCameraRig.cs" />
      <Compile Include="Assets\OVR\Scripts\OVRCommon.cs" />
      <Compile Include="Assets\OVR\Scripts\OVRDisplay.cs" />

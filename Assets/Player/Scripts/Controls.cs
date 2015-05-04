@@ -31,6 +31,7 @@ public class Controls : MonoBehaviour
 	JointDrive jDrive = new JointDrive();
 
 	public InventoryHandler inventory;
+	bool itemIsUsable;
 
 	void Awake()
 	{
@@ -108,6 +109,22 @@ public class Controls : MonoBehaviour
 				GrabWorld(false);
 			}
 		}
+
+		if(hydra.GetButtonDown(SixenseButtons.BUMPER))
+		{
+			if(itemIsUsable)
+			{
+				item.GetComponent<Item>().UseOnce();
+			}
+		}
+
+		if(hydra.GetButtonDown(SixenseButtons.ONE))
+		{
+			if(itemIsUsable)
+			{
+				item.GetComponent<Item>().Reload();
+			}
+		}
 	}
 
 	void MoveHands()
@@ -149,8 +166,15 @@ public class Controls : MonoBehaviour
 			{
 				itemCollider.isTrigger = false;
 			}
-			item.layer = 13;
+
 			itemIsInHand = true;
+
+			if(item.layer == 14)
+			{
+				itemIsUsable = true;
+				item.transform.rotation = hydra.Rotation;
+			}
+			item.layer = 13;
 		}
 	}
 
@@ -173,6 +197,7 @@ public class Controls : MonoBehaviour
 		CheckItemUnderWorld();
 		item = null;
 		itemIsInHand = false;
+		itemIsUsable = false;
 	}
 
 	void GrabWorld(bool activateGrab)
