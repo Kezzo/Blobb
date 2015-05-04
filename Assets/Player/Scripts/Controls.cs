@@ -3,41 +3,38 @@ using System.Collections;
 
 public class Controls : MonoBehaviour 
 {
+	SixenseInput.Controller hydra;
 	public bool isRightHydra;
 	public GameObject hand;
 	SphereCollider handCollider;
 
 	public float controllerOffsetY = 1.5f;
 	public float controllerOffsetZ = 1.5f;
+	public Vector3 Sensitivity = new Vector3( 0.01f, 0.01f, 0.01f );
+	public bool hydraActive = true;
 
+	public Transform target;
 	public Transform targets;
-
-	public bool itemInTrigger{get; set;}
-	public GameObject item{get; set;}
-	Collider itemCollider;
-	Rigidbody itemRigid;
 
 	Vector3 previousHandPosition =  Vector3.zero;
 	Vector3 controllerPosition;
 
-	public Transform target;
+	public bool itemInTrigger{get; set;}
+	public GameObject item{get; set;}
+	public bool itemIsInHand{get; set;}
+	Collider itemCollider;
+	Rigidbody itemRigid;
+
 	private ConfigurableJoint configJoint;
-	private Grab targetGrab;
+	private WorldTrigger targetGrab;
 	private Rigidbody targetRigid;
-
-	SixenseInput.Controller hydra;
-
-	public Vector3 Sensitivity = new Vector3( 0.01f, 0.01f, 0.01f );
-
-	public bool hydraActive = true;
-
 	JointDrive jDrive = new JointDrive();
 
-	//Rigidbody rigid;
+	public InventoryHandler inventory;
 
 	void Awake()
 	{
-		targetGrab = target.GetComponent<Grab>();
+		targetGrab = target.GetComponent<WorldTrigger>();
 		if(isRightHydra)
 		{
 			configJoint = this.GetComponents<ConfigurableJoint>()[0];
@@ -59,6 +56,7 @@ public class Controls : MonoBehaviour
 
 	void Update () 
 	{
+		// Restrict rotation around Y-Axis
 		this.transform.eulerAngles = new Vector3(0.0f,this.transform.eulerAngles.y,0.0f);
 
 		if(isRightHydra)
@@ -71,82 +69,43 @@ public class Controls : MonoBehaviour
 		}
 
 		MoveHands();
-		Grab();
+		CheckWhichGrab();
 
 		previousHandPosition = hand.transform.position;
 	}
 
-	void FixedUpdate()
-	{
-
-	}
-	
-	void Grab()
+	void CheckWhichGrab()
 	{
 		if(hydra.GetButtonDown(SixenseButtons.TRIGGER))
 		{
-			//print (isRightHydra+"Trigger");
 			if(itemInTrigger && item != null)
 			{
-				itemRigid = item.GetComponent<Rigidbody>();
-				itemRigid.isKinematic = true;
-				if(itemRigid.isKinematic)
-				{
-					item.transform.parent = hand.transform;
-					item.transform.localPosition = new Vector3(-0.5f,0,0);
-					itemCollider = item.GetComponent<Collider>();
-					//item.layer = 13;
-					//itemCollider.isTrigger = true;
-				}
+				GrabItem();
 			}
 			else if(targetGrab.worldTrigger)
 			{
-				hydraActive = false;
-				targetRigid.constraints = RigidbodyConstraints.FreezePosition;
-				handCollider.enabled = false;
-				//Vector3 worldPosition = transform.TransformPoint(target.transform.position);
-				Vector3 worldPosition = target.transform.position;
-				target.transform.parent = null;
-				target.transform.position = worldPosition;
-				//print ("grabbed World");
+				GrabWorld(true);
 			}
 		}
 		else if(hydra.GetButtonUp(SixenseButtons.TRIGGER))
 		{
-			if(item != null)
+			if(itemIsInHand)
 			{
-				itemRigid = item.GetComponent<Rigidbody>();
-				itemRigid.isKinematic = false;
-				if(itemRigid.IsSleeping())
+				if(inventory.isItemInInventory(item.gameObject))
 				{
-					itemRigid.WakeUp();
+					inventory.storeItem(item);
+					item = null;
+					itemIsInHand = false;
+				}
+				else
+				{
+					ThrowItem();
 				}
 
-				Vector3 resultingForce = (hand.transform.position - previousHandPosition);
-				itemRigid.AddForce(resultingForce * 3000.0f,ForceMode.Acceleration);
-
-				//itemCollider = item.GetComponent<Collider>();
-				//itemCollider.isTrigger = false;
-				//itemCollider = null;
-				//itemRigid = null;
-				//item.layer = 9;
-
-				//item.transform.parent = null;
-				hand.transform.DetachChildren();
-				CheckItemUnderWorld();
-				item = null;
 			}
 			else if(targetGrab.worldTrigger)
 			{
-				target.transform.parent = targets;
-				hydraActive = true;
-
-				jDrive.mode = JointDriveMode.None;
-
-				configJoint.xDrive = jDrive;
-				configJoint.yDrive = jDrive;
-				configJoint.zDrive = jDrive;
-				handCollider.enabled = true;
+				GrabWorld(false);
 			}
 		}
 	}
@@ -163,7 +122,6 @@ public class Controls : MonoBehaviour
 		{
 			target.transform.localPosition = controllerPosition;
 			target.transform.localRotation = hydra.Rotation;
-
 		}
 		else
 		{
@@ -176,17 +134,87 @@ public class Controls : MonoBehaviour
 		}
 	}
 
+	void GrabItem()
+	{
+		print ("GrabItem() called!");
+		//print (item.name+" grabbed!");
+		itemRigid = item.GetComponent<Rigidbody>();
+		itemRigid.isKinematic = true;
+		if(itemRigid.isKinematic)
+		{
+			item.transform.parent = hand.transform;
+			item.transform.localPosition = new Vector3(-0.5f,0,0);
+			itemCollider = item.GetComponent<Collider>();
+			if(itemCollider.isTrigger)
+			{
+				itemCollider.isTrigger = false;
+			}
+			item.layer = 13;
+			itemIsInHand = true;
+		}
+	}
+
+	void ThrowItem()
+	{
+		print ("ThrowItem() called!");
+		itemRigid = item.GetComponent<Rigidbody>();
+		itemRigid.isKinematic = false;
+		if(itemRigid.IsSleeping())
+		{
+			itemRigid.WakeUp();
+		}
+		
+		Vector3 resultingForce = (hand.transform.position - previousHandPosition);
+		itemRigid.AddForce(resultingForce * 3000.0f,ForceMode.Acceleration);
+
+		hand.transform.DetachChildren();
+		item.transform.parent = null;
+		item.layer = 9;
+		CheckItemUnderWorld();
+		item = null;
+		itemIsInHand = false;
+	}
+
+	void GrabWorld(bool activateGrab)
+	{
+		//print ("GrabWorld() called!");
+		if(activateGrab)
+		{
+			print("Grabbed World!");
+			hydraActive = false;
+			targetRigid.constraints = RigidbodyConstraints.FreezePosition;
+			handCollider.enabled = false;
+			//Vector3 worldPosition = transform.TransformPoint(target.transform.position);
+			Vector3 worldPosition = target.transform.position;
+			target.transform.parent = null;
+			target.transform.position = worldPosition;
+		}
+		else
+		{
+			print("Ungrabbed World!");
+			target.transform.parent = targets;
+			hydraActive = true;
+			
+			jDrive.mode = JointDriveMode.None;
+			
+			configJoint.xDrive = jDrive;
+			configJoint.yDrive = jDrive;
+			configJoint.zDrive = jDrive;
+			handCollider.enabled = true;
+		}
+	}
 
 	void LateUpdate()
 	{
-		// damit sich die arme mit den Targets strecken
+		//allow the Tentacles to follow their Targets, i.e stretching
 		hand.transform.position = target.transform.position;
 	}
 
+	//After we ungrab an item, to check if item under the world, if then teleport over world
 	void CheckItemUnderWorld()
 	{
+		print ("CheckItemUnderWorld() called!");
 		RaycastHit hitDown;
-		print (item.transform.position);
 		if(!Physics.Raycast(item.transform.position, Vector3.down, out hitDown))
 		{
 			RaycastHit hitUp;
@@ -195,8 +223,7 @@ public class Controls : MonoBehaviour
 				print (hitUp.point);
 				Vector3 newPosition = hitUp.point;
 				MeshRenderer mesh = item.GetComponent<MeshRenderer>();
-
-				newPosition.y += Vector3.Distance(mesh.bounds.max,mesh.bounds.min);
+				newPosition.y += Mathf.Max(new float[]{mesh.bounds.size.x, mesh.bounds.size.y, mesh.bounds.size.z})+2.0f;
 				item.transform.position = newPosition;
 			}
 		}

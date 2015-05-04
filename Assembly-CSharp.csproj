@@ -46,14 +46,37 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\OVR\Scripts\OVRCameraRig.cs" />
+     <Compile Include="Assets\OVR\Scripts\OVRCommon.cs" />
+     <Compile Include="Assets\OVR\Scripts\OVRDisplay.cs" />
+     <Compile Include="Assets\OVR\Scripts\OVRManager.cs" />
+     <Compile Include="Assets\OVR\Scripts\OVRPluginEvent.cs" />
+     <Compile Include="Assets\OVR\Scripts\OVRTracker.cs" />
+     <Compile Include="Assets\OVR\Scripts\OVRUnityVersionChecker.cs" />
+     <Compile Include="Assets\OVR\Scripts\OvrCapi.cs" />
+     <Compile Include="Assets\OVR\Scripts\Util\OVRCrosshair.cs" />
+     <Compile Include="Assets\OVR\Scripts\Util\OVRGUI.cs" />
+     <Compile Include="Assets\OVR\Scripts\Util\OVRGamepadController.cs" />
+     <Compile Include="Assets\OVR\Scripts\Util\OVRGridCube.cs" />
+     <Compile Include="Assets\OVR\Scripts\Util\OVRMainMenu.cs" />
+     <Compile Include="Assets\OVR\Scripts\Util\OVRPlayerController.cs" />
+     <Compile Include="Assets\OVR\Scripts\Util\OVRScreenFade.cs" />
+     <Compile Include="Assets\OVR\Scripts\Util\OVRUGUI.cs" />
      <Compile Include="Assets\Player\Scripts\Controls.cs" />
-     <Compile Include="Assets\Player\Scripts\Grab.cs" />
+     <Compile Include="Assets\Player\Scripts\FollowBlobbExternal.cs" />
      <Compile Include="Assets\Player\Scripts\IK.cs" />
-     <Compile Include="Assets\Player\Scripts\TargetsFollowBlobb.cs" />
-     <Compile Include="Assets\Player\Scripts\Trigger.cs" />
+     <Compile Include="Assets\Player\Scripts\InventoryHandler.cs" />
+     <Compile Include="Assets\Player\Scripts\ItemTrigger.cs" />
+     <Compile Include="Assets\Player\Scripts\WorldTrigger.cs" />
      <Compile Include="Assets\SixenseInput\Scripts\SixenseInput.cs" />
      <Compile Include="Assets\SixenseInput\Scripts\SixensePlugin.cs" />
+     <None Include="Assets\Plugins\donotdelete.txt" />
      <None Include="Assets\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
+     <None Include="Assets\Plugins\x86_64\donotdelete.txt" />
+     <None Include="Assets\OVR\Shaders\TextShader3D.shader" />
+     <None Include="Assets\OVR\Shaders\Unlit Transparent HUD.shader" />
+     <None Include="Assets\OVR\Shaders\OVRGUIShader.shader" />
+     <None Include="Assets\Plugins\x86\donotdelete.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity5/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
