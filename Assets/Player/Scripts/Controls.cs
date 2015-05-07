@@ -193,7 +193,14 @@ public class Controls : MonoBehaviour
 
 		hand.transform.DetachChildren();
 		item.transform.parent = null;
-		item.layer = 9;
+		if (itemIsUsable)
+		{
+			item.layer = 14;
+		}
+		else
+		{ 
+			item.layer = 9;
+		}
 		CheckItemUnderWorld();
 		item = null;
 		itemIsInHand = false;
