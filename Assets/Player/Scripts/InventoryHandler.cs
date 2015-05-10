@@ -43,10 +43,19 @@ public class InventoryHandler : MonoBehaviour {
 		}
 	}
 
-	public void storeItem(GameObject itemToStore)
+	public void storeItem(GameObject itemToStore, bool isUsable)
 	{
 		itemToStore.transform.parent = this.transform;
-		itemToStore.layer = 9;
+		if(isUsable)
+		{
+			itemToStore.layer = 14;
+		}
+		else
+		{
+			itemToStore.layer = 9;
+		}
+
+
 	}
 
 	public bool isItemInInventory(GameObject itemToCheck)

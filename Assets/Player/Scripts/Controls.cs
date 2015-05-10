@@ -94,7 +94,15 @@ public class Controls : MonoBehaviour
 			{
 				if(inventory.isItemInInventory(item.gameObject))
 				{
-					inventory.storeItem(item);
+					if(itemIsUsable)
+					{
+						inventory.storeItem(item, true);
+					}
+					else
+					{
+						inventory.storeItem(item, false);
+					}
+
 					item = null;
 					itemIsInHand = false;
 				}
@@ -104,7 +112,7 @@ public class Controls : MonoBehaviour
 				}
 
 			}
-			else if(targetGrab.worldTrigger)
+			else
 			{
 				GrabWorld(false);
 			}
@@ -159,6 +167,15 @@ public class Controls : MonoBehaviour
 		itemRigid.isKinematic = true;
 		if(itemRigid.isKinematic)
 		{
+			if(item.layer == 14)
+			{
+				itemIsUsable = true;
+				item.transform.rotation = target.transform.rotation;
+			}
+			else
+			{
+				itemIsUsable = false;
+			}
 			item.transform.parent = hand.transform;
 			item.transform.localPosition = new Vector3(-0.5f,0,0);
 			itemCollider = item.GetComponent<Collider>();
@@ -168,12 +185,6 @@ public class Controls : MonoBehaviour
 			}
 
 			itemIsInHand = true;
-
-			if(item.layer == 14)
-			{
-				itemIsUsable = true;
-				item.transform.rotation = hydra.Rotation;
-			}
 			item.layer = 13;
 		}
 	}
@@ -209,7 +220,7 @@ public class Controls : MonoBehaviour
 
 	void GrabWorld(bool activateGrab)
 	{
-		//print ("GrabWorld() called!");
+		print ("GrabWorld() called!");
 		if(activateGrab)
 		{
 			print("Grabbed World!");
