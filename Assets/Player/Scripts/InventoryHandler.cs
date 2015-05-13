@@ -46,6 +46,7 @@ public class InventoryHandler : MonoBehaviour {
 	public void storeItem(GameObject itemToStore, bool isUsable)
 	{
 		itemToStore.transform.parent = this.transform;
+		itemToStore.GetComponent<Collider>().isTrigger = true;
 		if(isUsable)
 		{
 			itemToStore.layer = 14;

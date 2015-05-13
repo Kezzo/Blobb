@@ -178,11 +178,6 @@ public class Controls : MonoBehaviour
 			}
 			item.transform.parent = hand.transform;
 			item.transform.localPosition = new Vector3(-0.5f,0,0);
-			itemCollider = item.GetComponent<Collider>();
-			if(itemCollider.isTrigger)
-			{
-				itemCollider.isTrigger = false;
-			}
 
 			itemIsInHand = true;
 			item.layer = 13;
@@ -201,6 +196,8 @@ public class Controls : MonoBehaviour
 		
 		Vector3 resultingForce = (hand.transform.position - previousHandPosition);
 		itemRigid.AddForce(resultingForce * 3000.0f,ForceMode.Acceleration);
+
+		item.GetComponent<Collider>().isTrigger = false;
 
 		hand.transform.DetachChildren();
 		item.transform.parent = null;
