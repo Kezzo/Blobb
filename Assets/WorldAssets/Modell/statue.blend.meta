@@ -1,0 +1,135 @@
+fileFormatVersion: 2
+guid: 182aaa66d165092468b3a1993082778d
+timeCreated: 1431595782
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Armature
+    100002: central_bone
+    100004: Central_Bone_down
+    100006: Cube
+    100008: Cylinder
+    100010: Cylinder_001
+    100012: Empty
+    100014: Empty_arm_l
+    100016: Empty_arm_r
+    100018: hand_
+    100020: hand_R
+    100022: logo_f
+    100024: logo_h
+    100026: mittelarm_l
+    100028: mittelarm_r
+    100030: oberarm_l
+    100032: oberarm_r
+    100034: Protoblobb
+    100036: Schulter_l
+    100038: Schulter_r
+    100040: Sphere
+    100042: //RootNode
+    100044: unterarm_l
+    100046: unterarm_r
+    400000: Armature
+    400002: central_bone
+    400004: Central_Bone_down
+    400006: Cube
+    400008: Cylinder
+    400010: Cylinder_001
+    400012: Empty
+    400014: Empty_arm_l
+    400016: Empty_arm_r
+    400018: hand_
+    400020: hand_R
+    400022: logo_f
+    400024: logo_h
+    400026: mittelarm_l
+    400028: mittelarm_r
+    400030: oberarm_l
+    400032: oberarm_r
+    400034: Protoblobb
+    400036: Schulter_l
+    400038: Schulter_r
+    400040: Sphere
+    400042: //RootNode
+    400044: unterarm_l
+    400046: unterarm_r
+    2300000: Cube
+    2300002: Cylinder
+    2300004: Cylinder_001
+    2300006: logo_f
+    2300008: logo_h
+    2300010: Protoblobb
+    3300000: Cube
+    3300002: Cylinder
+    3300004: Cylinder_001
+    3300006: logo_f
+    3300008: logo_h
+    3300010: Protoblobb
+    4300000: Cylinder_001
+    4300002: Cylinder
+    4300004: Cube
+    4300006: Sphere
+    4300008: Protoblobb
+    4300010: logo_f
+    4300012: logo_h
+    7400000: Default Take
+    9500000: //RootNode
+    13700000: Sphere
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
