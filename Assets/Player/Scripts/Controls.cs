@@ -161,7 +161,7 @@ public class Controls : MonoBehaviour
 
 	void GrabItem()
 	{
-		print ("GrabItem() called!");
+		//print ("GrabItem() called!");
 		//print (item.name+" grabbed!");
 		itemRigid = item.GetComponent<Rigidbody>();
 		itemRigid.isKinematic = true;
@@ -186,7 +186,7 @@ public class Controls : MonoBehaviour
 
 	void ThrowItem()
 	{
-		print ("ThrowItem() called!");
+		//print ("ThrowItem() called!");
 		itemRigid = item.GetComponent<Rigidbody>();
 		itemRigid.isKinematic = false;
 		if(itemRigid.IsSleeping())
@@ -195,7 +195,7 @@ public class Controls : MonoBehaviour
 		}
 		
 		Vector3 resultingForce = (hand.transform.position - previousHandPosition);
-		itemRigid.AddForce(resultingForce * 3000.0f,ForceMode.Acceleration);
+		itemRigid.AddForce(resultingForce * 5000.0f,ForceMode.Acceleration);
 
 		item.GetComponent<Collider>().isTrigger = false;
 
@@ -217,10 +217,10 @@ public class Controls : MonoBehaviour
 
 	void GrabWorld(bool activateGrab)
 	{
-		print ("GrabWorld() called!");
+		//print ("GrabWorld() called!");
 		if(activateGrab)
 		{
-			print("Grabbed World!");
+			//print("Grabbed World!");
 			hydraActive = false;
 			targetRigid.constraints = RigidbodyConstraints.FreezePosition;
 			handCollider.enabled = false;
@@ -231,7 +231,7 @@ public class Controls : MonoBehaviour
 		}
 		else
 		{
-			print("Ungrabbed World!");
+			//print("Ungrabbed World!");
 			target.transform.parent = targets;
 			hydraActive = true;
 			
@@ -253,7 +253,7 @@ public class Controls : MonoBehaviour
 	//After we ungrab an item, to check if item under the world, if then teleport over world
 	void CheckItemUnderWorld()
 	{
-		print ("CheckItemUnderWorld() called!");
+		//print ("CheckItemUnderWorld() called!");
 		RaycastHit hitDown;
 		if(!Physics.Raycast(item.transform.position, Vector3.down, out hitDown))
 		{
