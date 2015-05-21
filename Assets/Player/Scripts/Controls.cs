@@ -199,7 +199,6 @@ public class Controls : MonoBehaviour
 
 		item.GetComponent<Collider>().isTrigger = false;
 
-		hand.transform.DetachChildren();
 		item.transform.parent = null;
 		if (itemIsUsable)
 		{

@@ -7,6 +7,7 @@ public class IK : MonoBehaviour
 
 	public Transform leftHand;
 	public Transform rightHand;
+	public Transform centerEye;
 	public bool ikActive = false;
 
 	void Awake () 
@@ -32,6 +33,10 @@ public class IK : MonoBehaviour
 					animator.SetIKRotationWeight(AvatarIKGoal.LeftHand,2);  
 					animator.SetIKPosition(AvatarIKGoal.LeftHand,leftHand.position);
 					animator.SetIKRotation(AvatarIKGoal.LeftHand,leftHand.rotation);
+				} 
+				if(centerEye != null) {
+					animator.SetLookAtWeight(1);
+					animator.SetLookAtPosition(centerEye.position);
 				} 
 				
 			}

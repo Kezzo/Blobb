@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 975a20f05cdb97e4180158e738fe0842
-timeCreated: 1430405291
+timeCreated: 1432226815
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -28,6 +28,8 @@ ModelImporter:
     100040: Central_Bone_down_004
     100042: Central_Bone_down_005
     100044: Central_Bone_down_006
+    100046: unterarm_l_001
+    100048: unterarm_r_001
     400000: Armature
     400002: central_bone
     400004: Central_Bone_down
@@ -51,6 +53,8 @@ ModelImporter:
     400040: Central_Bone_down_004
     400042: Central_Bone_down_005
     400044: Central_Bone_down_006
+    400046: unterarm_l_001
+    400048: unterarm_r_001
     2300000: Sphere
     3300000: Sphere
     4300000: Sphere
@@ -216,6 +220,22 @@ ModelImporter:
         modified: 0
     - boneName: Central_Bone_down_006
       humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: unterarm_l_001
+      humanName: Left Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: unterarm_r_001
+      humanName: Right Middle Proximal
       limit:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
