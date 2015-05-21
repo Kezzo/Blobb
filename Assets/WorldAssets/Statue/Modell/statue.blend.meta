@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 182aaa66d165092468b3a1993082778d
-timeCreated: 1431595782
+timeCreated: 1432199715
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -9,69 +9,59 @@ ModelImporter:
     100002: central_bone
     100004: Central_Bone_down
     100006: Cube
-    100008: Cylinder
-    100010: Cylinder_001
-    100012: Empty
-    100014: Empty_arm_l
-    100016: Empty_arm_r
-    100018: hand_
-    100020: hand_R
-    100022: logo_f
-    100024: logo_h
-    100026: mittelarm_l
-    100028: mittelarm_r
-    100030: oberarm_l
-    100032: oberarm_r
-    100034: Protoblobb
-    100036: Schulter_l
-    100038: Schulter_r
-    100040: Sphere
-    100042: //RootNode
-    100044: unterarm_l
-    100046: unterarm_r
+    100008: Empty
+    100010: Empty_arm_l
+    100012: Empty_arm_r
+    100014: hand_
+    100016: hand_R
+    100018: logo_f
+    100020: logo_h
+    100022: mittelarm_l
+    100024: mittelarm_r
+    100026: oberarm_l
+    100028: oberarm_r
+    100030: Protoblobb
+    100032: Schulter_l
+    100034: Schulter_r
+    100036: Sphere
+    100038: //RootNode
+    100040: unterarm_l
+    100042: unterarm_r
     400000: Armature
     400002: central_bone
     400004: Central_Bone_down
     400006: Cube
-    400008: Cylinder
-    400010: Cylinder_001
-    400012: Empty
-    400014: Empty_arm_l
-    400016: Empty_arm_r
-    400018: hand_
-    400020: hand_R
-    400022: logo_f
-    400024: logo_h
-    400026: mittelarm_l
-    400028: mittelarm_r
-    400030: oberarm_l
-    400032: oberarm_r
-    400034: Protoblobb
-    400036: Schulter_l
-    400038: Schulter_r
-    400040: Sphere
-    400042: //RootNode
-    400044: unterarm_l
-    400046: unterarm_r
+    400008: Empty
+    400010: Empty_arm_l
+    400012: Empty_arm_r
+    400014: hand_
+    400016: hand_R
+    400018: logo_f
+    400020: logo_h
+    400022: mittelarm_l
+    400024: mittelarm_r
+    400026: oberarm_l
+    400028: oberarm_r
+    400030: Protoblobb
+    400032: Schulter_l
+    400034: Schulter_r
+    400036: Sphere
+    400038: //RootNode
+    400040: unterarm_l
+    400042: unterarm_r
     2300000: Cube
-    2300002: Cylinder
-    2300004: Cylinder_001
-    2300006: logo_f
-    2300008: logo_h
-    2300010: Protoblobb
+    2300002: logo_f
+    2300004: logo_h
+    2300006: Protoblobb
     3300000: Cube
-    3300002: Cylinder
-    3300004: Cylinder_001
-    3300006: logo_f
-    3300008: logo_h
-    3300010: Protoblobb
-    4300000: Cylinder_001
-    4300002: Cylinder
-    4300004: Cube
-    4300006: Sphere
-    4300008: Protoblobb
-    4300010: logo_f
-    4300012: logo_h
+    3300002: logo_f
+    3300004: logo_h
+    3300006: Protoblobb
+    4300000: Cube
+    4300002: Sphere
+    4300004: Protoblobb
+    4300006: logo_f
+    4300008: logo_h
     7400000: Default Take
     9500000: //RootNode
     13700000: Sphere
