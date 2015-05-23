@@ -48,7 +48,7 @@ public class Controls : MonoBehaviour
 
 		//rigid = this.GetComponent<Rigidbody>();
 
-		jDrive.positionSpring = 500.0f;
+		jDrive.positionSpring = 5000.0f;
 		jDrive.maximumForce = Mathf.Infinity;
 
 		handCollider = hand.GetComponents<SphereCollider>()[0];
@@ -195,7 +195,7 @@ public class Controls : MonoBehaviour
 		}
 		
 		Vector3 resultingForce = (hand.transform.position - previousHandPosition);
-		itemRigid.AddForce(resultingForce * 5000.0f,ForceMode.Acceleration);
+		itemRigid.AddForce(resultingForce * 100.0f,ForceMode.Impulse);
 
 		item.GetComponent<Collider>().isTrigger = false;
 
