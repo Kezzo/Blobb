@@ -8,7 +8,7 @@ public class WindFragBehaviour : MonoBehaviour {
 	Collider windFrag;
 	Rigidbody windRigid;
 	Rigidbody fragRigid;
-	bool noGravity=false;
+	//bool noGravity = false;
 
 	// Use this for initialization
 	void Start () {

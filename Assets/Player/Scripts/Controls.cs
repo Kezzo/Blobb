@@ -92,25 +92,7 @@ public class Controls : MonoBehaviour
 		{
 			if(itemIsInHand)
 			{
-				if(inventory.isItemInInventory(item.gameObject))
-				{
-					if(itemIsUsable)
-					{
-						inventory.storeItem(item, true);
-					}
-					else
-					{
-						inventory.storeItem(item, false);
-					}
-
-					item = null;
-					itemIsInHand = false;
-				}
-				else
-				{
-					ThrowItem();
-				}
-
+				ThrowItem();
 			}
 			else
 			{
@@ -186,32 +168,53 @@ public class Controls : MonoBehaviour
 
 	void ThrowItem()
 	{
-		//print ("ThrowItem() called!");
-		itemRigid = item.GetComponent<Rigidbody>();
-		itemRigid.isKinematic = false;
-		if(itemRigid.IsSleeping())
-		{
-			itemRigid.WakeUp();
-		}
-		
-		Vector3 resultingForce = (hand.transform.position - previousHandPosition);
-		itemRigid.AddForce(resultingForce * 100.0f,ForceMode.Impulse);
+		Vector3 resultingDirection = (hand.transform.position - previousHandPosition);
+		float maxThrowForce = Mathf.Abs(Mathf.Max(resultingDirection.x, resultingDirection.y, resultingDirection.z)) * 10.0f;
 
-		item.GetComponent<Collider>().isTrigger = false;
+		//Debug.Log(maxThrowForce);
 
-		item.transform.parent = null;
-		if (itemIsUsable)
+		if(inventory.isItemInInventory(item.gameObject) && maxThrowForce < 0.1f)
 		{
-			item.layer = 14;
+			if(itemIsUsable)
+			{
+				inventory.storeItem(item, true);
+			}
+			else
+			{
+				inventory.storeItem(item, false);
+			}
+			
+			item = null;
+			itemIsInHand = false;
 		}
 		else
-		{ 
-			item.layer = 9;
+		{
+			//print ("ThrowItem() called!");
+			itemRigid = item.GetComponent<Rigidbody>();
+			itemRigid.isKinematic = false;
+			if(itemRigid.IsSleeping())
+			{
+				itemRigid.WakeUp();
+			}
+
+			itemRigid.AddForce(resultingDirection * 100.0f,ForceMode.Impulse);
+			
+			item.GetComponent<Collider>().isTrigger = false;
+			
+			item.transform.parent = null;
+			if (itemIsUsable)
+			{
+				item.layer = 14;
+			}
+			else
+			{ 
+				item.layer = 9;
+			}
+			CheckItemUnderWorld();
+			item = null;
+			itemIsInHand = false;
+			itemIsUsable = false;
 		}
-		CheckItemUnderWorld();
-		item = null;
-		itemIsInHand = false;
-		itemIsUsable = false;
 	}
 
 	void GrabWorld(bool activateGrab)

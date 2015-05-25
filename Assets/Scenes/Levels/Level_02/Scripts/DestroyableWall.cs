@@ -68,7 +68,7 @@ public class DestroyableWall : MonoBehaviour
 						}
 					}
 					//wallPart.transform.localScale = new Vector3 (1f, 0.5f, 1f);
-					Rigidbody rb = wallPart.AddComponent<Rigidbody> ();
+//					Rigidbody rb = wallPart.AddComponent<Rigidbody> ();
 					//rb.mass = 1;
 					//rb.useGravity = false;
 					wallPart.transform.parent = transform;

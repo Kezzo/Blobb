@@ -8,14 +8,15 @@ public class Button_Dosenaufsteller : Button {
 	List<GameObject> dosenTuerme = new List<GameObject>();
 
 	// Use this for initialization
-	void Start () {
+	protected override void Start () 
+	{
 		base.Start();
 
 		//spawnDosen();
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	protected override void Update () 
 	{
 		base.Update ();
 	}

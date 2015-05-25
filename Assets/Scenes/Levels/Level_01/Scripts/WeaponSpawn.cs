@@ -7,7 +7,6 @@ public class WeaponSpawn : MonoBehaviour {
 	public GameObject buttom;
 	public GameObject top;
 	public GameObject weapon;
-	GameObject spawnObject;
 
 	bool movingButtom = false;
 	float step;
@@ -54,6 +53,6 @@ public class WeaponSpawn : MonoBehaviour {
 	void SpawnWeapon()
 	{
 		Vector3 spawnPoint = new Vector3 (38.4f,9.55f, 81.25f);
-		spawnObject = (GameObject)Instantiate (weapon, spawnPoint, transform.rotation);
+		Instantiate (weapon, spawnPoint, transform.rotation);
 	}
 }

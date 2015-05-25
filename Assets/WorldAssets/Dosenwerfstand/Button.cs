@@ -11,12 +11,12 @@ public class Button : MonoBehaviour {
 
 	MeshRenderer meshRenderer;
 
-	public virtual void Start()
+	protected virtual void Start()
 	{
 		meshRenderer = this.GetComponent<MeshRenderer>();
 	}
 	
-	public virtual void Update()
+	protected virtual void Update()
 	{
 		if(!active)
 		{

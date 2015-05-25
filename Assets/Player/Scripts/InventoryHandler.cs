@@ -23,7 +23,7 @@ public class InventoryHandler : MonoBehaviour {
 	{
 		if(other.gameObject.layer == 13)
 		{
-			print(other.name + " entered Inventory Trigger");
+			//print(other.name + " entered Inventory Trigger");
 			itemInInventory.Add(other.gameObject);
 		}
 	}
@@ -32,7 +32,7 @@ public class InventoryHandler : MonoBehaviour {
 	{
 		if(other.gameObject.layer == 13)
 		{
-			print(other.name + " left Inventory Trigger");
+			//print(other.name + " left Inventory Trigger");
 			foreach(GameObject item in itemInInventory.ToArray())
 			{
 				if(other.gameObject.Equals(item))
