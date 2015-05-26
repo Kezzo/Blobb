@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class Button_Dosenaufsteller : Button {
 
 	public GameObject dosenTurm;
-	List<GameObject> dosenTuerme = new List<GameObject>();
+	public List<GameObject> dosenTuerme = new List<GameObject>();
 
 	// Use this for initialization
 	protected override void Start () 
