@@ -6,10 +6,10 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: wall_2
+  m_Name: taregt_front_green
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _NORMALMAP
-  m_LightmapFlags: 5
+  m_ShaderKeywords: _EMISSION
+  m_LightmapFlags: 1
   m_CustomRenderQueue: -1
   m_SavedProperties:
     serializedVersion: 2
@@ -18,14 +18,14 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 7ef710965a0bd5a47a4508296c06654f, type: 3}
-          m_Scale: {x: .144999996, y: .150000006}
-          m_Offset: {x: .324999988, y: 1.79999995}
+          m_Texture: {fileID: 2800000, guid: 58987ea7739ba3845b76740a1735b284, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _BumpMap
         second:
-          m_Texture: {fileID: 2800000, guid: 202c09f1e2b7fd94a918415297cded89, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -39,9 +39,9 @@ Material:
         first:
           name: _EmissionMap
         second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: .144999996, y: .150000006}
-          m_Offset: {x: .324999988, y: 1.79999995}
+          m_Texture: {fileID: 2800000, guid: 58987ea7739ba3845b76740a1735b284, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _ParallaxMap
@@ -101,11 +101,11 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: .400000006
+        second: .5
       data:
         first:
           name: _BumpScale
-        second: -2
+        second: 1
       data:
         first:
           name: _OcclusionStrength
@@ -125,16 +125,16 @@ Material:
       data:
         first:
           name: _EmissionScaleUI
-        second: 0
+        second: 1
       data:
         first:
           name: _Metallic
-        second: .100000001
+        second: .5
     m_Colors:
       data:
         first:
           name: _EmissionColor
-        second: {r: 0, g: 0, b: 0, a: 0}
+        second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
           name: _Color
