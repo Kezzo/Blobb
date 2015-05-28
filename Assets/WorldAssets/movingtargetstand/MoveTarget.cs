@@ -4,14 +4,19 @@ using System.Collections;
 public class MoveTarget : MonoBehaviour {
 
 	public bool moveUpAndDown;
+	public Material wasHitMaterial;
 	bool goBack;
 	Rigidbody rigid;
 	bool wasHit;
+	MeshRenderer meshRenderer;
+	Material[] materials;
 
 	// Use this for initialization
 	void Start () 
 	{
 		rigid = GetComponent<Rigidbody>();
+		meshRenderer = GetComponent<MeshRenderer>();
+		materials = meshRenderer.materials;
 	}
 	
 	// Update is called once per frame
@@ -23,23 +28,22 @@ public class MoveTarget : MonoBehaviour {
 			{
 				if(goBack)
 				{
-					this.transform.Translate(Vector3.right * Time.deltaTime);
+					this.transform.Translate(Vector3.back * Time.deltaTime);
 				}
 				else
 				{
-					this.transform.Translate(Vector3.left * Time.deltaTime);
+					this.transform.Translate(Vector3.forward * Time.deltaTime);
 				}
-				
 			}
 			else
 			{
 				if(goBack)
 				{
-					this.transform.Translate(Vector3.up * Time.deltaTime);
+					this.transform.Translate(Vector3.right * Time.deltaTime);
 				}
 				else
 				{
-					this.transform.Translate(Vector3.down * Time.deltaTime);
+					this.transform.Translate(Vector3.left * Time.deltaTime);
 				}
 			}
 		}
@@ -57,6 +61,8 @@ public class MoveTarget : MonoBehaviour {
 	{
 		if(collsion.collider.tag == "Item")
 		{
+			materials[1] = wasHitMaterial;
+			meshRenderer.materials = materials;
 			wasHit = true;
 			rigid.useGravity = true;
 		}
