@@ -4,6 +4,9 @@ using System.Collections;
 public class BallHandlingDosenwurf : MonoBehaviour {
 
 	bool putToRight;
+
+	public Transform rightPosition;
+	public Transform leftPosition;
 	// Update is called once per frame
 	void Update () 
 	{
@@ -18,11 +21,11 @@ public class BallHandlingDosenwurf : MonoBehaviour {
 			other.attachedRigidbody.velocity = Vector3.zero;
 			if(putToRight)
 			{
-				other.transform.localPosition = new Vector3(-3.28f,7.16f, 7.15f);
+				other.transform.position = rightPosition.position;
 			}
 			else
 			{
-				other.transform.localPosition = new Vector3(-3.32f,7.16f, -6.91f);
+				other.transform.position = leftPosition.position;
 			}
 			
 			putToRight = !putToRight;

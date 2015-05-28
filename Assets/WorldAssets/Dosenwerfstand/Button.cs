@@ -31,7 +31,7 @@ public class Button : MonoBehaviour {
 
 	protected virtual void OnTriggerEnter(Collider other)
 	{
-		if(other.name.Contains("Target") && active)
+		if((other.name.Contains("Target") || other.tag == "Item") && active)
 		{
 			active = false;
 			meshRenderer.material = deactivateMaterial;

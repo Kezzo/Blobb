@@ -6,6 +6,7 @@ public class Button_SpawnNewTargets : Button {
 
 	public GameObject Target;
 	public GameObject currentTarget;
+	public Transform targetTransform;
 
 	protected override void Start () 
 	{
@@ -37,7 +38,7 @@ public class Button_SpawnNewTargets : Button {
 	{
 		Destroy(currentTarget);
 
-		currentTarget = Instantiate(Target, new Vector3(24.0f, 1.24f, 4.89f), Quaternion.Euler(270.0f,-136.3f,0.0f)) as GameObject;
+		currentTarget = Instantiate(Target, targetTransform.position, targetTransform.rotation) as GameObject;
 
 	}
 }
