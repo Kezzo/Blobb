@@ -44,6 +44,6 @@ public class Button : MonoBehaviour {
 	protected virtual void OnButtonActivation()
 	{
 		// Change to fit Button purpose
-		print ("OnButtonActivation Parent");
+		//print ("OnButtonActivation Parent");
 	}
 }

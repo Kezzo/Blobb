@@ -9,7 +9,7 @@ public class Button_Dosenaufsteller : Button {
 
 	public Transform[] dosenturmPositions;
 
-
+	public DestroyBullets destroyBullets;
 
 	// Use this for initialization
 	protected override void Start () 
@@ -36,6 +36,7 @@ public class Button_Dosenaufsteller : Button {
 		base.OnButtonActivation();
 		//print ("Button Activated");
 		resetTargets();
+		destroyBullets.destroyAllBulletsInList();
 	}
 	void resetTargets()
 	{

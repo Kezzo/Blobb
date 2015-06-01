@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class SpawnNewTargets : MonoBehaviour {
@@ -15,7 +15,7 @@ public class SpawnNewTargets : MonoBehaviour {
 
 	public void resetTargets()
 	{
-		destroyBulletsScript.destroyAllBullets();
+		destroyBulletsScript.destroyAllBulletsInList();
 		
 		Destroy(currentTargets);
 		

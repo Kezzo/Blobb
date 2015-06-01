@@ -7,6 +7,7 @@ public class PrimitiveCannon : MonoBehaviour,Item {
 	int maxClip;
 	public GameObject[] bullets;
 	public Transform ShootPosition;
+	public GameObject laserPointer;
 
 	// Use this for initialization
 	void Start () 
@@ -20,6 +21,7 @@ public class PrimitiveCannon : MonoBehaviour,Item {
 		if(clip > 0)
 		{
 			//clip --;
+			// TODO: 
 			GameObject currentBullet = bullets[Random.Range(0,2)];
 			currentBullet = SimplePool.Spawn(currentBullet,ShootPosition.transform.position,Quaternion.identity);
 			//print(this.transform.position+ShootPosition.transform.forward);
@@ -32,6 +34,16 @@ public class PrimitiveCannon : MonoBehaviour,Item {
 	public void Reload()
 	{
 		clip = maxClip;
+	}
+
+	public void OnEquip()
+	{
+		laserPointer.SetActive(true);
+	}
+
+	public void OnDeequip()
+	{
+		laserPointer.SetActive(false);
 	}
 
 	public string getType()

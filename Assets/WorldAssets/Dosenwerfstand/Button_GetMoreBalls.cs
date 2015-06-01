@@ -25,13 +25,13 @@ public class Button_GetMoreBalls : Button {
 	protected override void OnTriggerEnter(Collider other)
 	{
 		base.OnTriggerEnter(other);
-		print ("OnTriggerEnter");
+//		print ("OnTriggerEnter");
 	}
 	
 	protected override void OnButtonActivation()
 	{
 		base.OnButtonActivation();
-		print ("Button Activated");
+		//print ("Button Activated");
 		spawnBalls();
 	}
 

@@ -4,10 +4,11 @@ using System.Collections;
 public class WorldTrigger : MonoBehaviour {
 
 	public bool worldTrigger{get; set;}
+	public bool playerTrigger{get; set;}
 	
 	void OnTriggerStay(Collider info)
 	{
-		//print ("TriggerEnter"+info.tag);
+		//print ("TriggerEnter "+info.tag+" "+info.name);
 		
 		if(info.tag == "World")
 		{
@@ -16,6 +17,15 @@ public class WorldTrigger : MonoBehaviour {
 		else
 		{
 			worldTrigger = false;
+		}
+
+		if(info.tag == "Player")
+		{
+			playerTrigger = true;
+		}
+		else
+		{
+			playerTrigger = false;
 		}
 		
 	}
@@ -26,6 +36,11 @@ public class WorldTrigger : MonoBehaviour {
 		if(info.tag == "World")
 		{
 			worldTrigger = false;
+		}
+
+		if(info.tag == "Player")
+		{
+			playerTrigger = false;
 		}
 	}
 }

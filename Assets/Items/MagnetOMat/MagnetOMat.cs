@@ -68,6 +68,14 @@ public class MagnetOMat : MonoBehaviour,Item
 	{
 	}
 
+	public void OnEquip()
+	{
+	}
+
+	public void OnDeequip()
+	{
+	}
+
 	public string getType()
 	{
 		return "GravGun";

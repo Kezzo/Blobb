@@ -83,7 +83,7 @@ public class Controls : MonoBehaviour
 			{
 				GrabItem();
 			}
-			else if(targetGrab.worldTrigger)
+			else if(targetGrab.worldTrigger || (targetGrab.worldTrigger && targetGrab.playerTrigger && !itemInTrigger))
 			{
 				GrabWorld(true);
 			}
@@ -100,19 +100,22 @@ public class Controls : MonoBehaviour
 			}
 		}
 
-		if(hydra.GetButtonDown(SixenseButtons.BUMPER))
+		if(itemIsInHand)
 		{
-			if(itemIsUsable)
+			if(hydra.GetButtonDown(SixenseButtons.BUMPER))
 			{
-				item.GetComponent<Item>().UseOnce();
+				if(itemIsUsable)
+				{
+					item.GetComponent<Item>().UseOnce();
+				}
 			}
-		}
-
-		if(hydra.GetButtonDown(SixenseButtons.ONE))
-		{
-			if(itemIsUsable)
+			
+			if(hydra.GetButtonDown(SixenseButtons.ONE))
 			{
-				item.GetComponent<Item>().Reload();
+				if(itemIsUsable)
+				{
+					item.GetComponent<Item>().Reload();
+				}
 			}
 		}
 	}
@@ -145,6 +148,7 @@ public class Controls : MonoBehaviour
 	{
 		//print ("GrabItem() called!");
 		//print (item.name+" grabbed!");
+		item.GetComponent<Item>().OnEquip();
 		itemRigid = item.GetComponent<Rigidbody>();
 		itemRigid.isKinematic = true;
 		if(itemRigid.isKinematic)
@@ -170,7 +174,7 @@ public class Controls : MonoBehaviour
 	{
 		Vector3 resultingDirection = (hand.transform.position - previousHandPosition);
 		float maxThrowForce = Mathf.Abs(Mathf.Max(resultingDirection.x, resultingDirection.y, resultingDirection.z)) * 10.0f;
-
+		item.GetComponent<Item>().OnDeequip();
 		//Debug.Log(maxThrowForce);
 
 		if(inventory.isItemInInventory(item.gameObject) && maxThrowForce < 0.1f)
@@ -262,7 +266,7 @@ public class Controls : MonoBehaviour
 			RaycastHit hitUp;
 			if(Physics.Raycast(item.transform.position, Vector3.up, out hitUp))
 			{
-				print (hitUp.point);
+//				print (hitUp.point);
 				Vector3 newPosition = hitUp.point;
 				MeshRenderer mesh = item.GetComponent<MeshRenderer>();
 				newPosition.y += Mathf.Max(new float[]{mesh.bounds.size.x, mesh.bounds.size.y, mesh.bounds.size.z})+2.0f;

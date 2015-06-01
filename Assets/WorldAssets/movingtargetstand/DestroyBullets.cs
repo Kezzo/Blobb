@@ -15,7 +15,7 @@ public class DestroyBullets : MonoBehaviour {
 		}
 	}
 	
-	public void destroyAllBullets()
+	public void destroyAllBulletsInList()
 	{
 		//print ("destroyBullets");
 		foreach(GameObject bullet in bullets)
