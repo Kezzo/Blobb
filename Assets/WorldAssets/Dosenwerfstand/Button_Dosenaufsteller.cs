@@ -7,6 +7,10 @@ public class Button_Dosenaufsteller : Button {
 	public GameObject dosenTurm;
 	public List<GameObject> dosenTuerme = new List<GameObject>();
 
+	public Transform[] dosenturmPositions;
+
+
+
 	// Use this for initialization
 	protected override void Start () 
 	{
@@ -30,17 +34,19 @@ public class Button_Dosenaufsteller : Button {
 	protected override void OnButtonActivation()
 	{
 		base.OnButtonActivation();
-		print ("Button Activated");
-		spawnDosen();
+		//print ("Button Activated");
+		resetTargets();
 	}
-	void spawnDosen()
+	void resetTargets()
 	{
 		foreach(GameObject dosenTurmObject in dosenTuerme)
 		{
 			Destroy(dosenTurmObject);
 		}
-		dosenTuerme.Add(Instantiate(dosenTurm, new Vector3(-17.4f, 2.39f, 5.44f), Quaternion.Euler(0.0f,-45.0f,0.0f)) as GameObject);
-		dosenTuerme.Add(Instantiate(dosenTurm, new Vector3(-20.9f, 2.39f, 8.9f), Quaternion.Euler(0.0f,-45.0f,0.0f)) as GameObject);
-		dosenTuerme.Add(Instantiate(dosenTurm, new Vector3(-14.15f, 2.39f, 2.15f), Quaternion.Euler(0.0f,-45.0f,0.0f)) as GameObject);
+
+		for(int i=0; i<dosenturmPositions.Length; i++)
+		{
+			dosenTuerme.Add(Instantiate(dosenTurm, dosenturmPositions[i].position, dosenturmPositions[i].rotation) as GameObject);
+		}
 	}
 }

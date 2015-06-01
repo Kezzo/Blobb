@@ -22,7 +22,7 @@ public class PrimitiveCannon : MonoBehaviour,Item {
 			//clip --;
 			GameObject currentBullet = bullets[Random.Range(0,2)];
 			currentBullet = SimplePool.Spawn(currentBullet,ShootPosition.transform.position,Quaternion.identity);
-			print(this.transform.position+ShootPosition.transform.forward);
+			//print(this.transform.position+ShootPosition.transform.forward);
 			Rigidbody bulletRigid = currentBullet.GetComponent<Rigidbody>();
 			bulletRigid.AddForce(ShootPosition.transform.forward * 1500.0f,ForceMode.Acceleration);
 			//currentBullet.transform.parent = 

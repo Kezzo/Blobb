@@ -66,7 +66,6 @@ public class MoveTarget : MonoBehaviour {
 			wasHit = true;
 			rigid.useGravity = true;
 		}
-
 		//Debug.Log(collsion.collider.name);
 	}
 }
