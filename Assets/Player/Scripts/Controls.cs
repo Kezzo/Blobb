@@ -148,7 +148,7 @@ public class Controls : MonoBehaviour
 	{
 		//print ("GrabItem() called!");
 		//print (item.name+" grabbed!");
-		item.GetComponent<Item>().OnEquip();
+
 		itemRigid = item.GetComponent<Rigidbody>();
 		itemRigid.isKinematic = true;
 		if(itemRigid.isKinematic)
@@ -156,6 +156,7 @@ public class Controls : MonoBehaviour
 			if(item.layer == 14)
 			{
 				itemIsUsable = true;
+				item.GetComponent<Item>().OnEquip();
 				item.transform.rotation = target.transform.rotation;
 			}
 			else
@@ -174,7 +175,11 @@ public class Controls : MonoBehaviour
 	{
 		Vector3 resultingDirection = (hand.transform.position - previousHandPosition);
 		float maxThrowForce = Mathf.Abs(Mathf.Max(resultingDirection.x, resultingDirection.y, resultingDirection.z)) * 10.0f;
-		item.GetComponent<Item>().OnDeequip();
+		if(itemIsUsable)
+		{
+			item.GetComponent<Item>().OnDeequip();
+		}
+
 		//Debug.Log(maxThrowForce);
 
 		if(inventory.isItemInInventory(item.gameObject) && maxThrowForce < 0.1f)
@@ -261,12 +266,12 @@ public class Controls : MonoBehaviour
 	{
 		//print ("CheckItemUnderWorld() called!");
 		RaycastHit hitDown;
-		if(!Physics.Raycast(item.transform.position, Vector3.down, out hitDown))
+		if(!Physics.Raycast(item.transform.position, Vector3.down, out hitDown, 100.0f))
 		{
 			RaycastHit hitUp;
 			if(Physics.Raycast(item.transform.position, Vector3.up, out hitUp))
 			{
-//				print (hitUp.point);
+				print (hitUp.point);
 				Vector3 newPosition = hitUp.point;
 				MeshRenderer mesh = item.GetComponent<MeshRenderer>();
 				newPosition.y += Mathf.Max(new float[]{mesh.bounds.size.x, mesh.bounds.size.y, mesh.bounds.size.z})+2.0f;
