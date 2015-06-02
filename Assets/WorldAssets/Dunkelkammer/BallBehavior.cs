@@ -24,13 +24,14 @@ public class BallBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 		if(isActive == true)
 		{
 			//do something
 			rb.useGravity = true;
 			if(!changeDone)
 			{
-				changeColor();
+				StartCoroutine(changeColor());
 			}
 		}
 	}

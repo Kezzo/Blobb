@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class BallSpawing : MonoBehaviour {
-	
+
+	public bool debugging;
 	private int fieldWidth = 17;
 	private int fieldDepth = 17;
 	private int fieldHeight = 3;
@@ -21,6 +22,10 @@ public class BallSpawing : MonoBehaviour {
 		if(transform.childCount == 0)
 		{
 			BuildingSphereField ();
+		}
+		if (debugging) 
+		{
+			gameObject.BroadcastMessage("SetActiveStatus",true,SendMessageOptions.DontRequireReceiver);
 		}
 	}
 
