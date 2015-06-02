@@ -33,6 +33,7 @@ public class Controls : MonoBehaviour
 
 	public InventoryHandler inventory;
 	bool itemIsUsable;
+	Transform itemParent;
 
 	public LayerMask layerMaskForUnderWorldCheck;
 
@@ -166,6 +167,11 @@ public class Controls : MonoBehaviour
 			{
 				itemIsUsable = false;
 			}
+			if(item.transform.parent != this.transform)
+			{
+				itemParent = item.transform.parent;
+			}
+
 			item.transform.parent = hand.transform;
 			item.transform.localPosition = new Vector3(-0.5f,0,0);
 
@@ -214,7 +220,7 @@ public class Controls : MonoBehaviour
 			
 			item.GetComponent<Collider>().isTrigger = false;
 			
-			item.transform.parent = null;
+			item.transform.parent = itemParent;
 			if (itemIsUsable)
 			{
 				item.layer = 14;

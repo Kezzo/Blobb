@@ -5,11 +5,11 @@ public class Grenade : MonoBehaviour,Item {
 
 	bool isArmed;
 
-	Rigidbody rigidBody;
+	//Rigidbody rigidBody;
 
 	// Use this for initialization
 	void Start () {
-		rigidBody = GetComponent<Rigidbody>();
+		//rigidBody = GetComponent<Rigidbody>();
 	}
 	
 	// Update is called once per frame
@@ -26,14 +26,14 @@ public class Grenade : MonoBehaviour,Item {
 	public void OnDeequip()
 	{
 		StartCoroutine(ExplodeAfter(3.0f));
-		print ("Timer started!");
+		//print ("Timer started!");
 	}
 
 	IEnumerator ExplodeAfter(float secondsToWait)
 	{
-		print ("IEnumerator started!");
+		//print ("IEnumerator started!");
 		yield return new WaitForSeconds(secondsToWait);
-		print("Explode!");
+		//print("Explode!");
 
 		Vector3 explosionPos = transform.position;
 		Collider[] colliders = Physics.OverlapSphere(explosionPos, 5.0f);
