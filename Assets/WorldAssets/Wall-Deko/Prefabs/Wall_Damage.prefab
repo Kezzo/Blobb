@@ -11,9 +11,9 @@ GameObject:
   - 33: {fileID: 3372702}
   - 65: {fileID: 6518770}
   - 23: {fileID: 2347406}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Wall_front
-  m_TagString: Untagged
+  m_TagString: World
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ GameObject:
   - 33: {fileID: 3331396}
   - 136: {fileID: 13636100}
   - 23: {fileID: 2381474}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cylinder 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - 33: {fileID: 3355802}
   - 136: {fileID: 13614944}
   - 23: {fileID: 2351596}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cylinder 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,7 +65,7 @@ GameObject:
   - 33: {fileID: 3371772}
   - 136: {fileID: 13696722}
   - 23: {fileID: 2374182}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cylinder 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   - 33: {fileID: 3364298}
   - 136: {fileID: 13650048}
   - 23: {fileID: 2369268}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cylinder 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - 33: {fileID: 3362544}
   - 136: {fileID: 13642392}
   - 23: {fileID: 2318796}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cylinder 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 411620}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Wall_Damage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   - 33: {fileID: 3366338}
   - 64: {fileID: 6438904}
   - 23: {fileID: 2340210}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   - 33: {fileID: 3333014}
   - 136: {fileID: 13600336}
   - 23: {fileID: 2305912}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cylinder 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   - 33: {fileID: 3386764}
   - 136: {fileID: 13694532}
   - 23: {fileID: 2321736}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   - 33: {fileID: 3321052}
   - 136: {fileID: 13620722}
   - 23: {fileID: 2383572}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cylinder 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,8 +201,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 160586}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.8997402, y: 5.28979683, z: 51.8375244}
+  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
+  m_LocalPosition: {x: 21.1499996, y: 18.7099991, z: 11.7700005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 431700}
