@@ -24,6 +24,7 @@ public class Controls : MonoBehaviour
 	public bool itemIsInHand{get; set;}
 	Collider itemCollider;
 	Rigidbody itemRigid;
+	Item itemClass;
 
 	private ConfigurableJoint configJoint;
 	private WorldTrigger targetGrab;
@@ -32,6 +33,8 @@ public class Controls : MonoBehaviour
 
 	public InventoryHandler inventory;
 	bool itemIsUsable;
+
+	public LayerMask layerMaskForUnderWorldCheck;
 
 	void Awake()
 	{
@@ -106,7 +109,7 @@ public class Controls : MonoBehaviour
 			{
 				if(itemIsUsable)
 				{
-					item.GetComponent<Item>().UseOnce();
+					itemClass.UseOnce();
 				}
 			}
 			
@@ -114,7 +117,7 @@ public class Controls : MonoBehaviour
 			{
 				if(itemIsUsable)
 				{
-					item.GetComponent<Item>().Reload();
+					itemClass.Reload();
 				}
 			}
 		}
@@ -148,7 +151,7 @@ public class Controls : MonoBehaviour
 	{
 		//print ("GrabItem() called!");
 		//print (item.name+" grabbed!");
-
+		itemClass = item.GetComponent<Item>();
 		itemRigid = item.GetComponent<Rigidbody>();
 		itemRigid.isKinematic = true;
 		if(itemRigid.isKinematic)
@@ -156,7 +159,7 @@ public class Controls : MonoBehaviour
 			if(item.layer == 14)
 			{
 				itemIsUsable = true;
-				item.GetComponent<Item>().OnEquip();
+				itemClass.OnEquip();
 				item.transform.rotation = target.transform.rotation;
 			}
 			else
@@ -177,7 +180,8 @@ public class Controls : MonoBehaviour
 		float maxThrowForce = Mathf.Abs(Mathf.Max(resultingDirection.x, resultingDirection.y, resultingDirection.z)) * 10.0f;
 		if(itemIsUsable)
 		{
-			item.GetComponent<Item>().OnDeequip();
+			itemClass.OnDeequip();
+			itemClass = null;
 		}
 
 		//Debug.Log(maxThrowForce);
@@ -206,7 +210,7 @@ public class Controls : MonoBehaviour
 				itemRigid.WakeUp();
 			}
 
-			itemRigid.AddForce(resultingDirection * 100.0f,ForceMode.Impulse);
+			itemRigid.AddForce(resultingDirection * 100.0f,ForceMode.VelocityChange);
 			
 			item.GetComponent<Collider>().isTrigger = false;
 			
@@ -268,15 +272,14 @@ public class Controls : MonoBehaviour
 		RaycastHit hitDown;
 		if(!Physics.Raycast(item.transform.position, Vector3.down, out hitDown, 100.0f))
 		{
-			RaycastHit hitUp;
-			if(Physics.Raycast(item.transform.position, Vector3.up, out hitUp))
-			{
-				print (hitUp.point);
-				Vector3 newPosition = hitUp.point;
-				MeshRenderer mesh = item.GetComponent<MeshRenderer>();
-				newPosition.y += Mathf.Max(new float[]{mesh.bounds.size.x, mesh.bounds.size.y, mesh.bounds.size.z})+2.0f;
-				item.transform.position = newPosition;
-			}
+			item.transform.position = new Vector3(item.transform.position.x,1.0f, item.transform.position.z);
+//			RaycastHit hitUp;
+//			if(Physics.Raycast(item.transform.position, Vector3.up, out hitUp, 100.0f, layerMaskForUnderWorldCheck))
+//			{
+//				print (hitUp.point);
+//				Vector3 newPosition = hitUp.point;
+//				item.transform.position = newPosition;
+//			}
 		}
 	}
 }

@@ -7,6 +7,7 @@ public class Button : MonoBehaviour {
 	public Material deactivateMaterial;
 
 	bool active = true;
+	public bool doNotResetOnItemContact;
 	float cooldown = 5.0f;
 
 	MeshRenderer meshRenderer;
@@ -31,7 +32,7 @@ public class Button : MonoBehaviour {
 
 	protected virtual void OnTriggerEnter(Collider other)
 	{
-		if((other.name.Contains("Target") || other.tag == "Item") && active)
+		if((other.name.Contains("Target") || (other.tag == "Item" && !doNotResetOnItemContact)) && active)
 		{
 			active = false;
 			meshRenderer.material = deactivateMaterial;

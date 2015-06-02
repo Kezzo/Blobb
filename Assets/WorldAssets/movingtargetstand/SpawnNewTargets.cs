@@ -5,12 +5,13 @@ public class SpawnNewTargets : MonoBehaviour {
 
 	public GameObject targetsPrefab;
 	public GameObject currentTargets;
-	public Transform targetTransform;
 	DestroyBullets destroyBulletsScript;
+	SaveTransform targetTransform;
 
 	void Start()
 	{
 		destroyBulletsScript = currentTargets.GetComponent<DestroyBullets>();
+		targetTransform = new SaveTransform(currentTargets.transform);
 	}
 
 	public void resetTargets()

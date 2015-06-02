@@ -14,9 +14,10 @@ public class LasterPointer : MonoBehaviour {
 	{
 		lineRenderer.SetPosition(0, originTransform.position);
 
-		if(Physics.Raycast(originTransform.position, Vector3.forward, out rayCastHit))
+		if(Physics.Raycast(originTransform.position, this.transform.forward, out rayCastHit))
 		{
-			lineRenderer.SetPosition(1, transform.TransformPoint(rayCastHit.point));
+			lineRenderer.SetPosition(1, rayCastHit.point);
+			//Debug.DrawLine(originTransform.position, rayCastHit.point);
 		}
 
 
