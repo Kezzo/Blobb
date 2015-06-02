@@ -5,6 +5,7 @@ public class BallBehavior : MonoBehaviour {
 
 	Rigidbody rb;
 	public bool isActive = false;
+	int seconds = Random.Range(1,5);
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody>();
@@ -28,4 +29,21 @@ public class BallBehavior : MonoBehaviour {
 	{
 		Destroy(this.gameObject);
 	}
+
+	void OnTriggerEnter (Collider objectCollider)
+	{
+		//print (objectCollider.name);
+		if (objectCollider.name == "FloorPrototype64x01x64")
+		{
+			StartCoroutine(destructSequence());
+			//SelfDestruct();
+		}
+	}
+
+	IEnumerator destructSequence()
+	{
+		yield return new WaitForSeconds(seconds);
+		SelfDestruct();
+	}
+
 }

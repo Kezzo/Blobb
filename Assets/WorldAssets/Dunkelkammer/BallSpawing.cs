@@ -9,16 +9,26 @@ public class BallSpawing : MonoBehaviour {
 	float shiftX = 0.0f;
 	float spawnSpeed = 0.0f;
 	GameObject fieldPart;
+	SphereCollider sphereColl;
+	BoxCollider boxColl;
+	public bool debugging;
 
+	void Awake()
+	{
+		BuildingSphereField ();
+	}
 	// Use this for initialization
 	void Start () {
 		//StartCoroutine (BuildingSphereField ());
-		BuildingSphereField ();
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if(transform.childCount == 0)
+		{
+			BuildingSphereField ();
+		}
 	}
 
 	/*IEnumerator BuildingSphereField ()
@@ -74,8 +84,14 @@ public class BallSpawing : MonoBehaviour {
 					switch(randomNumber)
 					{
 					case 1: fieldPart = GameObject.CreatePrimitive (PrimitiveType.Sphere);
+					
+						sphereColl = fieldPart.GetComponent<SphereCollider>();
+						PhysicMaterial bob = Resources.Load("BouncingBob") as PhysicMaterial;
+						sphereColl.material = bob;
 						break;
 					case 2: fieldPart = GameObject.CreatePrimitive (PrimitiveType.Cube);
+							boxColl = fieldPart.GetComponent<BoxCollider>();
+							boxColl.material = (PhysicMaterial)Resources.Load("BouncingBob");
 						break;
 					}
 					
@@ -83,8 +99,8 @@ public class BallSpawing : MonoBehaviour {
 					fieldPart.AddComponent<BallBehavior>();
 					Rigidbody rb = fieldPart.AddComponent<Rigidbody> ();
 					rb.useGravity = false;
+					//coll.material = (PhysicMaterial)Resources.Load("BouncingBob");
 					fieldPart.transform.parent = transform;
-					
 					fieldPart.transform.localPosition = new Vector3 (-shiftX, y*-0.7f, z*-0.7f);
 					fieldPart.name = "lightBall";
 					fieldPart.tag = "Item";
