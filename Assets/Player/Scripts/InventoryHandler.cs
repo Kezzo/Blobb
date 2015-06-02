@@ -6,8 +6,8 @@ public class InventoryHandler : MonoBehaviour {
 
 	//public GameObject inventory;
 
-
-	List<GameObject> itemInInventory = new List<GameObject>();
+	List<ItemParentSave> itemInInventory = new List<ItemParentSave>();
+	List<GameObject> itemInInventoryTrigger = new List<GameObject>();
 	//GameObject[] itemsInInvetory = new GameObject[];
 	// Use this for initialization
 	void Start () {
@@ -24,7 +24,7 @@ public class InventoryHandler : MonoBehaviour {
 		if(other.gameObject.layer == 13)
 		{
 			//print(other.name + " entered Inventory Trigger");
-			itemInInventory.Add(other.gameObject);
+			itemInInventoryTrigger.Add(other.gameObject);
 		}
 	}
 
@@ -33,20 +33,22 @@ public class InventoryHandler : MonoBehaviour {
 		if(other.gameObject.layer == 13)
 		{
 			//print(other.name + " left Inventory Trigger");
-			foreach(GameObject item in itemInInventory.ToArray())
+			foreach(GameObject item in itemInInventoryTrigger.ToArray())
 			{
 				if(other.gameObject.Equals(item))
 				{
-					itemInInventory.Remove(item);
+					itemInInventoryTrigger.Remove(item);
 				}
 			}
 		}
 	}
 
-	public void storeItem(GameObject itemToStore, bool isUsable)
+	public void storeItem(GameObject itemToStore, bool isUsable, Transform parent)
 	{
+		itemInInventory.Add(new ItemParentSave(itemToStore, parent));
 		itemToStore.transform.parent = this.transform;
 		itemToStore.GetComponent<Collider>().isTrigger = true;
+
 		if(isUsable)
 		{
 			itemToStore.layer = 14;
@@ -54,14 +56,12 @@ public class InventoryHandler : MonoBehaviour {
 		else
 		{
 			itemToStore.layer = 9;
-		}
-
-
+		}		
 	}
 
-	public bool isItemInInventory(GameObject itemToCheck)
+	public bool isItemTouchingInventory(GameObject itemToCheck)
 	{
-		foreach(GameObject item in itemInInventory.ToArray())
+		foreach(GameObject item in itemInInventoryTrigger)
 		{
 			if(itemToCheck.Equals(item))
 			{
@@ -69,6 +69,32 @@ public class InventoryHandler : MonoBehaviour {
 			}
 		}
 		return false;
+	}
+
+	public bool isItemStoredInInventory(GameObject itemToCheck)
+	{
+		foreach(ItemParentSave item in itemInInventory)
+		{
+			if(itemToCheck.Equals(item.ItemGameObject))
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	public Transform getParentFromItem(GameObject itemToCheck)
+	{
+		foreach(ItemParentSave item in itemInInventory)
+		{
+			if(itemToCheck.Equals(item.ItemGameObject))
+			{
+				return item.parent;
+			}
+		}
+
+		return null;
 	}
 	
 }

@@ -25,7 +25,12 @@ public class Grenade : MonoBehaviour,Item {
 	public void OnEquip(){}
 	public void OnDeequip()
 	{
-		StartCoroutine(ExplodeAfter(3.0f));
+		print(this.transform.parent.name);
+		if(!this.transform.parent.name.Contains("Inventory"))
+		{
+			StartCoroutine(ExplodeAfter(3.0f));
+		}
+
 		//print ("Timer started!");
 	}
 

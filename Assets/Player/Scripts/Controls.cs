@@ -33,6 +33,7 @@ public class Controls : MonoBehaviour
 
 	public InventoryHandler inventory;
 	bool itemIsUsable;
+	// will always be set to parent prior to picking the item up
 	Transform itemParent;
 
 	public LayerMask layerMaskForUnderWorldCheck;
@@ -96,7 +97,7 @@ public class Controls : MonoBehaviour
 		{
 			if(itemIsInHand)
 			{
-				ThrowItem();
+				ThrowOrStoreItem();
 			}
 			else
 			{
@@ -167,7 +168,12 @@ public class Controls : MonoBehaviour
 			{
 				itemIsUsable = false;
 			}
-			if(item.transform.parent != this.transform)
+
+			if(inventory.isItemStoredInInventory(item))
+			{
+				itemParent = inventory.getParentFromItem(item);
+			}
+			else
 			{
 				itemParent = item.transform.parent;
 			}
@@ -180,31 +186,16 @@ public class Controls : MonoBehaviour
 		}
 	}
 
-	void ThrowItem()
+	void ThrowOrStoreItem()
 	{
 		Vector3 resultingDirection = (hand.transform.position - previousHandPosition);
 		float maxThrowForce = Mathf.Abs(Mathf.Max(resultingDirection.x, resultingDirection.y, resultingDirection.z)) * 10.0f;
-		if(itemIsUsable)
-		{
-			itemClass.OnDeequip();
-			itemClass = null;
-		}
 
 		//Debug.Log(maxThrowForce);
 
-		if(inventory.isItemInInventory(item.gameObject) && maxThrowForce < 0.1f)
+		if(inventory.isItemTouchingInventory(item.gameObject) && maxThrowForce < 0.1f)
 		{
-			if(itemIsUsable)
-			{
-				inventory.storeItem(item, true);
-			}
-			else
-			{
-				inventory.storeItem(item, false);
-			}
-			
-			item = null;
-			itemIsInHand = false;
+			inventory.storeItem(item, itemIsUsable, itemParent);
 		}
 		else
 		{
@@ -219,8 +210,9 @@ public class Controls : MonoBehaviour
 			itemRigid.AddForce(resultingDirection * 100.0f,ForceMode.VelocityChange);
 			
 			item.GetComponent<Collider>().isTrigger = false;
-			
+
 			item.transform.parent = itemParent;
+
 			if (itemIsUsable)
 			{
 				item.layer = 14;
@@ -230,10 +222,17 @@ public class Controls : MonoBehaviour
 				item.layer = 9;
 			}
 			CheckItemUnderWorld();
-			item = null;
-			itemIsInHand = false;
-			itemIsUsable = false;
 		}
+
+		if(itemIsUsable)
+		{
+			itemClass.OnDeequip();
+			itemClass = null;
+		}
+
+		item = null;
+		itemIsInHand = false;
+		itemIsUsable = false;
 	}
 
 	void GrabWorld(bool activateGrab)
@@ -279,13 +278,6 @@ public class Controls : MonoBehaviour
 		if(!Physics.Raycast(item.transform.position, Vector3.down, out hitDown, 100.0f))
 		{
 			item.transform.position = new Vector3(item.transform.position.x,1.0f, item.transform.position.z);
-//			RaycastHit hitUp;
-//			if(Physics.Raycast(item.transform.position, Vector3.up, out hitUp, 100.0f, layerMaskForUnderWorldCheck))
-//			{
-//				print (hitUp.point);
-//				Vector3 newPosition = hitUp.point;
-//				item.transform.position = newPosition;
-//			}
 		}
 	}
 }
