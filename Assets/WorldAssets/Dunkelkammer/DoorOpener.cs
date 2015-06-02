@@ -7,21 +7,18 @@ public class DoorOpener : MonoBehaviour
 	public GameObject leftDoorPart;
 	public GameObject rightDoorPart;
 	public float DoorHeigt = 6f;
-	[Range(1.0f,20.0f)]
-	public float
-		leftSpeed = 10f;
-	[Range(1.0f,20.0f)]
-	public float
-		rightSpeed = 8f;
 	public bool openDoor = false;
-	float leftStep;
-	float rightStep;
-	// Use this for initialization
-	void Start ()
-	{
-	
-	}
-	
+
+	[Range(1.0f,20.0f)]
+	public float leftSpeed = 10f;
+
+	[Range(1.0f,20.0f)]
+	public float rightSpeed = 8f;
+
+
+	private float leftStep;
+	private float rightStep;
+
 	// Update is called once per frame
 	void Update ()
 	{

@@ -6,11 +6,6 @@ public class DunkelkammerReset : MonoBehaviour {
 	public bool Destroy = false;
 	public GameObject lightshowSpawner;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
 	// Update is called once per frame
 	void Update () {
 		if(Destroy == true)
