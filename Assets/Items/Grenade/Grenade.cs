@@ -25,7 +25,7 @@ public class Grenade : MonoBehaviour,Item {
 	public void OnEquip(){}
 	public void OnDeequip()
 	{
-		print(this.transform.parent.name);
+		//print(this.transform.parent.name);
 		if(!this.transform.parent.name.Contains("Inventory"))
 		{
 			StartCoroutine(ExplodeAfter(3.0f));

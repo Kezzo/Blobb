@@ -14,7 +14,7 @@ GameObject:
   - 54: {fileID: 5416688}
   - 64: {fileID: 6412832}
   - 114: {fileID: 11435024}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: target_low_poly 2
   m_TagString: World
   m_Icon: {fileID: 0}
@@ -35,7 +35,7 @@ GameObject:
   - 54: {fileID: 5450612}
   - 64: {fileID: 6437588}
   - 114: {fileID: 11490726}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: target_low_poly 5
   m_TagString: World
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - 54: {fileID: 5439336}
   - 64: {fileID: 6437454}
   - 114: {fileID: 11409578}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: target_low_poly 3
   m_TagString: World
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ GameObject:
   - 54: {fileID: 5491484}
   - 64: {fileID: 6489696}
   - 114: {fileID: 11476734}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: target_low_poly 1
   m_TagString: World
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - 54: {fileID: 5405774}
   - 64: {fileID: 6451692}
   - 114: {fileID: 11492322}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: target_low_poly 4
   m_TagString: World
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   - 54: {fileID: 5452542}
   - 64: {fileID: 6478428}
   - 114: {fileID: 11413894}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: target_low_poly
   m_TagString: World
   m_Icon: {fileID: 0}
@@ -138,7 +138,6 @@ GameObject:
   - 65: {fileID: 6539518}
   - 65: {fileID: 6538040}
   - 65: {fileID: 6582758}
-  - 65: {fileID: 6554348}
   - 114: {fileID: 11462500}
   m_Layer: 11
   m_Name: Targets
@@ -651,18 +650,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 15, z: .5}
   m_Center: {x: 0, y: 0, z: 3.51999998}
---- !u!65 &6554348
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 199332}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 15, z: 6}
-  m_Center: {x: 4, y: 0, z: 1}
 --- !u!65 &6561716
 BoxCollider:
   m_ObjectHideFlags: 1

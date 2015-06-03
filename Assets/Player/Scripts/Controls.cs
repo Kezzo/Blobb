@@ -175,7 +175,11 @@ public class Controls : MonoBehaviour
 			}
 			else
 			{
-				itemParent = item.transform.parent;
+				if(!item.transform.parent.Equals(hand.transform) || !item.transform.parent.name.Contains("unterarm"))
+				{
+					itemParent = item.transform.parent;
+				}
+
 			}
 
 			item.transform.parent = hand.transform;
@@ -211,7 +215,16 @@ public class Controls : MonoBehaviour
 			
 			item.GetComponent<Collider>().isTrigger = false;
 
-			item.transform.parent = itemParent;
+			if(!itemParent.Equals(hand.transform) || !item.transform.parent.name.Contains("unterarm"))
+			{
+				print("Parent ist not hand");
+				item.transform.parent = itemParent;
+			}
+			else
+			{
+				item.transform.parent =  null;
+			}
+
 
 			if (itemIsUsable)
 			{
@@ -229,7 +242,7 @@ public class Controls : MonoBehaviour
 			itemClass.OnDeequip();
 			itemClass = null;
 		}
-
+		
 		item = null;
 		itemIsInHand = false;
 		itemIsUsable = false;
