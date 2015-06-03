@@ -3,16 +3,16 @@ using System.Collections;
 
 public class DunkelkammerReset : MonoBehaviour {
 
-	public bool Destroy = false;
+	public bool destroy = false;
 	public GameObject lightshowSpawner;
 
 	// Update is called once per frame
 	void Update () {
-		if(Destroy == true)
+		if(destroy == true)
 		{
 			lightshowSpawner.BroadcastMessage("SelfDestruct", SendMessageOptions.DontRequireReceiver);
 			lightshowSpawner.SendMessage("BuildingSphereField", SendMessageOptions.DontRequireReceiver);
-			Destroy = false;
+			destroy = false;
 		}
 	}
 
@@ -20,7 +20,7 @@ public class DunkelkammerReset : MonoBehaviour {
 	{
 		if(objectCollider.gameObject.layer == LayerMask.NameToLayer("Player"))
 		{
-			Destroy = true;
+			destroy = true;
 		}
 	}
 }
