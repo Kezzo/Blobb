@@ -6,7 +6,7 @@ public class BallSpawing : MonoBehaviour {
 	public bool debugging;
 	private int fieldWidth = 17;
 	private int fieldDepth = 17;
-	private int fieldHeight = 3;
+	private int fieldHeight = 2;
 	private float shiftX = 0.0f;
 	private GameObject fieldPart;
 
