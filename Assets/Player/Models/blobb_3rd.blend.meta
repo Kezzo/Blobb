@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 6e4e74de399ee2c4d94d432af723d39f
-timeCreated: 1433536382
+timeCreated: 1433545736
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -67,7 +67,7 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
@@ -100,8 +100,275 @@ ModelImporter:
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
-    human: []
-    skeleton: []
+    human:
+    - boneName: Central_Bone_down
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Central_Bone_down_004
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Central_Bone_down_001
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Central_Bone_down_005
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Central_Bone_down_002
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Central_Bone_down_006
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Central_Bone_down_003
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: central_bone
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Schulter_l
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Schulter_r
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: oberarm_l
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: oberarm_r
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mittelarm_l
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mittelarm_r
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: unterarm_l
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: unterarm_r
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: central_bone_001
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: unterarm_l_001
+      humanName: Left Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: unterarm_r_001
+      humanName: Right Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: blobb_3rd(Clone)
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Armature
+      position: {x: 0, y: .127138972, z: -5.55742119e-09}
+      rotation: {x: 2.98023224e-07, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Central_Bone_down
+      position: {x: 0, y: -.519249856, z: 3.0949704e-07}
+      rotation: {x: 0, y: 0, z: -.707106709, w: .707106829}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: central_bone
+      position: {x: -.584782243, y: 4.41498322e-08, z: 0}
+      rotation: {x: -.0156174004, y: .000243711766, z: -.0156173846, w: .999756038}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Schulter_l
+      position: {x: -.492350101, y: 3.56852325e-08, z: -3.83980001e-11}
+      rotation: {x: .474651992, y: .51552254, z: -.509494483, w: -.499356955}
+      scale: {x: .99999994, y: .999999821, z: .999999702}
+      transformModified: 1
+    - name: oberarm_l
+      position: {x: -.789576292, y: 6.27055101e-08, z: -1.2209072e-08}
+      rotation: {x: -.0337400474, y: .0273626707, z: .00039072294, w: .999055922}
+      scale: {x: .99999994, y: .999999881, z: .99999994}
+      transformModified: 1
+    - name: mittelarm_l
+      position: {x: -.727064252, y: 5.79907464e-08, z: -3.15274349e-08}
+      rotation: {x: .0131509835, y: -.010381598, z: -.000362326449, w: .999859571}
+      scale: {x: .999999881, y: 1, z: .999999881}
+      transformModified: 1
+    - name: unterarm_l
+      position: {x: -.707884252, y: 5.34281526e-08, z: -3.02577376e-08}
+      rotation: {x: -.00405241875, y: .0185788721, z: .000479165639, w: .9998191}
+      scale: {x: .99999994, y: 1, z: .999999821}
+      transformModified: 1
+    - name: unterarm_l_001
+      position: {x: -.198560745, y: 1.42717624e-08, z: -4.11634531e-08}
+      rotation: {x: .717339337, y: -.0185315181, z: .017986495, w: .696245134}
+      scale: {x: 1.00000012, y: 1, z: 1}
+      transformModified: 1
+    - name: Schulter_r
+      position: {x: -.492350101, y: 3.56852325e-08, z: -3.83980001e-11}
+      rotation: {x: .50890851, y: -.484337628, z: -.506466806, w: .499920577}
+      scale: {x: .999999642, y: .999999762, z: .999999881}
+      transformModified: 1
+    - name: oberarm_r
+      position: {x: -.763864577, y: 5.66819551e-08, z: -3.42718067e-08}
+      rotation: {x: .0067108022, y: .00671077054, z: 4.50329971e-05, w: .999954998}
+      scale: {x: 1.00000012, y: .99999994, z: 1}
+      transformModified: 1
+    - name: mittelarm_r
+      position: {x: -.595267475, y: 4.49414017e-08, z: -1.2800327e-08}
+      rotation: {x: .0268488023, y: .0169579536, z: -.000455570582, w: .999495566}
+      scale: {x: 1.00000012, y: .99999994, z: .99999994}
+      transformModified: 1
+    - name: unterarm_r
+      position: {x: -.75554949, y: 5.57926683e-08, z: -7.60456658e-08}
+      rotation: {x: -.0123668471, y: .00218427065, z: -9.04195622e-05, w: .999921143}
+      scale: {x: 1, y: .999999821, z: .99999994}
+      transformModified: 1
+    - name: unterarm_r_001
+      position: {x: -.267733693, y: 2.13778151e-08, z: 2.8366216e-08}
+      rotation: {x: -.717145979, y: -.0137357172, z: -.0133433854, w: .696659863}
+      scale: {x: .999999881, y: .999999881, z: .999999881}
+      transformModified: 1
+    - name: central_bone_001
+      position: {x: -.492350101, y: 3.56852325e-08, z: -3.83980001e-11}
+      rotation: {x: .0156170465, y: -.000244037059, z: .0156173762, w: .999756038}
+      scale: {x: .99999994, y: .999999821, z: .999999821}
+      transformModified: 1
+    - name: Central_Bone_down_001
+      position: {x: -.584782243, y: 4.41498322e-08, z: 0}
+      rotation: {x: .0121530769, y: -.00104058045, z: .991132975, w: -.132312804}
+      scale: {x: 1, y: 1, z: 1.00000012}
+      transformModified: 1
+    - name: Central_Bone_down_002
+      position: {x: -.101865828, y: -1.97615009e-08, z: 1.39698397e-09}
+      rotation: {x: .00697057322, y: .0368851013, z: -.216705441, w: .975515068}
+      scale: {x: .999999702, y: .999999762, z: .999999881}
+      transformModified: 1
+    - name: Central_Bone_down_003
+      position: {x: -.0921189636, y: 1.70693966e-08, z: -1.22236099e-09}
+      rotation: {x: -.00910459366, y: -.0383925773, z: .352246702, w: .935075104}
+      scale: {x: .999999821, y: 1.00000012, z: .99999994}
+      transformModified: 1
+    - name: Central_Bone_down_004
+      position: {x: -.584782243, y: 4.41498322e-08, z: 0}
+      rotation: {x: -.0218390785, y: -.00172724249, z: .991036355, w: .13178423}
+      scale: {x: .99999994, y: .999999881, z: .999999821}
+      transformModified: 1
+    - name: Central_Bone_down_005
+      position: {x: -.0861595869, y: 1.37952156e-08, z: 9.77888703e-09}
+      rotation: {x: .978167892, y: .180781126, z: -.0249293782, w: .0994197205}
+      scale: {x: .999999523, y: 1, z: .999999881}
+      transformModified: 1
+    - name: Central_Bone_down_006
+      position: {x: -.0698874965, y: -2.32830599e-09, z: -3.0733645e-08}
+      rotation: {x: .117977962, y: -.291116953, z: .308745265, w: .897779822}
+      scale: {x: .99999994, y: 1, z: .999999821}
+      transformModified: 1
+    - name: Protoblobb
+      position: {x: 0, y: -.116252512, z: .127139047}
+      rotation: {x: -.707107067, y: 0, z: -0, w: .70710659}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Sphere
+      position: {x: -6.20260835e-07, y: -.295230716, z: 1.30651486}
+      rotation: {x: -.0570065677, y: .0146969315, z: -.0164866075, w: .998129487}
+      scale: {x: .412750006, y: .412749976, z: .412749916}
+      transformModified: 1
     armTwist: .5
     foreArmTwist: .5
     upperLegTwist: .5
@@ -111,7 +378,7 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 3
   additionalBone: 0
   userData: 
   assetBundleName: 

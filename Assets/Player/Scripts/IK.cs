@@ -35,8 +35,8 @@ public class IK : MonoBehaviour
 					animator.SetIKRotation(AvatarIKGoal.LeftHand,leftHand.rotation);
 				} 
 				if(centerEye != null) {
-					animator.SetLookAtWeight(1);
-					animator.SetLookAtPosition(centerEye.position);
+					//animator.SetLookAtWeight(1);
+					//animator.SetLookAtPosition(centerEye.position);
 				} 
 				
 			}
