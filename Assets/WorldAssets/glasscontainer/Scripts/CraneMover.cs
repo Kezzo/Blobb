@@ -12,8 +12,10 @@ public class CraneMover : MonoBehaviour {
 	bool arrived=false;
 	public GameObject container;
 	public GameObject groundplate;
+	public GameObject glassplate;
 	public GameObject ropeA;
 	public GameObject ropeB;
+	public GameObject player;
 	float cooldown=0.5f;
 	// Use this for initialization
 	void Start () {
@@ -66,6 +68,10 @@ public class CraneMover : MonoBehaviour {
 			if (arrived==true){
 
 				print("ascend");
+				groundplate.layer=11;
+				glassplate.layer=11;
+
+				player.transform.parent=null;
 				if(ascend>0)
 				{
 
