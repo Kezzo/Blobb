@@ -8,15 +8,25 @@ ModelImporter:
     100000: //RootNode
     100002: container
     100004: groundplate
+    100006: Cylinder
+    100008: GROUNDGLASS
     400000: //RootNode
     400002: container
     400004: groundplate
+    400006: Cylinder
+    400008: GROUNDGLASS
     2300000: container
     2300002: groundplate
+    2300004: Cylinder
+    2300006: GROUNDGLASS
     3300000: container
     3300002: groundplate
+    3300004: Cylinder
+    3300006: GROUNDGLASS
     4300000: groundplate
     4300002: container
+    4300004: Cylinder
+    4300006: GROUNDGLASS
     7400000: Default Take
     9500000: //RootNode
   materials:

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CraneMover : MonoBehaviour {
 	public float distance=150;
-	[Range(0.1f,0.6f)]
+	[Range(0.001f,0.6f)]
 	public float speed=0.1f;
     float timemultiplier=0.01f;
 	float i;
@@ -38,12 +38,12 @@ public class CraneMover : MonoBehaviour {
 			{//groundplate.transform.position = Vector3.Lerp(groundplate.transform.position, new Vector3(0.0f,1.0f, 0.0f), Time.deltaTime);
 				if(height>0)
 				{
-					container.transform.position += new Vector3(0,-0.05f,0);
-					groundplate.transform.position += new Vector3(0,-0.05f,0);
-					ropeA.transform.position += new Vector3(0,-0.025f,0);
-					ropeA.transform.localScale += new Vector3(0,0.025f,0);
-					ropeB.transform.position += new Vector3(0,-0.025f,0);
-					ropeB.transform.localScale += new Vector3(0,0.025f,0);
+					container.transform.position += new Vector3(0,-0.025f,0);
+					groundplate.transform.position += new Vector3(0,-0.025f,0);
+					ropeA.transform.position += new Vector3(0,-0.0125f,0);
+					ropeA.transform.localScale += new Vector3(0,0.0125f,0);
+					ropeB.transform.position += new Vector3(0,-0.0125f,0);
+					ropeB.transform.localScale += new Vector3(0,0.0125f,0);
 					height--;}
 
 			}
@@ -69,11 +69,11 @@ public class CraneMover : MonoBehaviour {
 				if(ascend>0)
 				{
 
-					container.transform.position += new Vector3(0,0.05f,0);
-					ropeA.transform.position += new Vector3(0,0.025f,0);
-					ropeA.transform.localScale += new Vector3(0,-0.025f,0);
-					ropeB.transform.position += new Vector3(0,0.025f,0);
-					ropeB.transform.localScale += new Vector3(0,-0.025f,0);
+					container.transform.position += new Vector3(0,0.025f,0);
+					ropeA.transform.position += new Vector3(0,0.0125f,0);
+					ropeA.transform.localScale += new Vector3(0,-0.0125f,0);
+					ropeB.transform.position += new Vector3(0,0.0125f,0);
+					ropeB.transform.localScale += new Vector3(0,-0.0125f,0);
 					ascend--;}
 			}
 
