@@ -27,9 +27,6 @@ public class Controls : MonoBehaviour
 	Rigidbody itemRigid;
 	Item itemClass;
 
-	public bool usableWorldInTrigger{ get; set;}
-	bool grabbedWorldObject;
-
 	private ConfigurableJoint configJoint;
 	private WorldTrigger targetGrab;
 	private Rigidbody targetRigid;
@@ -83,10 +80,6 @@ public class Controls : MonoBehaviour
 		MoveHands();
 		CheckWhichGrab();
 
-		if (grabbedWorldObject) {
-			MoveWorldObject();
-		}
-
 		previousHandPosition = hand.transform.position;
 	}
 
@@ -102,10 +95,6 @@ public class Controls : MonoBehaviour
 			{
 				GrabWorld(true);
 			}
-			else if(usableWorldInTrigger)
-			{
-				grabbedWorldObject = true;
-			}
 		}
 		else if(hydra.GetButtonUp(SixenseButtons.TRIGGER))
 		{
@@ -117,8 +106,6 @@ public class Controls : MonoBehaviour
 			{
 				GrabWorld(false);
 			}
-
-			grabbedWorldObject = false;
 		}
 
 		if(itemIsInHand)
@@ -136,41 +123,6 @@ public class Controls : MonoBehaviour
 				if(itemIsUsable)
 				{
 					itemClass.Reload();
-				}
-			}
-		}
-	}
-
-	void MoveWorldObject()
-	{
-		if (item != null) {
-			float handDifferenceX = previousHandPosition.x - hand.transform.position.x;
-			float handDifferenceY = previousHandPosition.y - hand.transform.position.y;
-
-			float handDifference = Mathf.Max(Mathf.Abs(handDifferenceX), Mathf.Abs(handDifferenceY));
-			if(handDifference > 0.01f)
-			{
-				if(Mathf.Abs(handDifferenceX) > Mathf.Abs(handDifferenceY))
-				{
-					if((handDifferenceX > 0.0f && hand.transform.position.y > item.transform.position.y) || (handDifferenceX < 0.0f && hand.transform.position.y < item.transform.position.y))
-					{
-						item.transform.localEulerAngles = new Vector3(item.transform.localEulerAngles.x, item.transform.localEulerAngles.y  + 3.0f, item.transform.localEulerAngles.z );
-					}
-					else if((handDifferenceX < 0.0f && hand.transform.position.y > item.transform.position.y) || (handDifferenceX > 0.0f && hand.transform.position.y < item.transform.position.y))
-					{
-						item.transform.localEulerAngles = new Vector3(item.transform.localEulerAngles.x, item.transform.localEulerAngles.y  - 3.0f, item.transform.localEulerAngles.z );
-					}
-				}
-				else if(Mathf.Abs(handDifferenceX) < Mathf.Abs(handDifferenceY))
-				{
-					if((handDifferenceY < 0.0f && hand.transform.position.x > item.transform.position.x) || (handDifferenceY > 0.0f && hand.transform.position.x < item.transform.position.x))
-					{
-						item.transform.localEulerAngles = new Vector3(item.transform.localEulerAngles.x, item.transform.localEulerAngles.y  + 3.0f, item.transform.localEulerAngles.z );
-					}
-					else if((handDifferenceY > 0.0f && hand.transform.position.x > item.transform.position.x) || (handDifferenceY < 0.0f && hand.transform.position.x < item.transform.position.x))
-					{
-						item.transform.localEulerAngles = new Vector3(item.transform.localEulerAngles.x, item.transform.localEulerAngles.y  - 3.0f, item.transform.localEulerAngles.z );
-					}
 				}
 			}
 		}
