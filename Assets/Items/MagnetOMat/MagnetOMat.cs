@@ -4,6 +4,7 @@ using System.Collections;
 public class MagnetOMat : MonoBehaviour,Item 
 {
 	public GameObject magnet;
+	bool isEquiped = false;
 
 	GameObject currentItem;
 	GameObject currentItemId;
@@ -26,60 +27,45 @@ public class MagnetOMat : MonoBehaviour,Item
 			itemRigid.velocity = new Vector3 (Mathf.Clamp (itemRigid.velocity.x, 0.0f, 10.0f), Mathf.Clamp (itemRigid.velocity.y, 0.0f, 10.0f), Mathf.Clamp (itemRigid.velocity.z, 0.0f, 10.0f));
 //			Debug.Log (itemRigid.velocity);
 		} 
-		else 
+		else if(isEquiped)
 		{
-		
 			if(Physics.Raycast(magnet.transform.position, transform.forward, out hit_Target, 500.0f))
 			{
-				//Debug.DrawLine(magnet.transform.position, hit_Target.point);
-				//print (hit_Target.collider.name);
 				currentItem = hit_Target.collider.gameObject;
-				
-				if(currentItem.tag == "Item" && currentItem.GetComponent<MeshRenderer>() != null)
+				if(currentItem.GetComponent<MeshRenderer>() != null)
 				{
-					newItemId = currentItem;
-					
-					if(currentItemId != null)
+					if(currentItem.tag == "Item")
 					{
-						if(currentItemId.Equals(newItemId) )
+						newItemId = currentItem;
+						
+						if(currentItemId != null)
 						{
-							currentItemId.GetComponent<MeshRenderer>().material = Resources.Load("Highlighted_Magnet") as Material;
-							//targetId.GetComponent<MeshRenderer>().material.SetFloat("_EmissionColor", 0.5f);
+							if(currentItemId.Equals(newItemId) )
+							{
+								currentItemId.GetComponent<MeshRenderer>().material = Resources.Load("Highlighted_Magnet") as Material;
+							}
+							else 
+							{
+								currentItemId.GetComponent<MeshRenderer>().material = baseColor;
+								baseColor = newItemId.GetComponent<MeshRenderer>().material;
+							}
 						}
-						else 
+						if(newItemId != null && currentItemId == null)
+						{
+							baseColor = newItemId.GetComponent<MeshRenderer>().material;
+						}
+						currentItemId = newItemId;
+					}
+					else
+					{
+						if(currentItemId != null)
 						{
 							currentItemId.GetComponent<MeshRenderer>().material = baseColor;
-							baseColor = newItemId.GetComponent<MeshRenderer>().material;
-							
-							//.SetColor("_EmissionColor",baseColor);
-							//targetId.GetComponent<MeshRenderer>().material.SetFloat("_EmissionColor", 0.0f);
-							
 						}
 					}
-					if(newItemId != null && currentItemId == null)
-					{
-						baseColor = newItemId.GetComponent<MeshRenderer>().material;
-					}
-					
-					currentItemId = newItemId;
-					
-					//targetLocation = targetItem.transform.position;
-					//playerLocation = transform.root.position;
-					//transform.root.position = targetLocation;
-					//targetItem.transform.position = playerLocation;
-				}
-				else
-				{
-					if(currentItemId != null)
-					{
-						currentItemId.GetComponent<MeshRenderer>().material = baseColor;
-					}
-					
 				}
 			}
 		}
-		
-		//Debug.DrawLine(magnet.transform.position, magnet.transform.position + transform.forward);
 	}
 
 	public void UseOnce()
@@ -98,7 +84,10 @@ public class MagnetOMat : MonoBehaviour,Item
 					hasItem = true;
 					pullingItem = true;
 
-					currentItemId.GetComponent<MeshRenderer>().material = baseColor;
+					if(currentItemId.GetComponent<MeshRenderer>() != null)
+					{
+						currentItemId.GetComponent<MeshRenderer>().material = baseColor;
+					}
 				}
 			}
 		}
@@ -129,11 +118,13 @@ public class MagnetOMat : MonoBehaviour,Item
 
 	public void OnEquip()
 	{
+		isEquiped = true;
 		laserPointer.SetActive(true);
 	}
 	
 	public void OnDeequip()
 	{
+		isEquiped = false;
 		laserPointer.SetActive(false);
 	}
 
