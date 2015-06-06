@@ -27,6 +27,9 @@ public class Controls : MonoBehaviour
 	Rigidbody itemRigid;
 	Item itemClass;
 
+	public bool usableWorldInTrigger{ get; set;}
+	bool grabbedWorldObject;
+
 	private ConfigurableJoint configJoint;
 	private WorldTrigger targetGrab;
 	private Rigidbody targetRigid;
@@ -80,6 +83,10 @@ public class Controls : MonoBehaviour
 		MoveHands();
 		CheckWhichGrab();
 
+		if (grabbedWorldObject) {
+			MoveWorldObject();
+		}
+
 		previousHandPosition = hand.transform.position;
 	}
 
@@ -95,6 +102,10 @@ public class Controls : MonoBehaviour
 			{
 				GrabWorld(true);
 			}
+			else if(usableWorldInTrigger)
+			{
+				grabbedWorldObject = true;
+			}
 		}
 		else if(hydra.GetButtonUp(SixenseButtons.TRIGGER))
 		{
@@ -106,6 +117,8 @@ public class Controls : MonoBehaviour
 			{
 				GrabWorld(false);
 			}
+
+			grabbedWorldObject = false;
 		}
 
 		if(itemIsInHand)
@@ -125,6 +138,15 @@ public class Controls : MonoBehaviour
 					itemClass.Reload();
 				}
 			}
+		}
+	}
+
+	void MoveWorldObject()
+	{
+		if (item != null) {
+			Vector3 relativePos = hand.transform.position - item.transform.position;
+			Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.forward);
+			item.transform.localEulerAngles = new Vector3(item.transform.rotation.x, rotation.eulerAngles.y, item.transform.rotation.z);
 		}
 	}
 
