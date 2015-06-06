@@ -5,6 +5,8 @@ public class IK : MonoBehaviour
 {
 	Animator animator;
 
+	public Transform leftTarget;
+	public Transform rightTarget;
 	public Transform leftHand;
 	public Transform rightHand;
 	public Transform centerEye;
@@ -22,17 +24,17 @@ public class IK : MonoBehaviour
 			if(ikActive)
 			{
 				// Set the right hand target position and rotation, if one has been assigned
-				if(rightHand != null) {
+				if(rightTarget != null) {
 					animator.SetIKPositionWeight(AvatarIKGoal.RightHand,2);
 					animator.SetIKRotationWeight(AvatarIKGoal.RightHand,2);  
-					animator.SetIKPosition(AvatarIKGoal.RightHand,rightHand.position);
-					animator.SetIKRotation(AvatarIKGoal.RightHand,rightHand.rotation);
+					animator.SetIKPosition(AvatarIKGoal.RightHand,rightTarget.position);
+					animator.SetIKRotation(AvatarIKGoal.RightHand,rightTarget.rotation);
 				}   
-				if(leftHand != null) {
+				if(leftTarget != null) {
 					animator.SetIKPositionWeight(AvatarIKGoal.LeftHand,2);
 					animator.SetIKRotationWeight(AvatarIKGoal.LeftHand,2);  
-					animator.SetIKPosition(AvatarIKGoal.LeftHand,leftHand.position);
-					animator.SetIKRotation(AvatarIKGoal.LeftHand,leftHand.rotation);
+					animator.SetIKPosition(AvatarIKGoal.LeftHand,leftTarget.position);
+					animator.SetIKRotation(AvatarIKGoal.LeftHand,leftTarget.rotation);
 				} 
 				if(centerEye != null) {
 					//animator.SetLookAtWeight(1);
@@ -49,5 +51,11 @@ public class IK : MonoBehaviour
 				animator.SetLookAtWeight(0);
 			}
 		}
+	}
+	void LateUpdate()
+	{
+		//allow the Tentacles to follow their Targets, i.e stretching
+		rightHand.transform.position = rightTarget.transform.position;
+		leftHand.transform.position = leftTarget.transform.position;
 	}
 }

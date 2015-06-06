@@ -293,11 +293,7 @@ public class Controls : MonoBehaviour
 		}
 	}
 
-	void LateUpdate()
-	{
-		//allow the Tentacles to follow their Targets, i.e stretching
-		hand.transform.position = target.transform.position;
-	}
+
 
 	//After we ungrab an item, to check if item under the world, if then teleport over world
 	void CheckItemUnderWorld()
