@@ -187,10 +187,14 @@ public class Controls : MonoBehaviour
 			}
 			else
 			{
-				if(!item.transform.parent.Equals(hand.transform) || !item.transform.parent.name.Contains("unterarm"))
+				if(item.transform.parent != null)
 				{
-					itemParent = item.transform.parent;
+					if(!item.transform.parent.Equals(hand.transform) || !item.transform.parent.name.Contains("unterarm"))
+					{
+						itemParent = item.transform.parent;
+					}
 				}
+
 
 			}
 
@@ -227,10 +231,13 @@ public class Controls : MonoBehaviour
 			
 			item.GetComponent<Collider>().isTrigger = false;
 
-			if(!itemParent.Equals(hand.transform) || !item.transform.parent.name.Contains("unterarm"))
+			if(itemParent != null)
 			{
-//				print("Parent ist not hand");
-				item.transform.parent = itemParent;
+				if(!itemParent.Equals(hand.transform) || !item.transform.parent.name.Contains("unterarm"))
+				{
+					//				print("Parent ist not hand");
+					item.transform.parent = itemParent;
+				}
 			}
 			else
 			{

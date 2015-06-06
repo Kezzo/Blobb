@@ -11,17 +11,18 @@ public class MagnetOMat : MonoBehaviour,Item
 	private bool hasItem = false;
 	private bool pullingItem = false;
 
+	public GameObject laserPointer;
+
 	void Update()
 	{
 		if(pullingItem)
 		{
 			Vector3 directionToGun = magnet.transform.position + (transform.forward * 0.3f) - currentItem.transform.position;
 			itemRigid.AddForce( directionToGun * 100 );
-
-
+			itemRigid.velocity = new Vector3(Mathf.Clamp(itemRigid.velocity.x, 0.0f, 10.0f), Mathf.Clamp(itemRigid.velocity.y, 0.0f, 10.0f), Mathf.Clamp(itemRigid.velocity.z, 0.0f, 10.0f));
+			Debug.Log(itemRigid.velocity);
 		}
-
-
+		
 		Debug.DrawLine(magnet.transform.position, magnet.transform.position + transform.forward);
 	}
 
@@ -70,10 +71,12 @@ public class MagnetOMat : MonoBehaviour,Item
 
 	public void OnEquip()
 	{
+		laserPointer.SetActive(true);
 	}
-
+	
 	public void OnDeequip()
 	{
+		laserPointer.SetActive(false);
 	}
 
 	public string getType()
