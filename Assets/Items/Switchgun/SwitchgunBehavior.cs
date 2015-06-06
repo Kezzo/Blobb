@@ -11,6 +11,9 @@ public class SwitchgunBehavior : MonoBehaviour, Item {
 	private Material baseColor;
 	private GameObject targetId;
 	private GameObject newTargetId;
+
+	public GameObject laserPointer;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -23,7 +26,7 @@ public class SwitchgunBehavior : MonoBehaviour, Item {
 			{
 				targetItem = hit.collider.gameObject;
 				
-				if(targetItem.tag == "Item")
+				if(targetItem.tag == "Item" && targetItem.GetComponent<MeshRenderer>() != null)
 				{
 					newTargetId = targetItem;
 
@@ -33,10 +36,13 @@ public class SwitchgunBehavior : MonoBehaviour, Item {
 						{
 							targetId.GetComponent<MeshRenderer>().material = Resources.Load("Highlighted") as Material;
 							//targetId.GetComponent<MeshRenderer>().material.SetFloat("_EmissionColor", 0.5f);
-						}else 
+						}
+						else 
 						{
 							targetId.GetComponent<MeshRenderer>().material = baseColor;
-							baseColor = newTargetId.GetComponent<MeshRenderer>().material;//.SetColor("_EmissionColor",baseColor);
+							baseColor = newTargetId.GetComponent<MeshRenderer>().material;
+
+							//.SetColor("_EmissionColor",baseColor);
 							//targetId.GetComponent<MeshRenderer>().material.SetFloat("_EmissionColor", 0.0f);
 
 						}
@@ -81,9 +87,15 @@ public class SwitchgunBehavior : MonoBehaviour, Item {
 	public void Reload(){}
 	public void OnEquip(){
 		targetFinder = true;
+		laserPointer.SetActive (true);
 	}
 	public void OnDeequip(){
 		targetFinder = false;
+		laserPointer.SetActive (false);
+		if (targetId != null) {
+			targetId.GetComponent<MeshRenderer>().material = baseColor;
+		}
+
 	}
 	public string getType(){
 		return "gun";
