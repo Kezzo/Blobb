@@ -84,9 +84,12 @@ public class MagnetOMat : MonoBehaviour,Item
 					hasItem = true;
 					pullingItem = true;
 
-					if(currentItemId.GetComponent<MeshRenderer>() != null)
+					if(currentItemId != null)
 					{
-						currentItemId.GetComponent<MeshRenderer>().material = baseColor;
+						if(currentItemId.GetComponent<MeshRenderer>() != null)
+						{
+							currentItemId.GetComponent<MeshRenderer>().material = baseColor;
+						}
 					}
 				}
 			}
