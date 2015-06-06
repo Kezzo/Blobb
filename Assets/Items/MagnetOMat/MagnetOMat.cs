@@ -24,7 +24,7 @@ public class MagnetOMat : MonoBehaviour,Item
 			Vector3 directionToGun = magnet.transform.position + (transform.forward * 0.3f) - currentItem.transform.position;
 			itemRigid.AddForce (directionToGun * 100);
 			itemRigid.velocity = new Vector3 (Mathf.Clamp (itemRigid.velocity.x, 0.0f, 10.0f), Mathf.Clamp (itemRigid.velocity.y, 0.0f, 10.0f), Mathf.Clamp (itemRigid.velocity.z, 0.0f, 10.0f));
-			Debug.Log (itemRigid.velocity);
+//			Debug.Log (itemRigid.velocity);
 		} 
 		else 
 		{
@@ -43,7 +43,6 @@ public class MagnetOMat : MonoBehaviour,Item
 					{
 						if(currentItemId.Equals(newItemId) )
 						{
-							print ("getResource");
 							currentItemId.GetComponent<MeshRenderer>().material = Resources.Load("Highlighted_Magnet") as Material;
 							//targetId.GetComponent<MeshRenderer>().material.SetFloat("_EmissionColor", 0.5f);
 						}

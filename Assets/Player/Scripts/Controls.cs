@@ -144,9 +144,35 @@ public class Controls : MonoBehaviour
 	void MoveWorldObject()
 	{
 		if (item != null) {
-			Vector3 relativePos = hand.transform.position - item.transform.position;
-			Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.forward);
-			item.transform.localEulerAngles = new Vector3(item.transform.rotation.x, rotation.eulerAngles.y, item.transform.rotation.z);
+			float handDifferenceX = previousHandPosition.x - hand.transform.position.x;
+			float handDifferenceY = previousHandPosition.y - hand.transform.position.y;
+
+			float handDifference = Mathf.Max(Mathf.Abs(handDifferenceX), Mathf.Abs(handDifferenceY));
+			if(handDifference > 0.01f)
+			{
+				if(Mathf.Abs(handDifferenceX) > Mathf.Abs(handDifferenceY))
+				{
+					if((handDifferenceX > 0.0f && hand.transform.position.y > item.transform.position.y) || (handDifferenceX < 0.0f && hand.transform.position.y < item.transform.position.y))
+					{
+						item.transform.localEulerAngles = new Vector3(item.transform.localEulerAngles.x, item.transform.localEulerAngles.y  + 3.0f, item.transform.localEulerAngles.z );
+					}
+					else if((handDifferenceX < 0.0f && hand.transform.position.y > item.transform.position.y) || (handDifferenceX > 0.0f && hand.transform.position.y < item.transform.position.y))
+					{
+						item.transform.localEulerAngles = new Vector3(item.transform.localEulerAngles.x, item.transform.localEulerAngles.y  - 3.0f, item.transform.localEulerAngles.z );
+					}
+				}
+				else if(Mathf.Abs(handDifferenceX) < Mathf.Abs(handDifferenceY))
+				{
+					if((handDifferenceY < 0.0f && hand.transform.position.x > item.transform.position.x) || (handDifferenceY > 0.0f && hand.transform.position.x < item.transform.position.x))
+					{
+						item.transform.localEulerAngles = new Vector3(item.transform.localEulerAngles.x, item.transform.localEulerAngles.y  + 3.0f, item.transform.localEulerAngles.z );
+					}
+					else if((handDifferenceY > 0.0f && hand.transform.position.x > item.transform.position.x) || (handDifferenceY < 0.0f && hand.transform.position.x < item.transform.position.x))
+					{
+						item.transform.localEulerAngles = new Vector3(item.transform.localEulerAngles.x, item.transform.localEulerAngles.y  - 3.0f, item.transform.localEulerAngles.z );
+					}
+				}
+			}
 		}
 	}
 
