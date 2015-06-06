@@ -23,11 +23,14 @@ public class ItemTrigger : MonoBehaviour {
 	
 	void OnTriggerStay(Collider other)
 	{
-		if(other.tag == "Item")
-		{
+		if (other.tag == "Item") {
 			controls.itemInTrigger = true;
-			if(controls.item == null)
-			{
+			if (controls.item == null) {
+				controls.item = other.gameObject;
+			}
+		} else if (other.tag == "UsableWorld") {
+			controls.usableWorldInTrigger = true;
+			if (controls.item == null) {
 				controls.item = other.gameObject;
 			}
 		}
@@ -38,6 +41,13 @@ public class ItemTrigger : MonoBehaviour {
 		if(other.tag == "Item")
 		{
 			controls.itemInTrigger = false;
+			if(controls.item != null && !controls.itemIsInHand)
+			{
+				controls.item = null;
+			}
+		}
+		else if (other.tag == "UsableWorld") {
+			controls.usableWorldInTrigger = false;
 			if(controls.item != null && !controls.itemIsInHand)
 			{
 				controls.item = null;
