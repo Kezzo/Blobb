@@ -15,6 +15,7 @@ public class Controls : MonoBehaviour
 
 	public Transform target;
 	public Transform targets;
+	MeshRenderer grabIndicator;
 
 	Vector3 previousHandPosition =  Vector3.zero;
 	Vector3 controllerPosition;
@@ -57,6 +58,8 @@ public class Controls : MonoBehaviour
 		jDrive.maximumForce = Mathf.Infinity;
 
 		handCollider = hand.GetComponents<SphereCollider>()[0];
+
+		grabIndicator = target.GetChild (0).GetComponent<MeshRenderer> ();
 
 	}
 
@@ -130,9 +133,18 @@ public class Controls : MonoBehaviour
 		controllerPosition = new Vector3(hydra.Position.x * Sensitivity.x,
 		                                 hydra.Position.y * Sensitivity.y,
 		                                 hydra.Position.z * Sensitivity.z );
+
+		if (hydra.GetButtonDown (SixenseButtons.START)) {
+
+			controllerOffsetY = Mathf.Abs(controllerPosition.y - 1.0f);
+
+			controllerOffsetZ = Mathf.Abs(controllerPosition.z - 2.5f);
+		}
+
 		controllerPosition.y -= controllerOffsetY;
-		controllerPosition.z += controllerOffsetZ;
 		
+		controllerPosition.z += controllerOffsetZ;
+
 		if(hydraActive)
 		{
 			target.transform.localPosition = controllerPosition;
@@ -217,7 +229,7 @@ public class Controls : MonoBehaviour
 
 			if(!itemParent.Equals(hand.transform) || !item.transform.parent.name.Contains("unterarm"))
 			{
-				print("Parent ist not hand");
+//				print("Parent ist not hand");
 				item.transform.parent = itemParent;
 			}
 			else
@@ -261,6 +273,8 @@ public class Controls : MonoBehaviour
 			Vector3 worldPosition = target.transform.position;
 			target.transform.parent = null;
 			target.transform.position = worldPosition;
+
+			grabIndicator.enabled = true;
 		}
 		else
 		{
@@ -274,6 +288,8 @@ public class Controls : MonoBehaviour
 			configJoint.yDrive = jDrive;
 			configJoint.zDrive = jDrive;
 			handCollider.enabled = true;
+
+			grabIndicator.enabled = false;
 		}
 	}
 
