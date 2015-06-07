@@ -78,7 +78,7 @@ public class Lamp : MonoBehaviour,Item  {
 					flickering = false;
 					weakLight = false;
 					flickeringTime = Random.Range(5.0f,10.0f);
-					timeToStartFlickering = Random.Range(10.0f,20.0f);
+					timeToStartFlickering = Random.Range(25.0f,35.0f);
 					shakeCounter = 0;
 					spotlight.intensity = 8.0f;
 				}
