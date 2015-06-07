@@ -70,11 +70,11 @@ public class RotateWheel : MonoBehaviour {
 			{
 				if((rightLeftDifference < 0.0f && oben) || (rightLeftDifference > 0.0f && !oben))
 				{
-					rotateWheel(-wheelRotationSpeed);
+					rotateWheel(wheelRotationSpeed);
 				}
 				else if((rightLeftDifference > 0.0f && oben) || (rightLeftDifference < 0.0f && !oben))
 				{
-					rotateWheel(wheelRotationSpeed);
+					rotateWheel(-wheelRotationSpeed);
 				}
 			}
 			else if(Mathf.Abs(rightLeftDifference) < Mathf.Abs(upDownDifference))
@@ -82,11 +82,11 @@ public class RotateWheel : MonoBehaviour {
 
 				if((upDownDifference < 0.0f && handIsRightOfWheel) || (upDownDifference > 0.0f && !handIsRightOfWheel))
 				{
-					rotateWheel(wheelRotationSpeed);
+					rotateWheel(-wheelRotationSpeed);
 				}
 				else if((upDownDifference > 0.0f && handIsRightOfWheel) || (upDownDifference < 0.0f && !handIsRightOfWheel))
 				{
-					rotateWheel(-wheelRotationSpeed);
+					rotateWheel(wheelRotationSpeed);
 				}
 			}
 		}
