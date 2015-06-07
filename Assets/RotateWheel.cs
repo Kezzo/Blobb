@@ -17,6 +17,15 @@ public class RotateWheel : MonoBehaviour {
 	public float wheelRotationMultiplier;
 	float wheelRotationSpeed;
 
+	bool _isGrabbing;
+	public bool isGrabbing
+	{
+		get
+		{
+			return _isGrabbing;
+		}
+	}
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -38,9 +47,17 @@ public class RotateWheel : MonoBehaviour {
 		if (hand != null) {
 			if (hydra.GetButton (SixenseButtons.TRIGGER)) {
 				MoveWorldObject();
+				if(!_isGrabbing)
+				{
+					_isGrabbing = true;
+				}
 			}
 			else
 			{
+				if(_isGrabbing)
+				{
+					_isGrabbing = false;
+				}
 				isRotation = IsRotation.Not;
 			}
 
