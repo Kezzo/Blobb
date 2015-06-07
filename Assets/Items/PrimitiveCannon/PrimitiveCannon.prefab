@@ -555,6 +555,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 12056334}
   originTransform: {fileID: 463742}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967291
 --- !u!114 &11497184
 MonoBehaviour:
   m_ObjectHideFlags: 1

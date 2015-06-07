@@ -132,6 +132,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserPointer: {fileID: 111710}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967291
 --- !u!114 &11485206
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -145,6 +148,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 12060382}
   originTransform: {fileID: 459704}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967291
 --- !u!120 &12060382
 LineRenderer:
   m_ObjectHideFlags: 1

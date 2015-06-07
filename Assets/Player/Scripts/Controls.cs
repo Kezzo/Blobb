@@ -11,7 +11,14 @@ public class Controls : MonoBehaviour
 	public float controllerOffsetY = 1.5f;
 	public float controllerOffsetZ = 1.5f;
 	public Vector3 Sensitivity = new Vector3( 0.01f, 0.01f, 0.01f );
-	public bool hydraActive = true;
+	bool _hydraActive = true;
+	public bool hydraActive
+	{
+		get
+		{
+			return _hydraActive;
+		}
+	}
 
 	public Transform target;
 	public Transform targets;
@@ -145,7 +152,7 @@ public class Controls : MonoBehaviour
 		
 		controllerPosition.z += controllerOffsetZ;
 
-		if(hydraActive)
+		if(_hydraActive)
 		{
 			target.transform.localPosition = controllerPosition;
 			target.transform.localRotation = hydra.Rotation;
@@ -173,7 +180,7 @@ public class Controls : MonoBehaviour
 			if(item.layer == 14)
 			{
 				itemIsUsable = true;
-				itemClass.OnEquip();
+
 				item.transform.rotation = target.transform.rotation;
 			}
 			else
@@ -200,6 +207,11 @@ public class Controls : MonoBehaviour
 
 			item.transform.parent = hand.transform;
 			item.transform.localPosition = new Vector3(-0.5f,0,0);
+
+			if(item.layer == 14)
+			{
+				itemClass.OnEquip();
+			}
 
 			itemIsInHand = true;
 			item.layer = 13;
@@ -273,7 +285,7 @@ public class Controls : MonoBehaviour
 		if(activateGrab)
 		{
 			//print("Grabbed World!");
-			hydraActive = false;
+			_hydraActive = false;
 			targetRigid.constraints = RigidbodyConstraints.FreezePosition;
 			handCollider.enabled = false;
 			//Vector3 worldPosition = transform.TransformPoint(target.transform.position);
@@ -287,7 +299,7 @@ public class Controls : MonoBehaviour
 		{
 			//print("Ungrabbed World!");
 			target.transform.parent = targets;
-			hydraActive = true;
+			_hydraActive = true;
 			
 			jDrive.mode = JointDriveMode.None;
 			
@@ -300,7 +312,15 @@ public class Controls : MonoBehaviour
 		}
 	}
 
+	public void unGrabWorld()
+	{
+		GrabWorld (false);
+	}
 
+	public bool getHydraStatus()
+	{
+		return _hydraActive;
+	}
 
 	//After we ungrab an item, to check if item under the world, if then teleport over world
 	void CheckItemUnderWorld()

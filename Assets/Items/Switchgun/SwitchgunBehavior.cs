@@ -15,6 +15,8 @@ public class SwitchgunBehavior : MonoBehaviour, Item {
 	public GameObject laserPointer;
 	public LayerMask layerMask;
 
+	GameObject player;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -25,6 +27,7 @@ public class SwitchgunBehavior : MonoBehaviour, Item {
 		if (targetFinder) {
 			if(Physics.Raycast(transform.position, transform.forward, out hit, 500.0f, layerMask))
 			{
+				//print("raycast hit");
 				targetItem = hit.collider.gameObject;
 				
 				if(targetItem.tag == "Item" && targetItem.GetComponent<MeshRenderer>() != null)
@@ -69,10 +72,18 @@ public class SwitchgunBehavior : MonoBehaviour, Item {
 			if(targetItem.tag == "Item")
 			{
 				targetLocation = targetItem.transform.position;
-				playerLocation = transform.root.FindChild("Blobb").transform.position;
-				transform.root.FindChild("Blobb").transform.position = targetLocation;
+
+				playerLocation = player.transform.position;
+				player.transform.position = targetLocation;
 				playerLocation.y += 0.5f;
 				targetItem.transform.position = playerLocation;
+				foreach(Controls controls in player.GetComponents<Controls>())
+				{
+					if(!controls.hydraActive)
+					{
+						controls.unGrabWorld();
+					}
+				}
 			}
 		}
 	}
@@ -80,6 +91,8 @@ public class SwitchgunBehavior : MonoBehaviour, Item {
 	public void OnEquip(){
 		targetFinder = true;
 		laserPointer.SetActive (true);
+		player = this.transform.root.FindChild ("Blobb").gameObject;
+		print (player.name);
 	}
 	public void OnDeequip(){
 		targetFinder = false;

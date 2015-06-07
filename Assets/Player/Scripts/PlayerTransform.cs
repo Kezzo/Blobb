@@ -15,7 +15,7 @@ public class PlayerTransform : MonoBehaviour {
 		if(GameObject.Find("Player") != null)
 		{
 			GameObject player = GameObject.Find("Player");
-			print ("Player found");
+			//print ("Player found");
 			player.transform.position = this.transform.position;
 			player.transform.rotation = this.transform.rotation;
 			if(transform != null && !parenting)
