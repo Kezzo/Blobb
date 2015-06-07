@@ -158,7 +158,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe7a3e34c36a7b4a9ef922de072d3d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hand: {fileID: 0}
   isRotation: 0
+  wheelRotationMultiplier: 0
 --- !u!114 &11437378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -170,6 +172,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca3833578a5b5534a85ae6fddf2b8eb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xOffSet: 0
+  yOffSet: 0
+  zOffSet: 0
   blobb: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
