@@ -13,6 +13,7 @@ public class SwitchgunBehavior : MonoBehaviour, Item {
 	private GameObject newTargetId;
 
 	public GameObject laserPointer;
+	public LayerMask layerMask;
 
 	// Use this for initialization
 	void Start () {
@@ -22,7 +23,7 @@ public class SwitchgunBehavior : MonoBehaviour, Item {
 	// Update is called once per frame
 	void Update () {
 		if (targetFinder) {
-			if(Physics.Raycast(transform.position, transform.forward, out hit, 500.0f))
+			if(Physics.Raycast(transform.position, transform.forward, out hit, 500.0f, layerMask))
 			{
 				targetItem = hit.collider.gameObject;
 				
@@ -61,7 +62,7 @@ public class SwitchgunBehavior : MonoBehaviour, Item {
 		}
 	}
 	public void UseOnce(){
-		if(Physics.Raycast(transform.position, transform.forward, out hit, 500.0f))
+		if(Physics.Raycast(transform.position, transform.forward, out hit, 500.0f, layerMask))
 		{
 			targetItem = hit.collider.gameObject;
 			
