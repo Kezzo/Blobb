@@ -94,7 +94,7 @@ public class Controls : MonoBehaviour
 	{
 		if(hydra.GetButtonDown(SixenseButtons.TRIGGER))
 		{
-			if(itemInTrigger && item != null)
+			if(itemInTrigger && item != null && item.layer != 13)
 			{
 				GrabItem();
 			}
