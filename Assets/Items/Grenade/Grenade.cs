@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Grenade : MonoBehaviour,Item {
 
-	bool isArmed;
+//	bool isArmed;
 
 	//Rigidbody rigidBody;
 
@@ -19,7 +19,7 @@ public class Grenade : MonoBehaviour,Item {
 
 	public void UseOnce()
 	{
-		isArmed = true;
+		//isArmed = true;
 	}
 	public void Reload(){}
 	public void OnEquip(){}

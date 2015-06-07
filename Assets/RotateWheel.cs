@@ -59,7 +59,7 @@ public class RotateWheel : MonoBehaviour {
 		isRotation = IsRotation.Not;
 
 		bool oben = hand.transform.position.y > this.transform.position.y;
-		bool rechts = hand.transform.position.x > this.transform.position.x;
+//		bool rechts = hand.transform.position.x > this.transform.position.x;
 
 		float handDifference = Mathf.Max(Mathf.Abs(rightLeftDifference), Mathf.Abs(upDownDifference));
 		wheelRotationSpeed = handDifference * wheelRotationMultiplier;
