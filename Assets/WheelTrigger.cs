@@ -18,7 +18,7 @@ public class WheelTrigger : MonoBehaviour {
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.name.Contains ("unterarm")) {
-			print ("test");
+			//print ("test");
 			rotateWheel.setIfHandIsRight(true);
 		}
 	}

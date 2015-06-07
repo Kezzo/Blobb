@@ -13,8 +13,9 @@ public class RotateWheel : MonoBehaviour {
 
 	bool handIsRightOfWheel;
 
-	[Range(50,500)]
-	public float wheelRotationSpeed;
+	[Range(5,50)]
+	public float wheelRotationMultiplier;
+	float wheelRotationSpeed;
 
 	// Use this for initialization
 	void Start () 
@@ -45,10 +46,6 @@ public class RotateWheel : MonoBehaviour {
 
 			previousHandPosition = hydra.Position;
 		}
-
-
-
-		//print (isRotation);
 	}
 
 	void MoveWorldObject()
@@ -58,21 +55,14 @@ public class RotateWheel : MonoBehaviour {
 
 		// negative is up, positive is down
 		float upDownDifference = previousHandPosition.y - hydra.Position.y;
-		//float handDifferenceY = previousHandPosition.z - hand.transform.localPosition.z;
-
-		//print ("HochRunter: " + upDownDifference);
-		//print ("RightLeft: " + rightLeftDifference);
 
 		isRotation = IsRotation.Not;
 
-		//print ("hand: " + hand.transform.position.y + "  " + this.transform.position.y);
 		bool oben = hand.transform.position.y > this.transform.position.y;
 		bool rechts = hand.transform.position.x > this.transform.position.x;
-		//print ("rechts: " + rechts);
-		print (handIsRightOfWheel);
 
 		float handDifference = Mathf.Max(Mathf.Abs(rightLeftDifference), Mathf.Abs(upDownDifference));
-		//print (handDifference);
+		wheelRotationSpeed = handDifference * wheelRotationMultiplier;
 
 		if(handDifference > 1.0f)
 		{
@@ -99,10 +89,7 @@ public class RotateWheel : MonoBehaviour {
 					rotateWheel(-wheelRotationSpeed);
 				}
 			}
-
-
 		}
-
 	}
 
 	void rotateWheel(float valueToChange)
@@ -115,7 +102,6 @@ public class RotateWheel : MonoBehaviour {
 		}
 
 		this.transform.Rotate (Vector3.up, valueToChange * Time.deltaTime);
-		//this.transform.localRotation = Quaternion.Euler(new Vector3(this.transform.localEulerAngles.x, this.transform.localEulerAngles.y + valueToChange , this.transform.localEulerAngles.z  ));
 	}
 
 	void OnTriggerEnter(Collider other)
@@ -141,6 +127,11 @@ public class RotateWheel : MonoBehaviour {
 			hand = null;
 			isRotation = IsRotation.Not;
 		}
+	}
+
+	public float getWheelRotationSpeed()
+	{
+		return wheelRotationSpeed;
 	}
 
 	public void setIfHandIsRight(bool handIsRight)

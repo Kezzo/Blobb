@@ -4,8 +4,9 @@ using System.Collections;
 public class Schiffssteuerung : MonoBehaviour {
 
 	public GameObject schiffsRad;
+	public GameObject schiff;
+	public GameObject worldParent;
 	float previousRotationY;
-
 	RotateWheel rotateWheel;
 
 	// Use this for initialization
@@ -18,12 +19,14 @@ public class Schiffssteuerung : MonoBehaviour {
 	void Update () 
 	{
 		if (rotateWheel.isRotation == RotateWheel.IsRotation.Left) {
-			this.transform.Rotate (Vector3.up, 8.0f * Time.deltaTime);
+			worldParent.transform.RotateAround(schiff.transform.position, Vector3.up, rotateWheel.getWheelRotationSpeed() / 2.0f * Time.deltaTime);
+			//this.transform.Rotate (Vector3.up, rotateWheel.getWheelRotationSpeed() / 2.0f * Time.deltaTime);
 		} else if (rotateWheel.isRotation == RotateWheel.IsRotation.Right) {
-			this.transform.Rotate (Vector3.up, -8.0f * Time.deltaTime);
+			worldParent.transform.RotateAround(schiff.transform.position, Vector3.up, -rotateWheel.getWheelRotationSpeed() / 2.0f * Time.deltaTime);
+			//this.transform.Rotate (Vector3.up, -rotateWheel.getWheelRotationSpeed() / 2.0f * Time.deltaTime);
 		}
-//		print (schiffsRad.transform.localEulerAngles.y);
-		//this.transform.rotation = Quaternion.Euler(new Vector3 (this.transform.rotation.x, schiffsRad.transform.localEulerAngles.y , this.transform.rotation.z));
+
+		this.transform.Translate(-this.transform.forward * 2.0f * Time.deltaTime);
 	}
 
 
