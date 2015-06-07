@@ -35,16 +35,11 @@ public class SwitchgunBehavior : MonoBehaviour, Item {
 						if(targetId.Equals(newTargetId) )
 						{
 							targetId.GetComponent<MeshRenderer>().material = Resources.Load("Highlighted") as Material;
-							//targetId.GetComponent<MeshRenderer>().material.SetFloat("_EmissionColor", 0.5f);
 						}
 						else 
 						{
 							targetId.GetComponent<MeshRenderer>().material = baseColor;
 							baseColor = newTargetId.GetComponent<MeshRenderer>().material;
-
-							//.SetColor("_EmissionColor",baseColor);
-							//targetId.GetComponent<MeshRenderer>().material.SetFloat("_EmissionColor", 0.0f);
-
 						}
 					}
 					if(newTargetId != null && targetId == null)
@@ -53,11 +48,6 @@ public class SwitchgunBehavior : MonoBehaviour, Item {
 					}
 
 					targetId = newTargetId;
-
-					//targetLocation = targetItem.transform.position;
-					//playerLocation = transform.root.position;
-					//transform.root.position = targetLocation;
-					//targetItem.transform.position = playerLocation;
 				}
 				else
 				{
@@ -78,8 +68,9 @@ public class SwitchgunBehavior : MonoBehaviour, Item {
 			if(targetItem.tag == "Item")
 			{
 				targetLocation = targetItem.transform.position;
-				playerLocation = transform.root.position;
-				transform.root.position = targetLocation;
+				playerLocation = transform.root.FindChild("Blobb").transform.position;
+				transform.root.FindChild("Blobb").transform.position = targetLocation;
+				playerLocation.y += 0.5f;
 				targetItem.transform.position = playerLocation;
 			}
 		}
