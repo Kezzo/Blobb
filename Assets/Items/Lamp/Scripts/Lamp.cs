@@ -5,7 +5,9 @@ public class Lamp : MonoBehaviour,Item  {
 
 	public Light spotlight;
 
+	GameObject volumetricCone;
 	Material volumetricLight;
+	Material lightPoint;
 
 	bool flickering = false;
 	float timeToStartFlickering;
@@ -22,7 +24,9 @@ public class Lamp : MonoBehaviour,Item  {
 	{
 		timeToStartFlickering = 3.0f;
 		flickeringTime = 2.0f;
-		volumetricLight = spotlight.gameObject.transform.FindChild("lightCone").gameObject.GetComponent<MeshRenderer>().material;
+		lightPoint = this.GetComponent<MeshRenderer>().materials[1];
+		volumetricCone = spotlight.gameObject.transform.FindChild("lightCone").gameObject;
+		volumetricLight = volumetricCone.GetComponent<MeshRenderer>().material;
 	}
 
 	void Update () 
@@ -92,6 +96,16 @@ public class Lamp : MonoBehaviour,Item  {
 	public void UseOnce()
 	{
 		spotlight.enabled = !spotlight.enabled;
+		if(volumetricCone.activeInHierarchy)
+		{
+			volumetricCone.SetActive(false);
+			lightPoint.SetColor("_EmissionColor",Color.black);
+		}
+		else
+		{
+			volumetricCone.SetActive(true);
+			lightPoint.SetColor("_EmissionColor",Color.yellow);
+		}
 	}
 
 	public void Reload()
