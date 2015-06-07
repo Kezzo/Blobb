@@ -1,0 +1,119 @@
+fileFormatVersion: 2
+guid: 17b489e2f1d33d94fad7ba00189b7a12
+timeCreated: 1433682138
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: CanonBarrel
+    100004: CanonHandleLeft
+    100006: CanonHandleRight
+    100008: CanonRack
+    100010: WheelAxisBack
+    100012: WheelAxisFront
+    100014: WheelBackLeft
+    100016: WheelBackRight
+    100018: WheelFrontLeft
+    100020: WheelFrontRight
+    400000: //RootNode
+    400002: CanonBarrel
+    400004: CanonHandleLeft
+    400006: CanonHandleRight
+    400008: CanonRack
+    400010: WheelAxisBack
+    400012: WheelAxisFront
+    400014: WheelBackLeft
+    400016: WheelBackRight
+    400018: WheelFrontLeft
+    400020: WheelFrontRight
+    2300000: CanonBarrel
+    2300002: CanonHandleLeft
+    2300004: CanonHandleRight
+    2300006: CanonRack
+    2300008: WheelAxisBack
+    2300010: WheelAxisFront
+    2300012: WheelBackLeft
+    2300014: WheelBackRight
+    2300016: WheelFrontLeft
+    2300018: WheelFrontRight
+    3300000: CanonBarrel
+    3300002: CanonHandleLeft
+    3300004: CanonHandleRight
+    3300006: CanonRack
+    3300008: WheelAxisBack
+    3300010: WheelAxisFront
+    3300012: WheelBackLeft
+    3300014: WheelBackRight
+    3300016: WheelFrontLeft
+    3300018: WheelFrontRight
+    4300000: CanonBarrel
+    4300002: CanonHandleLeft
+    4300004: CanonHandleRight
+    4300006: WheelAxisBack
+    4300008: WheelBackRight
+    4300010: WheelBackLeft
+    4300012: WheelAxisFront
+    4300014: WheelFrontRight
+    4300016: WheelFrontLeft
+    4300018: CanonRack
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

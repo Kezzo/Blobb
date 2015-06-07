@@ -14,11 +14,13 @@ public class PlayerTransform : MonoBehaviour {
 	{
 		if(GameObject.Find("Player") != null)
 		{
+			GameObject player = GameObject.Find("Player");
 			print ("Player found");
-			GameObject.Find("Player").transform.position = this.transform.position;
+			player.transform.position = this.transform.position;
+			player.transform.rotation = this.transform.rotation;
 			if(transform != null && !parenting)
 			{
-				GameObject.Find("Player").transform.SetParent(this.transform);
+				player.transform.SetParent(this.transform);
 				parenting = true;
 				//GameObject.CreatePrimitive(PrimitiveType.Sphere).transform.parent = this.transform;
 			}
