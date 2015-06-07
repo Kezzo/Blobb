@@ -6,6 +6,7 @@ public class MoveBlock : MonoBehaviour {
 	SixenseInput.Controller hydra;
 
 	float step = 0.2f;
+	bool pushBlock = true;
 	void Start () {
 
 	}
@@ -15,48 +16,36 @@ public class MoveBlock : MonoBehaviour {
 	}
 	void OnTriggerEnter (Collider objectCollider)
 	{
-		if (objectCollider.name == "unterarm_l" || objectCollider.name == "unterarm_r")
+		if ((objectCollider.name == "unterarm_l" && pushBlock) || (objectCollider.name == "unterarm_r" && pushBlock))
 		{
 			float whereX = Mathf.Abs (objectCollider.transform.position.x - transform.position.x);
 			float whereZ = Mathf.Abs (objectCollider.transform.position.z - transform.position.z);
 			if (whereX < whereZ)
 			{	
 
-				/*if(hydra.GetButtonDown(SixenseButtons.TRIGGER))
-				{
-					print ("hallo");
-				}*/
-
 				if(objectCollider.transform.position.z < transform.position.z)
 				{
-					//transform.Translate(0, 0, 3);
-
 					transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(0, 0, 3), step);
 				}else if (objectCollider.transform.position.z > transform.position.z)
 				{
-					//transform.Translate(0, 0, -3);
 					transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(0, 0, -3), step);
 				}
 			}else if ( whereX > whereZ)
 			{
-				/*if(hydra.GetButtonDown(SixenseButtons.TRIGGER))
-				{
-					print ("hallo");
-				}*/
 				if(objectCollider.transform.position.x < transform.position.x)
 				{
-					//transform.Translate(3, 0, 0);
 					transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(3, 0, 0), step);
 				}else if (objectCollider.transform.position.x > transform.position.x)
 				{
-					//transform.Translate(-3, 0, 0);
 					transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(-3, 0, 0), step);
 				}
 			}
-
-
-
-
 		}
+		if (objectCollider.name == "stuckBlock") 
+		{
+			pushBlock = false;
+			this.GetComponent<Rigidbody>().isKinematic = true;
+		}
+
 	}
 }

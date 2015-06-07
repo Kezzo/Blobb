@@ -3,6 +3,8 @@ using System.Collections;
 
 public class PlayerTransform : MonoBehaviour {
 
+	bool parenting = false;
+
 	void Start()
 	{
 
@@ -13,10 +15,12 @@ public class PlayerTransform : MonoBehaviour {
 		if(GameObject.Find("Player") != null)
 		{
 			print ("Player found");
-			GameObject.Find("GameManager").transform.position = this.transform.position;
-			if(transform != null)
+			GameObject.Find("Player").transform.position = this.transform.position;
+			if(transform != null && !parenting)
 			{
-				//GameObject.Find("GameManager").transform.parent = this.transform;
+				GameObject.Find("Player").transform.SetParent(this.transform);
+				parenting = true;
+				//GameObject.CreatePrimitive(PrimitiveType.Sphere).transform.parent = this.transform;
 			}
 		}
 	}
