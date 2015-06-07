@@ -5,6 +5,7 @@ public class LasterPointer : MonoBehaviour {
 
 	public LineRenderer lineRenderer;
 	public Transform originTransform;
+	public LayerMask layerMask;
 
 	RaycastHit rayCastHit;
 	Ray ray;
@@ -16,7 +17,7 @@ public class LasterPointer : MonoBehaviour {
 	{
 		lineRenderer.SetPosition(0, originTransform.position);
 		
-		if (Physics.Raycast (originTransform.position, this.transform.forward, out rayCastHit, 50.0f)) {
+		if (Physics.Raycast (originTransform.position, this.transform.forward, out rayCastHit, 50.0f, layerMask)) {
 			endPoint = rayCastHit.point;
 			//Debug.DrawLine(originTransform.position, rayCastHit.point);
 		} else {
