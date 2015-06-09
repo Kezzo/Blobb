@@ -62,7 +62,7 @@ public class Lamp : MonoBehaviour,Item  {
 			{
 				spotlight.intensity = Random.Range(0.0f,1.0f);
 			}
-			print (spotlight.intensity+"+"+volumetricLight.color.a);
+//			print (spotlight.intensity+"+"+volumetricLight.color.a);
 			volumetricLight.SetFloat("_Metallic", 1.0f - spotlight.intensity / 8.0f);
 		}
 

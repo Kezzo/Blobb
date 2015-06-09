@@ -16,6 +16,8 @@ ModelImporter:
     100016: WheelBackRight
     100018: WheelFrontLeft
     100020: WheelFrontRight
+    100022: WheelAxisBack_001
+    100024: CanonBarrel_001
     400000: //RootNode
     400002: CanonBarrel
     400004: CanonHandleLeft
@@ -27,6 +29,8 @@ ModelImporter:
     400016: WheelBackRight
     400018: WheelFrontLeft
     400020: WheelFrontRight
+    400022: WheelAxisBack_001
+    400024: CanonBarrel_001
     2300000: CanonBarrel
     2300002: CanonHandleLeft
     2300004: CanonHandleRight
@@ -37,6 +41,8 @@ ModelImporter:
     2300014: WheelBackRight
     2300016: WheelFrontLeft
     2300018: WheelFrontRight
+    2300020: WheelAxisBack_001
+    2300022: CanonBarrel_001
     3300000: CanonBarrel
     3300002: CanonHandleLeft
     3300004: CanonHandleRight
@@ -47,6 +53,8 @@ ModelImporter:
     3300014: WheelBackRight
     3300016: WheelFrontLeft
     3300018: WheelFrontRight
+    3300020: WheelAxisBack_001
+    3300022: CanonBarrel_001
     4300000: CanonBarrel
     4300002: CanonHandleLeft
     4300004: CanonHandleRight
@@ -57,6 +65,8 @@ ModelImporter:
     4300014: WheelFrontRight
     4300016: WheelFrontLeft
     4300018: CanonRack
+    4300020: WheelAxisBack_001
+    4300022: CanonBarrel_001
     7400000: Default Take
     9500000: //RootNode
   materials:

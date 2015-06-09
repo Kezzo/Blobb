@@ -5,15 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Levels/Origin/Origin.unity
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Levels/Hub/hub.unity
-  - enabled: 0
-    path: Assets/Scenes/Levels/Tutorial/Tutoriallevel.unity
-  - enabled: 0
-    path: Assets/Scenes/Levels/Level_01/Level_01.unity
-  - enabled: 0
-    path: Assets/Scenes/Levels/Tutorial/Tutoriallevel.unity
   - enabled: 1
     path: "Assets/Scenes/Levels/Piratenlevel/switchR\xE4tsel.unity"
+  - enabled: 1
+    path: Assets/Scenes/Levels/Piratenlevel/pirates.unity
+  - enabled: 1
+    path: Assets/Scenes/Levels/Piratenlevel/BelowtheDeck.unity
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level_00/Level_00.unity

@@ -34,7 +34,7 @@ public class Grenade : MonoBehaviour,Item {
 		//print ("Timer started!");
 	}
 
-	IEnumerator ExplodeAfter(float secondsToWait)
+	public IEnumerator ExplodeAfter(float secondsToWait)
 	{
 		//print ("IEnumerator started!");
 		yield return new WaitForSeconds(secondsToWait);

@@ -104,19 +104,29 @@ public class MagnetOMat : MonoBehaviour,Item
 		*/
 		else
 		{
-			hasItem = false;
-			pullingItem = false;
-			currentItem.transform.parent = null;
-			currentItem.transform.localEulerAngles = Vector3.zero;
-			itemRigid.velocity = Vector3.zero;
+			letItemGo();
 			//Vector3 directionFromGun = currentItem.transform.position - magnet.transform.position;
 			itemRigid.AddForce(transform.forward * 1000);
 			
 		}
 	}
 
+	void letItemGo()
+	{
+		currentItemId.GetComponent<MeshRenderer>().material = baseColor;
+		hasItem = false;
+		pullingItem = false;
+		currentItem.transform.parent = null;
+		currentItem.transform.localEulerAngles = Vector3.zero;
+		itemRigid.velocity = Vector3.zero;
+	}
+
 	public void Reload()
 	{
+		if(hasItem)
+		{
+			letItemGo();
+		}
 	}
 
 	public void OnEquip()

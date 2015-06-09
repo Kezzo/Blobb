@@ -21,7 +21,7 @@ public class Schiffssteuerung : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		print("isGrabbing: "+rotateWheel.isGrabbing);
+//		print("isGrabbing: "+rotateWheel.isGrabbing);
 		if (!firstGrabHappened && rotateWheel.isGrabbing) {
 			firstGrabHappened = true;
 		}

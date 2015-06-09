@@ -3,21 +3,52 @@ using System.Collections;
 
 public class CanonAction : MonoBehaviour {
 
+	public GameObject deckel;
+	public bool closeDeckel;
+
+	float speed = 1.0f;
+
+	Vector3 targetPositionDeckel;
+	Vector3 firstDeckelPosition;
+
 	// Use this for initialization
-	void Start () {
-	
+	void Start () 
+	{
+		firstDeckelPosition = deckel.transform.localPosition;
+		targetPositionDeckel = new Vector3(deckel.transform.localPosition.x, deckel.transform.localPosition.y - 0.3f, deckel.transform.localPosition.z - 1.0f);
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update () 
+	{
+		float step = speed * Time.deltaTime;
+		if(closeDeckel)
+		{
+			//print ("Close");
+			deckel.transform.localPosition = Vector3.MoveTowards(deckel.transform.localPosition, targetPositionDeckel, step);
+		}
+		else
+		{
+			//print ("Open");
+			deckel.transform.localPosition = Vector3.MoveTowards(deckel.transform.localPosition, firstDeckelPosition, step);
+		}
 	}
 
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "Item") {
-			print ("Boom");
-			other.gameObject.GetComponent<Rigidbody>().AddForce(this.transform.forward* 2000f);
+			StartCoroutine(ShootAfter(2.0f, other.gameObject));
 		}
+	}
+
+	public IEnumerator ShootAfter(float secondsToWait, GameObject gameObjectToShoot)
+	{
+		closeDeckel = true;
+		//print ("IEnumerator started!");
+		yield return new WaitForSeconds(secondsToWait);
+
+		print ("Boom");
+		gameObjectToShoot.GetComponent<Rigidbody>().AddForce(this.transform.forward* 2000f);
+		closeDeckel = false;
 	}
 }
