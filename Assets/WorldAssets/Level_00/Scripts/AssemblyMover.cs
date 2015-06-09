@@ -4,7 +4,8 @@ using System.Collections;
 public class AssemblyMover : MonoBehaviour {
 	public GameObject toMove;
 	public bool move=true;
-	public float speed=0.01f;
+	[Range(-0.1f,-0.009f)]
+	public float speed=-0.009f;
 	// Use this for initialization
 	void Start () {
 	

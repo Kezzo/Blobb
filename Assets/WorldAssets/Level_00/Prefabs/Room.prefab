@@ -234,7 +234,10 @@ GameObject:
   - 33: {fileID: 3314450}
   - 23: {fileID: 2355178}
   - 95: {fileID: 9571924}
-  m_Layer: 0
+  - 65: {fileID: 6526060}
+  - 65: {fileID: 6518256}
+  - 114: {fileID: 11406652}
+  m_Layer: 11
   m_Name: Door
   m_TagString: World
   m_Icon: {fileID: 0}
@@ -487,7 +490,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107140}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -128, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 417764}
@@ -1207,6 +1210,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &6518256
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159914}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 18.4099998, y: 7, z: 19.5}
+  m_Center: {x: 0, y: 2.59915853, z: -1.62}
 --- !u!65 &6523818
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1219,6 +1234,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &6526060
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159914}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 7.19831848, z: 9.9763937}
+  m_Center: {x: 0, y: 2.59915853, z: 3.48819709}
 --- !u!65 &6529114
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1540,6 +1567,18 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
+--- !u!114 &11406652
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23bde569b492d4042878d291e5116d02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockIt: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
