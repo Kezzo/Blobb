@@ -21,15 +21,16 @@ public class Schiffssteuerung : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+		print("isGrabbing: "+rotateWheel.isGrabbing);
 		if (!firstGrabHappened && rotateWheel.isGrabbing) {
 			firstGrabHappened = true;
 		}
 		else if (shouldMove && firstGrabHappened) {
 			if (rotateWheel.isRotation == RotateWheel.IsRotation.Left) {
-				worldParent.transform.RotateAround(schiff.transform.position, Vector3.up, -rotateWheel.getWheelRotationSpeed() / 10.0f * Time.deltaTime);
+				worldParent.transform.RotateAround(schiff.transform.position, Vector3.up, -rotateWheel.getWheelRotationSpeed() / 5.0f * Time.deltaTime);
 				//this.transform.Rotate (Vector3.up, rotateWheel.getWheelRotationSpeed() / 2.0f * Time.deltaTime);
 			} else if (rotateWheel.isRotation == RotateWheel.IsRotation.Right) {
-				worldParent.transform.RotateAround(schiff.transform.position, Vector3.up, rotateWheel.getWheelRotationSpeed() / 10.0f * Time.deltaTime);
+				worldParent.transform.RotateAround(schiff.transform.position, Vector3.up, rotateWheel.getWheelRotationSpeed() / 5.0f * Time.deltaTime);
 				//this.transform.Rotate (Vector3.up, -rotateWheel.getWheelRotationSpeed() / 2.0f * Time.deltaTime);
 			}
 

@@ -17,16 +17,23 @@ public class WheelTrigger : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.name.Contains ("unterarm")) {
+		if (other.name == "unterarm_r") {
 			//print ("test");
-			rotateWheel.setIfHandIsRight(true);
+			rotateWheel.setRightHandIsRight(true);
+		}
+		else if(other.name == "unterarm_l") {
+			rotateWheel.setLeftHandIsRight(true);
 		}
 	}
 	
 	void OnTriggerExit(Collider other)
 	{
-		if (other.name.Contains ("unterarm")) {
-			rotateWheel.setIfHandIsRight(false);
+		if (other.name == "unterarm_r") {
+			//print ("test");
+			rotateWheel.setRightHandIsRight(false);
+		}
+		else if(other.name == "unterarm_l") {
+			rotateWheel.setLeftHandIsRight(false);
 		}
 	}
 }

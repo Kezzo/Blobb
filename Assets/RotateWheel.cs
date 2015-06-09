@@ -1,17 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class RotateWheel : MonoBehaviour {
 
 	SixenseInput.Controller hydra;
-	bool isForRightHand;
-	public GameObject hand;
-	Vector3 previousHandPosition;
-	bool grabbedWorldObject;
+
+	List<GameObject> _handsList = new List<GameObject>();
+	public List<GameObject> handList
+	{
+		get
+		{
+			return _handsList;
+		}
+	}
+
+	Vector3 previousHandPositionRight;
+	Vector3 previousHandPositionLeft;
+
+	//bool grabbedWorldObject;
 	public enum IsRotation{Not, Right, Left};
 	public IsRotation isRotation = IsRotation.Not;
 
-	bool handIsRightOfWheel;
+	bool isRightHandRight;
+	bool isLeftHandRight;
 
 	[Range(5,50)]
 	public float wheelRotationMultiplier;
@@ -35,47 +47,85 @@ public class RotateWheel : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if(isForRightHand)
-		{
-			hydra = SixenseInput.Controllers[1];
-		}
-		else
-		{
-			hydra = SixenseInput.Controllers[0];
-		}
+		_isGrabbing = false;
+		isRotation = IsRotation.Not;
+		if (_handsList.Count > 0) {
 
-		if (hand != null) {
-			if (hydra.GetButton (SixenseButtons.TRIGGER)) {
-				MoveWorldObject();
-				if(!_isGrabbing)
-				{
-					_isGrabbing = true;
-				}
-			}
-			else
+			foreach(GameObject hand in _handsList)
 			{
-				if(_isGrabbing)
+				if(hand.name == "unterarm_r")
 				{
-					_isGrabbing = false;
+					hydra = SixenseInput.Controllers[1];
 				}
-				isRotation = IsRotation.Not;
-			}
+				else if(hand.name == "unterarm_l")
+				{
+					hydra = SixenseInput.Controllers[0];
+				}
 
-			previousHandPosition = hydra.Position;
+				if (hydra.GetButton (SixenseButtons.TRIGGER)) {
+					//print ("Button from: "+hand.name);
+					if(hand.name == "unterarm_r")
+					{
+						MoveWheel(hydra, hand.name == "unterarm_r", hand, isRightHandRight);
+					}
+					else if(hand.name == "unterarm_l")
+					{
+						MoveWheel(hydra, hand.name == "unterarm_r", hand, isLeftHandRight);
+					}
+					if(!_isGrabbing)
+					{
+						_isGrabbing = true;
+					}
+				}
+
+				if(hand.name == "unterarm_r")
+				{
+					previousHandPositionRight = hydra.Position;
+				}
+				else if(hand.name == "unterarm_l")
+				{
+					previousHandPositionLeft = hydra.Position;
+				}
+			}
 		}
 	}
 
-	void MoveWorldObject()
+	void MoveWheel(SixenseInput.Controller currentHydra, bool isRightHydra, GameObject currentHand, bool handIsRight)
 	{
-		// negative is right, positive is left 
-		float rightLeftDifference = previousHandPosition.x - hydra.Position.x;
+		//print ("MoveWheel "+isRightHydra);
+		float rightLeftDifference;
+		float upDownDifference;
+		bool aboveMid;
 
-		// negative is up, positive is down
-		float upDownDifference = previousHandPosition.y - hydra.Position.y;
+		if(isRightHydra)
+		{
+			// negative is right, positive is left 
+			rightLeftDifference = previousHandPositionRight.x - currentHydra.Position.x;
+			
+			// negative is up, positive is down
+			upDownDifference = previousHandPositionRight.y - currentHydra.Position.y;
 
-		isRotation = IsRotation.Not;
+			aboveMid = currentHand.transform.position.y > this.transform.position.y;
+		}
+		else
+		{
+			// negative is right, positive is left 
+			rightLeftDifference = previousHandPositionLeft.x - currentHydra.Position.x;
+			
+			// negative is up, positive is down
+			upDownDifference = previousHandPositionLeft.y - currentHydra.Position.y;
 
-		bool oben = hand.transform.position.y > this.transform.position.y;
+			aboveMid = currentHand.transform.position.y > this.transform.position.y;
+		}
+
+		//print (currentHydra.Position.x);
+
+		//print ("rightLeftDifference: "+rightLeftDifference);
+		//print ("upDownDifference: "+upDownDifference);
+
+		//isRotation = IsRotation.Not;
+
+
 //		bool rechts = hand.transform.position.x > this.transform.position.x;
 
 		float handDifference = Mathf.Max(Mathf.Abs(rightLeftDifference), Mathf.Abs(upDownDifference));
@@ -85,24 +135,30 @@ public class RotateWheel : MonoBehaviour {
 		{
 			if(Mathf.Abs(rightLeftDifference) > Mathf.Abs(upDownDifference))
 			{
-				if((rightLeftDifference < 0.0f && oben) || (rightLeftDifference > 0.0f && !oben))
+				//print ("rechtslinks");
+				if((rightLeftDifference < 0.0f && aboveMid) || (rightLeftDifference > 0.0f && !aboveMid))
 				{
+					//print ("oben/rechts oder unten/links");
 					rotateWheel(wheelRotationSpeed);
 				}
-				else if((rightLeftDifference > 0.0f && oben) || (rightLeftDifference < 0.0f && !oben))
+				else if((rightLeftDifference > 0.0f && aboveMid) || (rightLeftDifference < 0.0f && !aboveMid))
 				{
+					//print ("oben/links oder unten/rechts");
 					rotateWheel(-wheelRotationSpeed);
 				}
 			}
 			else if(Mathf.Abs(rightLeftDifference) < Mathf.Abs(upDownDifference))
 			{
-
-				if((upDownDifference < 0.0f && handIsRightOfWheel) || (upDownDifference > 0.0f && !handIsRightOfWheel))
+				//print ("hochrunter");
+				//print ("rechts: "+isRightHandRight.Equals(currentHand));
+				if((upDownDifference < 0.0f && handIsRight) || (upDownDifference > 0.0f && !handIsRight))
 				{
+					//print ("rechts/hoch oder links/runter");
 					rotateWheel(-wheelRotationSpeed);
 				}
-				else if((upDownDifference > 0.0f && handIsRightOfWheel) || (upDownDifference < 0.0f && !handIsRightOfWheel))
+				else if((upDownDifference > 0.0f && handIsRight) || (upDownDifference < 0.0f && !handIsRight))
 				{
+					//print ("rechts/runter oder links/hoch");
 					rotateWheel(wheelRotationSpeed);
 				}
 			}
@@ -124,15 +180,24 @@ public class RotateWheel : MonoBehaviour {
 	void OnTriggerEnter(Collider other)
 	{
 		//print (other.name);
-		if (other.name.Contains ("unterarm") && hand == null) {
-			hand = other.gameObject;
-			if(other.name == "unterarm_l")
+		if (other.name.Contains ("unterarm")) 
+		{
+			if(_handsList.Count > 0)
 			{
-				isForRightHand = false;
+				foreach(GameObject hand in _handsList.ToArray())
+				{
+					if(!other.gameObject.Equals(hand))
+					{
+						_handsList.Add(other.gameObject);
+						//print ("Hand added: "+other.gameObject.name);
+					}
+					
+				}
 			}
-			else if(other.name == "unterarm_r")
+			else
 			{
-				isForRightHand = true;
+				_handsList.Add(other.gameObject);
+				//print ("Hand added: "+other.gameObject.name);
 			}
 		}
 	}
@@ -141,8 +206,21 @@ public class RotateWheel : MonoBehaviour {
 	{
 		//print (other.name);
 		if (other.name.Contains ("unterarm")) {
-			hand = null;
-			isRotation = IsRotation.Not;
+			foreach(GameObject hand in _handsList.ToArray())
+			{
+				if(other.gameObject.Equals(hand))
+				{
+					_handsList.Remove(hand);
+					//print ("Hand removed: "+other.gameObject.name);
+				}
+				
+			}
+
+			if(_handsList.Count == 0)
+			{
+				isRotation = IsRotation.Not;
+			}
+
 		}
 	}
 
@@ -151,8 +229,13 @@ public class RotateWheel : MonoBehaviour {
 		return wheelRotationSpeed;
 	}
 
-	public void setIfHandIsRight(bool handIsRight)
+	public void setRightHandIsRight(bool rightHandIsRight)
 	{
-		this.handIsRightOfWheel = handIsRight;
+		this.isRightHandRight = rightHandIsRight;
+	}
+
+	public void setLeftHandIsRight(bool leftHandIsRight)
+	{
+		this.isLeftHandRight = leftHandIsRight;
 	}
 }
