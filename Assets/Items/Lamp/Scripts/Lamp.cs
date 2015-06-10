@@ -49,7 +49,7 @@ public class Lamp : MonoBehaviour,Item  {
 				if(flickeringTime > 0.0f)
 				{
 					flickeringTime -= Time.deltaTime;
-					spotlight.intensity = Random.Range(2.0f,5.0f);
+					spotlight.intensity = Random.Range(1.0f,4.0f);
 
 				}
 				else
@@ -63,7 +63,7 @@ public class Lamp : MonoBehaviour,Item  {
 				spotlight.intensity = Random.Range(0.0f,1.0f);
 			}
 //			print (spotlight.intensity+"+"+volumetricLight.color.a);
-			volumetricLight.SetFloat("_Metallic", 1.0f - spotlight.intensity / 8.0f);
+			volumetricLight.SetFloat("_Metallic", 1.0f - spotlight.intensity / 6.0f);
 		}
 
 		if(equipped)
@@ -72,7 +72,7 @@ public class Lamp : MonoBehaviour,Item  {
 			{
 				shakeCounter++;
 
-				if(shakeCounter > 30)
+				if(shakeCounter > 25)
 				{
 					print ("Shake");
 					flickering = false;
@@ -80,10 +80,10 @@ public class Lamp : MonoBehaviour,Item  {
 					flickeringTime = Random.Range(5.0f,10.0f);
 					timeToStartFlickering = Random.Range(25.0f,35.0f);
 					shakeCounter = 0;
-					spotlight.intensity = 8.0f;
+					spotlight.intensity = 6.0f;
 				}
 			}
-			else if(shakeCounter < 0)
+			else if(shakeCounter > 0)
 			{
 				shakeCounter--;
 			}
