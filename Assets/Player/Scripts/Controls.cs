@@ -94,12 +94,14 @@ public class Controls : MonoBehaviour
 	{
 		if(hydra.GetButtonDown(SixenseButtons.TRIGGER))
 		{
+			//print("targetGrab.worldTrigger"+ targetGrab.worldTrigger);
 			if(itemInTrigger && item != null && item.layer != 13)
 			{
 				GrabItem();
 			}
 			else if(targetGrab.worldTrigger || (targetGrab.worldTrigger && targetGrab.playerTrigger && !itemInTrigger))
 			{
+
 				GrabWorld(true);
 			}
 		}

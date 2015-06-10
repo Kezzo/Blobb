@@ -36,7 +36,7 @@ public class CanonAction : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.tag == "Item") {
+		if (other.tag == "Item" && !closeDeckel) {
 			StartCoroutine(ShootAfter(2.0f, other.gameObject));
 		}
 	}
