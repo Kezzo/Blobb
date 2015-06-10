@@ -35,7 +35,7 @@ public class AssemblyDoorOpen : MonoBehaviour {
 	void OnTriggerEnter(Collider enter)
 	{
 		if (enter.CompareTag ("Player")) {
-			print ("enter");
+			//print ("enter");
 			open=true;
 			close=false;
 		}
@@ -44,7 +44,7 @@ public class AssemblyDoorOpen : MonoBehaviour {
 	void OnTriggerExit(Collider exit)
 	{
 		if (exit.CompareTag ("Player")) {
-			print ("exit");
+			//print ("exit");
 			open=false;
 			close=true;
 			//
