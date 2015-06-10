@@ -60,6 +60,7 @@ ModelImporter:
     7400004: walk1
     7400006: walk2
     7400008: walk3
+    7400010: Throw
     9500000: //RootNode
     13700000: Protoblobb
     13700002: Sphere
@@ -376,6 +377,78 @@ ModelImporter:
       orientationOffsetY: 0
       level: 0
       cycleOffset: .600000024
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Central_Bone_down
+        weight: 1
+      - path: Armature/Central_Bone_down/central_bone
+        weight: 1
+      - path: Armature/Central_Bone_down/central_bone/central_bone_001
+        weight: 1
+      - path: Armature/Central_Bone_down/central_bone/Schulter_l
+        weight: 1
+      - path: Armature/Central_Bone_down/central_bone/Schulter_l/oberarm_l
+        weight: 1
+      - path: Armature/Central_Bone_down/central_bone/Schulter_l/oberarm_l/mittelarm_l
+        weight: 1
+      - path: Armature/Central_Bone_down/central_bone/Schulter_l/oberarm_l/mittelarm_l/unterarm_l
+        weight: 1
+      - path: Armature/Central_Bone_down/central_bone/Schulter_l/oberarm_l/mittelarm_l/unterarm_l/unterarm_l_001
+        weight: 1
+      - path: Armature/Central_Bone_down/central_bone/Schulter_r
+        weight: 1
+      - path: Armature/Central_Bone_down/central_bone/Schulter_r/oberarm_r
+        weight: 1
+      - path: Armature/Central_Bone_down/central_bone/Schulter_r/oberarm_r/mittelarm_r
+        weight: 1
+      - path: Armature/Central_Bone_down/central_bone/Schulter_r/oberarm_r/mittelarm_r/unterarm_r
+        weight: 1
+      - path: Armature/Central_Bone_down/central_bone/Schulter_r/oberarm_r/mittelarm_r/unterarm_r/unterarm_r_001
+        weight: 1
+      - path: Armature/Central_Bone_down/Central_Bone_down_001
+        weight: 1
+      - path: Armature/Central_Bone_down/Central_Bone_down_001/Central_Bone_down_002
+        weight: 1
+      - path: Armature/Central_Bone_down/Central_Bone_down_001/Central_Bone_down_002/Central_Bone_down_003
+        weight: 1
+      - path: Armature/Central_Bone_down/Central_Bone_down_004
+        weight: 1
+      - path: Armature/Central_Bone_down/Central_Bone_down_004/Central_Bone_down_005
+        weight: 1
+      - path: Armature/Central_Bone_down/Central_Bone_down_004/Central_Bone_down_005/Central_Bone_down_006
+        weight: 1
+      - path: Protoblobb
+        weight: 1
+      - path: Sphere
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Throw
+      takeName: Default Take
+      firstFrame: 59
+      lastFrame: 95
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 1
       loop: 0
       loopTime: 1
       loopBlend: 1
