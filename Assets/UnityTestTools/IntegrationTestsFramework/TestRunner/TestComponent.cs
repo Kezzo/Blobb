@@ -263,7 +263,7 @@ namespace UnityTest
         {
             var go = new GameObject(name);
             go.AddComponent<TestComponent>();
-			Undo.RegisterCreatedObjectUndo(go, "Created test");
+			//Undo.RegisterCreatedObjectUndo(go, "Created test");
             return go;
         }
 
