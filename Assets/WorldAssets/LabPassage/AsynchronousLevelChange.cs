@@ -17,6 +17,7 @@ public class AsynchronousLevelChange : MonoBehaviour {
 	{
 		if(other.tag == "Player")
 		{
+			other.GetComponent<Rigidbody>().velocity = Vector3.zero;
 			Application.LoadLevelAsync(levelName);
 		}
 	}

@@ -10,6 +10,7 @@ public class SchiffHit : MonoBehaviour {
 		if(collision.collider.name.Contains("feind"))
 		{
 			Instantiate(explosionPrefab, this.transform.position, Quaternion.identity);
+			Destroy(this.gameObject);
 		}
 	}
 }

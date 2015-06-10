@@ -6,6 +6,9 @@ public class EventTrigger1_PirateLevel : MonoBehaviour {
 
 	bool alreadyTriggered;
 	List<GameObject> cargoList = new List<GameObject>();
+
+	public GameObject enemyShip;
+	public GameObject[] makeWorldGround;
 	// Use this for initialization
 	void Start () {
 	
@@ -21,12 +24,42 @@ public class EventTrigger1_PirateLevel : MonoBehaviour {
 		if(!alreadyTriggered && other.name == "Cargo")
 		{
 			alreadyTriggered = true;
-			transform.root.GetComponent<Schiffssteuerung>().setMovement(false);
+			other.transform.root.GetComponent<Schiffssteuerung>().setMovement(false);
+			spawnEnemyShips(other.transform.root.transform);
 			makeChildrenItems(other.transform.parent.gameObject);
 			ExplodeAt(other.transform.parent.transform.position);
+			makeShipMoveable();
 			this.GetComponent<Collider>().enabled = false;
+
 		}
 		//print (other.name);
+	}
+
+	void makeShipMoveable()
+	{
+		for(int i=0; i<makeWorldGround.Length; i++)
+		{
+			makeWorldGround[i].tag = "World";
+			makeWorldGround[i].layer = 11;
+		}
+	}
+
+	void spawnEnemyShips(Transform shipTransform)
+	{
+		for(int i=0; i<2; i++)
+		{
+			if(i % 2 == 0)
+			{
+				GameObject spawnedEnemyShip = Instantiate(enemyShip, shipTransform.position, shipTransform.rotation) as GameObject;
+				spawnedEnemyShip.transform.position = new Vector3(spawnedEnemyShip.transform.position.x+65.0f, spawnedEnemyShip.transform.position.y, spawnedEnemyShip.transform.position.z+35.0f);
+			}
+			else
+			{
+				GameObject spawnedEnemyShip = Instantiate(enemyShip, shipTransform.position, shipTransform.rotation) as GameObject;
+				spawnedEnemyShip.transform.position = new Vector3(spawnedEnemyShip.transform.position.x-65.0f, spawnedEnemyShip.transform.position.y, spawnedEnemyShip.transform.position.z-35.0f);
+			}
+		}
+
 	}
 
 	void makeChildrenItems(GameObject parent)
