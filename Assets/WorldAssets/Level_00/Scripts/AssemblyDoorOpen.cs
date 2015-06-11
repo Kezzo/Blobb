@@ -62,4 +62,9 @@ public class AssemblyDoorOpen : MonoBehaviour {
 		open=true;
 		close=false;
 	}
+
+	void closeDoor(){
+		open=false;
+		close=true;
+	}
 }
