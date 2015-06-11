@@ -239,6 +239,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 455016}
   - 95: {fileID: 9557794}
+  - 111: {fileID: 11133872}
   m_Layer: 0
   m_Name: TheAnimatedBlobb
   m_TagString: Untagged
@@ -1478,7 +1479,7 @@ Animator:
   m_GameObject: {fileID: 146460}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: d3fdda0559d11ff4f8eaf8f96a538832, type: 3}
-  m_Controller: {fileID: 9100000, guid: 80f4c5f9b918bf742bc4beceb387f3bd, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6fb24a82c8162554982102b69ca75f8b, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1503,6 +1504,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!111 &11133872
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 146460}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400014, guid: d3fdda0559d11ff4f8eaf8f96a538832, type: 3}
+  m_Animations:
+  - {fileID: 7400014, guid: d3fdda0559d11ff4f8eaf8f96a538832, type: 3}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 1
+  m_CullingType: 0
 --- !u!114 &11404454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1514,6 +1530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c7df992e393404e999b04670c3c65b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroytime: 2
 --- !u!114 &11441212
 MonoBehaviour:
   m_ObjectHideFlags: 1

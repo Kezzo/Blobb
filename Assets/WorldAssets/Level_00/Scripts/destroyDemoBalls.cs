@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class destroyDemoBalls : MonoBehaviour {
-
+	public float destroytime=8.0f;
 	// Use this for initialization
 	void Start () {
 	
@@ -16,7 +16,7 @@ public class destroyDemoBalls : MonoBehaviour {
 	void OnTriggerEnter(Collider enter)
 	{
 		if (enter.CompareTag ("Item")) {
-			Destroy (enter.gameObject, 8);
+			Destroy (enter.gameObject, destroytime);
 		}
 
 	}

@@ -5,6 +5,7 @@ public class AssemblyDoorOpen : MonoBehaviour {
 	bool open=false;
 	bool close=false;
 	public bool lockIt;
+	public bool openOnTrigger=true;
 	bool locked = false;
 	Vector3 startPos;
 	Vector3 upPos;
@@ -34,21 +35,31 @@ public class AssemblyDoorOpen : MonoBehaviour {
 
 	void OnTriggerEnter(Collider enter)
 	{
-		if (enter.CompareTag ("Player")) {
-			//print ("enter");
-			open=true;
-			close=false;
-		}
+		if (openOnTrigger == true) {
+			if (enter.CompareTag ("Player")) {
+				//print ("enter");
+				open=true;
+				close=false;
+			}}
+
 
 	}
 	void OnTriggerExit(Collider exit)
 	{
-		if (exit.CompareTag ("Player")) {
-			//print ("exit");
-			open=false;
-			close=true;
-			//
-		}
+		if (openOnTrigger == true) {
+			if (exit.CompareTag ("Player")) {
+				//print ("exit");
+				open=false;
+				close=true;
+				//
+			}}
+
 	
+	}
+
+	void openDoor(){
+
+		open=true;
+		close=false;
 	}
 }

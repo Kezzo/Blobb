@@ -5,6 +5,7 @@ public class demoTarget : MonoBehaviour {
 
 	public Material wasHitMaterial;
 	public Material notHitMaterial;
+	public GameObject activateThis;
 	MeshRenderer meshRenderer;
 	Material[] materials;
 	bool change=false;
@@ -40,5 +41,8 @@ public class demoTarget : MonoBehaviour {
 	void OnCollisionEnter(Collision enter)
 	{
 		change = true;
+		if (activateThis) {
+			activateThis.SendMessage("openDoor");
+		}
 	}
 }
