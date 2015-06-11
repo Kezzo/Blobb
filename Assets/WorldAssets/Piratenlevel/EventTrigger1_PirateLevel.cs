@@ -28,14 +28,14 @@ public class EventTrigger1_PirateLevel : MonoBehaviour {
 			spawnEnemyShips(other.transform.root.transform);
 			makeChildrenItems(other.transform.parent.gameObject);
 			ExplodeAt(other.transform.parent.transform.position);
-			makeShipMoveable();
+			makeShipWalkable();
 			this.GetComponent<Collider>().enabled = false;
 
 		}
 		//print (other.name);
 	}
 
-	void makeShipMoveable()
+	void makeShipWalkable()
 	{
 		for(int i=0; i<makeWorldGround.Length; i++)
 		{
@@ -48,15 +48,14 @@ public class EventTrigger1_PirateLevel : MonoBehaviour {
 	{
 		for(int i=0; i<2; i++)
 		{
+			GameObject spawnedEnemyShip = Instantiate(enemyShip, shipTransform.position, shipTransform.rotation) as GameObject;
 			if(i % 2 == 0)
 			{
-				GameObject spawnedEnemyShip = Instantiate(enemyShip, shipTransform.position, shipTransform.rotation) as GameObject;
-				spawnedEnemyShip.transform.position = new Vector3(spawnedEnemyShip.transform.position.x+65.0f, spawnedEnemyShip.transform.position.y, spawnedEnemyShip.transform.position.z+35.0f);
+				spawnedEnemyShip.transform.Translate(Vector3.left * 65, Space.Self);
 			}
 			else
 			{
-				GameObject spawnedEnemyShip = Instantiate(enemyShip, shipTransform.position, shipTransform.rotation) as GameObject;
-				spawnedEnemyShip.transform.position = new Vector3(spawnedEnemyShip.transform.position.x-65.0f, spawnedEnemyShip.transform.position.y, spawnedEnemyShip.transform.position.z-35.0f);
+				spawnedEnemyShip.transform.Translate(Vector3.right * 65, Space.Self);
 			}
 		}
 

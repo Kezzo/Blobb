@@ -165,6 +165,11 @@ public class RotateWheel : MonoBehaviour {
 		}
 	}
 
+	public float getWheelRotation()
+	{
+		return this.transform.localRotation.eulerAngles.y;
+	}
+
 	void rotateWheel(float valueToChange)
 	{
 		if (valueToChange > 0.0f) {
