@@ -4,6 +4,18 @@ using System.Collections;
 public class AsynchronousLevelChange : MonoBehaviour {
 
 	public string levelName;
+	public bool returning;
+
+	GameObject player;
+	GameObject leftTarget;
+	GameObject rightTarget;
+
+	void Start()
+	{
+		player = GameObject.Find("Player");
+		leftTarget = GameObject.Find ("LeftTarget");
+		rightTarget = GameObject.Find ("RightTarget");
+	}
 
 	void Update()
 	{
@@ -11,6 +23,7 @@ public class AsynchronousLevelChange : MonoBehaviour {
 		{
 			Application.LoadLevelAsync(levelName);
 		}
+		//print("IsChildOf: " + GameObject.Find ("LeftTarget").transform.IsChildOf(GameObject.Find("Player").transform));
 	}
 
 	void OnTriggerEnter(Collider other)
@@ -18,6 +31,27 @@ public class AsynchronousLevelChange : MonoBehaviour {
 		if(other.tag == "Player")
 		{
 			other.GetComponent<Rigidbody>().velocity = Vector3.zero;
+			ChangeLevel();
+		}
+	}
+
+	void OnTriggerStay(Collider other)
+	{
+		if(other.tag == "Player")
+		{
+			other.GetComponent<Rigidbody>().velocity = Vector3.zero;
+			ChangeLevel();
+		}
+	}
+
+	void ChangeLevel()
+	{
+		if(leftTarget.transform.IsChildOf(player.transform) == true && rightTarget.transform.IsChildOf(player.transform) == true)
+		{
+			if(returning)
+			{
+				GameManagement.returning = true;
+			}
 			Application.LoadLevelAsync(levelName);
 		}
 	}

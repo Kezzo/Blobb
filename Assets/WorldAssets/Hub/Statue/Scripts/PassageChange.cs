@@ -3,25 +3,30 @@ using System.Collections;
 
 public class PassageChange : MonoBehaviour {
 
-	public bool statuePassaging = false;
+	private bool statuePassaging = false;
 	public bool staging = true;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(statuePassaging && staging)
-		{
-			this.transform.position = new Vector3(-0.03f, 7.46f, 29.83f);
-			staging = false;
-		}
+	void ReturnHub(bool value)
+	{
+		print("Value: " + value);
+		statuePassaging = value;
+
+		StatuePosition();
+
+		print("ReturnHub");
 	}
 
-	void returnHub()
+	void StatuePosition()
 	{
-		statuePassaging = true;
+		print (statuePassaging);
+		if(statuePassaging == true)
+		{
+			
+			GameObject.Find("Statue_Passage").transform.position = new Vector3(-0.03f, 7.46f, 29.83f);
+			print ("done");
+			staging = false;
+		}
+		print("StatuePosition");
+		print (transform.position);
 	}
 }
