@@ -9,6 +9,8 @@ public class EventTrigger1_PirateLevel : MonoBehaviour {
 
 	public GameObject enemyShip;
 	public GameObject[] makeWorldGround;
+
+	public GameObject eventTrigger2;
 	// Use this for initialization
 	void Start () {
 	
@@ -30,7 +32,7 @@ public class EventTrigger1_PirateLevel : MonoBehaviour {
 			ExplodeAt(other.transform.parent.transform.position);
 			makeShipWalkable();
 			this.GetComponent<Collider>().enabled = false;
-
+			eventTrigger2.SetActive(true);
 		}
 		//print (other.name);
 	}

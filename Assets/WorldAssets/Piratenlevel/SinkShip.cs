@@ -35,6 +35,7 @@ public class SinkShip : MonoBehaviour
 			if(hits == 2 && !isSinking)
 			{
 				isSinking = true;
+				
 			}
 		}
 	}

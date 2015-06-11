@@ -87,6 +87,48 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &26387445
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 437800, guid: 13e262d0419d7394f8ff68fca1bacfcb, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -884
+      objectReference: {fileID: 0}
+    - target: {fileID: 437800, guid: 13e262d0419d7394f8ff68fca1bacfcb, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 437800, guid: 13e262d0419d7394f8ff68fca1bacfcb, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -79
+      objectReference: {fileID: 0}
+    - target: {fileID: 437800, guid: 13e262d0419d7394f8ff68fca1bacfcb, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 437800, guid: 13e262d0419d7394f8ff68fca1bacfcb, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 437800, guid: 13e262d0419d7394f8ff68fca1bacfcb, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 437800, guid: 13e262d0419d7394f8ff68fca1bacfcb, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 437800, guid: 13e262d0419d7394f8ff68fca1bacfcb, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13e262d0419d7394f8ff68fca1bacfcb, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &31343254
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,6 +299,10 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 31669929}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &69684899 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 139042, guid: 13e262d0419d7394f8ff68fca1bacfcb, type: 2}
+  m_PrefabInternal: {fileID: 26387445}
 --- !u!1 &86826228
 GameObject:
   m_ObjectHideFlags: 0
@@ -1960,7 +2006,7 @@ MeshFilter:
 --- !u!1 &410720354 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 114800, guid: 13e262d0419d7394f8ff68fca1bacfcb, type: 2}
-  m_PrefabInternal: {fileID: 1347344945}
+  m_PrefabInternal: {fileID: 26387445}
 --- !u!1 &437778226
 GameObject:
   m_ObjectHideFlags: 0
@@ -2536,7 +2582,7 @@ MeshFilter:
 --- !u!1 &557389592 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 133600, guid: 13e262d0419d7394f8ff68fca1bacfcb, type: 2}
-  m_PrefabInternal: {fileID: 1347344945}
+  m_PrefabInternal: {fileID: 26387445}
 --- !u!1 &561783274
 GameObject:
   m_ObjectHideFlags: 0
@@ -2710,7 +2756,7 @@ MeshFilter:
 --- !u!1 &590420581 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 196028, guid: 13e262d0419d7394f8ff68fca1bacfcb, type: 2}
-  m_PrefabInternal: {fileID: 1347344945}
+  m_PrefabInternal: {fileID: 26387445}
 --- !u!1 &616708447
 GameObject:
   m_ObjectHideFlags: 0
@@ -4190,7 +4236,7 @@ MeshFilter:
 --- !u!1 &997264453 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 163946, guid: 13e262d0419d7394f8ff68fca1bacfcb, type: 2}
-  m_PrefabInternal: {fileID: 1347344945}
+  m_PrefabInternal: {fileID: 26387445}
 --- !u!1 &1006563905
 GameObject:
   m_ObjectHideFlags: 0
@@ -5026,6 +5072,7 @@ MonoBehaviour:
   - {fileID: 557389592}
   - {fileID: 590420581}
   - {fileID: 1291200653}
+  eventTrigger2: {fileID: 69684899}
 --- !u!1 &1091874656
 GameObject:
   m_ObjectHideFlags: 0
@@ -5945,7 +5992,7 @@ MeshFilter:
 --- !u!1 &1228310523 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 136944, guid: 13e262d0419d7394f8ff68fca1bacfcb, type: 2}
-  m_PrefabInternal: {fileID: 1347344945}
+  m_PrefabInternal: {fileID: 26387445}
 --- !u!1 &1239033594
 GameObject:
   m_ObjectHideFlags: 0
@@ -6162,7 +6209,7 @@ MeshFilter:
 --- !u!1 &1291200653 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 118752, guid: 13e262d0419d7394f8ff68fca1bacfcb, type: 2}
-  m_PrefabInternal: {fileID: 1347344945}
+  m_PrefabInternal: {fileID: 26387445}
 --- !u!1 &1326132463
 GameObject:
   m_ObjectHideFlags: 0
@@ -6248,48 +6295,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1510876967}
   m_RootOrder: 57
---- !u!1001 &1347344945
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 437800, guid: 13e262d0419d7394f8ff68fca1bacfcb, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -884
-      objectReference: {fileID: 0}
-    - target: {fileID: 437800, guid: 13e262d0419d7394f8ff68fca1bacfcb, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 437800, guid: 13e262d0419d7394f8ff68fca1bacfcb, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -79
-      objectReference: {fileID: 0}
-    - target: {fileID: 437800, guid: 13e262d0419d7394f8ff68fca1bacfcb, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 437800, guid: 13e262d0419d7394f8ff68fca1bacfcb, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 437800, guid: 13e262d0419d7394f8ff68fca1bacfcb, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 437800, guid: 13e262d0419d7394f8ff68fca1bacfcb, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 437800, guid: 13e262d0419d7394f8ff68fca1bacfcb, type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 13e262d0419d7394f8ff68fca1bacfcb, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1349216573
 GameObject:
   m_ObjectHideFlags: 0
