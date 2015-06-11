@@ -27,7 +27,7 @@ public class changeImage : MonoBehaviour {
 
 		if (imageswitcher==1)
 			{
-				print ("A ");
+				//print ("A ");
 				materials[1] = imageA;
 				meshRenderer.materials = materials;
 				//changeMat=true;
@@ -38,7 +38,7 @@ public class changeImage : MonoBehaviour {
 
 			if (imageswitcher==2)
 			{
-				print ("B ");
+				//print ("B ");
 				materials[1] = imageB;
 				meshRenderer.materials = materials;
 				//changeMat=false;
@@ -47,7 +47,7 @@ public class changeImage : MonoBehaviour {
 			}
 			if (imageswitcher==3)
 			{
-				print ("C ");
+				//print ("C ");
 				materials[1] = imageC;
 				meshRenderer.materials = materials;
 				//changeMat=false;

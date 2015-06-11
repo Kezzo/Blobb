@@ -13,7 +13,7 @@ public class AssembyLineIllusion : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		float offset = Time.time * speed;
+		float offset = Time.fixedTime * speed;
 		rend.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
 
 	
