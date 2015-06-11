@@ -10,6 +10,15 @@ namespace UnityTest
     [Category("Sample Tests")]
     internal class SampleTests
     {
+		[Test]
+		public void SmallTest()
+		{
+			SwitchgunBehavior switchGun = new SwitchgunBehavior();
+			switchGun.UseOnce();
+			Vector3 target = switchGun.targetLocation;
+			Vector3 player = switchGun.playerLocation;
+			Assert.That (player.x.Equals (target.x));
+		}
         [Test]
         [Category("Failing Tests")]
         public void ExceptionTest()

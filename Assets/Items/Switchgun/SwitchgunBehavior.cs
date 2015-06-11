@@ -4,8 +4,8 @@ using System.Collections;
 public class SwitchgunBehavior : MonoBehaviour, Item {
 
 	private GameObject targetItem;
-	private Vector3 targetLocation;
-	private Vector3 playerLocation;
+	public Vector3 targetLocation;
+	public Vector3 playerLocation;
 	private RaycastHit hit;
 	private bool targetFinder = false;
 	private Material baseColor;
@@ -17,12 +17,6 @@ public class SwitchgunBehavior : MonoBehaviour, Item {
 
 	GameObject player;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
 	void Update () {
 		if (targetFinder) {
 			if(Physics.Raycast(transform.position, transform.forward, out hit, 500.0f, layerMask))
@@ -64,6 +58,7 @@ public class SwitchgunBehavior : MonoBehaviour, Item {
 			}
 		}
 	}
+
 	public void UseOnce(){
 		if(Physics.Raycast(transform.position, transform.forward, out hit, 500.0f, layerMask))
 		{
@@ -92,7 +87,7 @@ public class SwitchgunBehavior : MonoBehaviour, Item {
 		targetFinder = true;
 		laserPointer.SetActive (true);
 		player = this.transform.root.FindChild ("Blobb").gameObject;
-		print (player.name);
+		//print (player.name);
 	}
 	public void OnDeequip(){
 		targetFinder = false;
@@ -105,4 +100,5 @@ public class SwitchgunBehavior : MonoBehaviour, Item {
 	public string getType(){
 		return "gun";
 	}
+
 }
