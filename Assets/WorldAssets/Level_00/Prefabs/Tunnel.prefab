@@ -11,6 +11,7 @@ GameObject:
   - 33: {fileID: 3381878}
   - 23: {fileID: 2361884}
   - 95: {fileID: 9566356}
+  - 64: {fileID: 6431592}
   m_Layer: 0
   m_Name: Tunnel
   m_TagString: Untagged
@@ -24,8 +25,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 158366}
-  m_LocalRotation: {x: -.707106829, y: -1.15202326e-07, z: -.707106709, w: -1.15202312e-07}
-  m_LocalPosition: {x: 0, y: 3.0999999, z: 0}
+  m_LocalRotation: {x: -.707106829, y: -1.15202312e-07, z: -.707106709, w: -1.15202319e-07}
+  m_LocalPosition: {x: -64, y: 3.0999999, z: -1.43051147e-05}
   m_LocalScale: {x: 2, y: 2, z: 14}
   m_Children: []
   m_Father: {fileID: 0}
@@ -61,6 +62,18 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 158366}
+  m_Mesh: {fileID: 4300000, guid: 7d5c87b89bc1d6443bc91243dcd4e7a4, type: 3}
+--- !u!64 &6431592
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 158366}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 7d5c87b89bc1d6443bc91243dcd4e7a4, type: 3}
 --- !u!95 &9566356
 Animator:
