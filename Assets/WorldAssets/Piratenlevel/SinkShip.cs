@@ -19,8 +19,8 @@ public class SinkShip : MonoBehaviour
 	{
 		if(isSinking)
 		{
-			float step = 5.0f * Time.deltaTime;
-			transform.position = Vector3.MoveTowards(startPosition, endPosition, step);
+//			float step = 5.0f * Time.deltaTime;
+			//transform.position = Vector3.MoveTowards(startPosition, endPosition, step);
 			//float angle =  Mathf.LerpAngle(0.0f, 90.0f, Time.deltaTime * 0.5f);
 			//this.transform.eulerAngles = new Vector3(0,0,angle);
 		}
@@ -34,9 +34,14 @@ public class SinkShip : MonoBehaviour
 			hits ++;
 			if(hits == 2 && !isSinking)
 			{
-				isSinking = true;
-				
+				isSinking = true;		
 			}
 		}
 	}
+
+	public bool getIsSinking()
+	{
+		return isSinking;
+	}
 }
+

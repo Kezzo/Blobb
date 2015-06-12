@@ -7,10 +7,10 @@ public class EventTrigger1_PirateLevel : MonoBehaviour {
 	bool alreadyTriggered;
 	List<GameObject> cargoList = new List<GameObject>();
 
-	public GameObject enemyShip;
+	public GameObject[] enemyShips;
 	public GameObject[] makeWorldGround;
 
-	public GameObject eventTrigger2;
+	public EventTrigger2_PirateLevel eventTrigger2;
 	// Use this for initialization
 	void Start () {
 	
@@ -32,7 +32,9 @@ public class EventTrigger1_PirateLevel : MonoBehaviour {
 			ExplodeAt(other.transform.parent.transform.position);
 			makeShipWalkable();
 			this.GetComponent<Collider>().enabled = false;
-			eventTrigger2.SetActive(true);
+			eventTrigger2.enabled = true;
+			eventTrigger2.GetComponent<BoxCollider>().enabled = true;
+			eventTrigger2.setEnemyShips(enemyShips[0], enemyShips[1]);
 		}
 		//print (other.name);
 	}
@@ -48,16 +50,17 @@ public class EventTrigger1_PirateLevel : MonoBehaviour {
 
 	void spawnEnemyShips(Transform shipTransform)
 	{
-		for(int i=0; i<2; i++)
+		for(int i=0; i<enemyShips.Length; i++)
 		{
-			GameObject spawnedEnemyShip = Instantiate(enemyShip, shipTransform.position, shipTransform.rotation) as GameObject;
+			enemyShips[i].transform.position = shipTransform.position;
+			enemyShips[i].transform.rotation = shipTransform.rotation;
 			if(i % 2 == 0)
 			{
-				spawnedEnemyShip.transform.Translate(Vector3.left * 65, Space.Self);
+				enemyShips[i].transform.Translate(Vector3.left * 65, Space.Self);
 			}
 			else
 			{
-				spawnedEnemyShip.transform.Translate(Vector3.right * 65, Space.Self);
+				enemyShips[i].transform.Translate(Vector3.right * 65, Space.Self);
 			}
 		}
 

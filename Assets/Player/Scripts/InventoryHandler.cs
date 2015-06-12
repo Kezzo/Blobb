@@ -47,7 +47,12 @@ public class InventoryHandler : MonoBehaviour {
 	{
 		itemInInventory.Add(new ItemParentSave(itemToStore, parent));
 		itemToStore.transform.parent = this.transform;
-		itemToStore.GetComponent<Collider>().isTrigger = true;
+
+		Collider[] colliders = itemToStore.GetComponents<Collider>();
+		for(int i=0; i<colliders.Length; i++)
+		{
+			colliders[i].isTrigger = true;
+		}
 
 		if(isUsable)
 		{

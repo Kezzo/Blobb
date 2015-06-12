@@ -15,8 +15,7 @@ public class demoball_spawner : MonoBehaviour {
 		counter-=Time.deltaTime;
 		if (counter < 0) {
 
-			GameObject clone;
-			clone=Instantiate(balls, transform.position, transform.rotation) as GameObject;
+			Instantiate(balls, transform.position, transform.rotation);
 
 			//Destroy(clone, 5);
 			counter=spawnspeed;

@@ -10,7 +10,7 @@ public class changeImage : MonoBehaviour {
 	Material[] materials;
 	float counter=1.0f;
 	bool changeMat=false;
-	bool thridMat=false;
+	//bool thridMat=false;
 	public int anzahl=2;
 	int imageswitcher=1;
 	// Use this for initialization

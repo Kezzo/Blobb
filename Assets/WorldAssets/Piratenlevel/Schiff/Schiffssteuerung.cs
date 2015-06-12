@@ -34,7 +34,7 @@ public class Schiffssteuerung : MonoBehaviour {
 			else if(rotateWheel.getWheelRotation() > 180.0f)
 			{
 				this.transform.Rotate (Vector3.up, -Mathf.Abs(360 - rotateWheel.getWheelRotation()) / 4.0f * Time.deltaTime);
-				print (Mathf.Abs(360 - rotateWheel.getWheelRotation()));
+//				print (Mathf.Abs(360 - rotateWheel.getWheelRotation()));
 			}
 
 			//Old unrelatistic Controls, commented out for documentation purposes

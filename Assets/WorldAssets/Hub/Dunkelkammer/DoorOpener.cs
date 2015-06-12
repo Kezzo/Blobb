@@ -57,20 +57,20 @@ public class DoorOpener : MonoBehaviour
 			
 			if (!openDoor) 
 			{
-				leftDoorPart.transform.position = Vector3.MoveTowards (leftDoorPart.transform.position, doorPositions[0], leftStep);
-				rightDoorPart.transform.position = Vector3.MoveTowards (rightDoorPart.transform.position, doorPositions[1], rightStep);		
+				leftDoorPart.transform.localPosition = Vector3.MoveTowards (leftDoorPart.transform.localPosition, doorPositions[0], leftStep);
+				rightDoorPart.transform.localPosition = Vector3.MoveTowards (rightDoorPart.transform.localPosition, doorPositions[1], rightStep);		
 			}
 			else
 			{
 				if(openHorizontal)
 				{
-					leftDoorPart.transform.position = Vector3.MoveTowards (leftDoorPart.transform.position, doorPositions[2], leftStep);
-					rightDoorPart.transform.position = Vector3.MoveTowards (rightDoorPart.transform.position, doorPositions[3], rightStep);
+					leftDoorPart.transform.localPosition = Vector3.MoveTowards (leftDoorPart.transform.localPosition, doorPositions[2], leftStep);
+					rightDoorPart.transform.localPosition = Vector3.MoveTowards (rightDoorPart.transform.localPosition, doorPositions[3], rightStep);
 				}
 				else
 				{
-					leftDoorPart.transform.position = Vector3.MoveTowards (leftDoorPart.transform.position, doorPositions[4], leftStep);
-					rightDoorPart.transform.position = Vector3.MoveTowards (rightDoorPart.transform.position, doorPositions[5], rightStep);
+					leftDoorPart.transform.localPosition = Vector3.MoveTowards (leftDoorPart.transform.localPosition, doorPositions[4], leftStep);
+					rightDoorPart.transform.localPosition = Vector3.MoveTowards (rightDoorPart.transform.localPosition, doorPositions[5], rightStep);
 				}
 			}
 		}
@@ -88,19 +88,19 @@ public class DoorOpener : MonoBehaviour
 
 	void ConfigureBasePositions(bool isOnStart)
 	{
-		leftDoorPosition = leftDoorPart.transform.position;
-		rightDoorPosition = rightDoorPart.transform.position;
+		leftDoorPosition = leftDoorPart.transform.localPosition;
+		rightDoorPosition = rightDoorPart.transform.localPosition;
 
 		// Closed Door Positions
 		doorPositions[0] = leftDoorPosition;
 		doorPositions[1] = rightDoorPosition;
 		
 		// Opened Door Position
-		doorPositions[2] = new Vector3(leftDoorPosition.x + leftDoorPart.GetComponent<MeshRenderer>().bounds.size.x + doorOpenedOffSet, 
+		doorPositions[2] = new Vector3(leftDoorPosition.x - leftDoorPart.GetComponent<MeshRenderer>().bounds.size.x + doorOpenedOffSet, 
 		                               leftDoorPosition.y, 
 		                               leftDoorPosition.z);
 
-		doorPositions[3] = new Vector3(rightDoorPosition.x - rightDoorPart.GetComponent<MeshRenderer>().bounds.size.x - doorOpenedOffSet, 
+		doorPositions[3] = new Vector3(rightDoorPosition.x + rightDoorPart.GetComponent<MeshRenderer>().bounds.size.x - doorOpenedOffSet, 
 		                               rightDoorPosition.y, 
 		                               rightDoorPosition.z);
 

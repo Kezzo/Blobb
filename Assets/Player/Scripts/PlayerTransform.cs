@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerTransform : MonoBehaviour {
 
 	private bool positioned = false;
-	private bool parenting = false;
+	//private bool parenting = false;
 	GameObject player;
 
 	void Start()

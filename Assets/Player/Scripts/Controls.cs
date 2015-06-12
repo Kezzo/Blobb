@@ -242,8 +242,13 @@ public class Controls : MonoBehaviour
 			}
 
 			itemRigid.AddForce(resultingDirection * 100.0f,ForceMode.VelocityChange);
-			
-			item.GetComponent<Collider>().isTrigger = false;
+
+			Collider[] colliders = item.GetComponents<Collider>();
+			for(int i=0; i<colliders.Length; i++)
+			{
+				colliders[i].isTrigger = false;
+			}
+
 
 			if(itemParent != null)
 			{
