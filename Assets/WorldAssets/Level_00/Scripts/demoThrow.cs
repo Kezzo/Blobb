@@ -21,7 +21,7 @@ public class demoThrow : MonoBehaviour {
 
 			if(push==true)
 			{
-
+				print ("Throw Ball");
 				rb.AddForce(new Vector3(direction, 0,0));
 				//throwThis=null;
 				//rb=null;
@@ -41,7 +41,7 @@ public class demoThrow : MonoBehaviour {
 				rb=throwThis.GetComponent<Rigidbody>();
 			}
 
-			print ("grab");
+//			print ("grab");
 
 		} 
 
