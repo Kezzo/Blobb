@@ -242,6 +242,7 @@ public class Controls : MonoBehaviour
 			}
 
 			itemRigid.AddForce(resultingDirection * 100.0f,ForceMode.VelocityChange);
+			print ("Added Force!");
 
 			Collider[] colliders = item.GetComponents<Collider>();
 			for(int i=0; i<colliders.Length; i++)

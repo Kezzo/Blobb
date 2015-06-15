@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class elevatorcontroll : MonoBehaviour {
+public class elevatorcontroll : Button {
 	public GameObject door;
 	public GameObject otherButton;
 
@@ -27,8 +27,9 @@ public class elevatorcontroll : MonoBehaviour {
 
 	}
 
-	void OnTriggerEnter(Collider enter)
+	protected override void OnButtonActivation()
 	{
+		base.OnButtonActivation();
 		status = !status;
 		otherButton.SendMessage ("changeStatus");
 	}
