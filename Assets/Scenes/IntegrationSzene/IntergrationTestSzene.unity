@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletsShot: 0
-  targetHits: 0
+  targetHits: 2
 --- !u!4 &570243563 stripped
 Transform:
   m_PrefabParentObject: {fileID: 472416, guid: 17247acef6c0cb442830e16c24fccec1, type: 2}
@@ -376,7 +376,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1281672393
 MonoBehaviour:
   m_ObjectHideFlags: 0
