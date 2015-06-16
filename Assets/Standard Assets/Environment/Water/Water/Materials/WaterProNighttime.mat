@@ -91,8 +91,8 @@ Material:
         second: {r: 1, g: 1, b: 0, a: 0}
       data:
         first:
-          name: _ReflectionTex_ST
-        second: {r: 1, g: 1, b: 0, a: 0}
+          name: WaveSpeed
+        second: {r: 9, g: 4.5, b: -8, a: -3.5}
       data:
         first:
           name: _RefrColor
@@ -103,16 +103,16 @@ Material:
         second: {r: 1, g: 1, b: 0, a: 0}
       data:
         first:
-          name: WaveSpeed
-        second: {r: 9, g: 4.5, b: -8, a: -3.5}
-      data:
-        first:
           name: _ReflectiveColor_ST
         second: {r: 1, g: 1, b: 0, a: 0}
       data:
         first:
           name: _HorizonColor
         second: {r: .149019614, g: .282352954, b: .380392164, a: 0}
+      data:
+        first:
+          name: _ReflectionTex_ST
+        second: {r: 1, g: 1, b: 0, a: 0}
       data:
         first:
           name: _RefractionTex_ST
