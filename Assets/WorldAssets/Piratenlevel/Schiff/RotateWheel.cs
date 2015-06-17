@@ -36,6 +36,10 @@ public class RotateWheel : MonoBehaviour {
 		{
 			return _isGrabbing;
 		}
+		set
+		{
+			_isGrabbing = value;
+		}
 	}
 
 	// Use this for initialization
@@ -47,7 +51,13 @@ public class RotateWheel : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		_isGrabbing = false;
+		if (GameObject.Find ("Schiff").GetComponent<MoveShip> () != null) {
+			_isGrabbing = true;
+		} else 
+		{
+			_isGrabbing = false;
+		}
+
 		isRotation = IsRotation.Not;
 		if (_handsList.Count > 0) {
 

@@ -9,7 +9,7 @@ public class Schiffssteuerung : MonoBehaviour {
 	float previousRotationY;
 	RotateWheel rotateWheel;
 
-	bool shouldMove = true;
+	public bool shouldMove = true;
 	bool firstGrabHappened;
 
 	// Use this for initialization
