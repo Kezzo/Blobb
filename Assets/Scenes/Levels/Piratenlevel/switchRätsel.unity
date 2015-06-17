@@ -1754,11 +1754,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 153480, guid: 16827e91596788345b0192c9b1a8bd51, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 157466, guid: 16827e91596788345b0192c9b1a8bd51, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 16827e91596788345b0192c9b1a8bd51, type: 2}
@@ -3957,6 +3957,14 @@ Prefab:
     - target: {fileID: 182718, guid: de4dca288f87f664bba8680fbf94874f, type: 2}
       propertyPath: m_Name
       value: SwitchGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 11461644, guid: de4dca288f87f664bba8680fbf94874f, type: 2}
+      propertyPath: layerMask.m_Bits
+      value: 4294443003
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423622, guid: de4dca288f87f664bba8680fbf94874f, type: 2}
+      propertyPath: layerMask.m_Bits
+      value: 4294443003
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: de4dca288f87f664bba8680fbf94874f, type: 2}

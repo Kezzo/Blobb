@@ -8,7 +8,7 @@ public class GameReset : MonoBehaviour {
 	{
 		if(Input.GetKeyDown(KeyCode.Return))
 		{
-			Application.LoadLevel("Hub");
+			Application.LoadLevel(Application.loadedLevel);
 		}
 	}
 }

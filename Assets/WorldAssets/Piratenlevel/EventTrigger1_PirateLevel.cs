@@ -52,6 +52,7 @@ public class EventTrigger1_PirateLevel : MonoBehaviour {
 	{
 		for(int i=0; i<enemyShips.Length; i++)
 		{
+			enemyShips[i].SetActive(true);
 			enemyShips[i].transform.position = shipTransform.position;
 			enemyShips[i].transform.rotation = shipTransform.rotation;
 			if(i % 2 == 0)
