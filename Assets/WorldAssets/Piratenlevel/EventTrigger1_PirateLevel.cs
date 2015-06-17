@@ -26,15 +26,33 @@ public class EventTrigger1_PirateLevel : MonoBehaviour {
 		if(!alreadyTriggered && other.name == "Cargo")
 		{
 			alreadyTriggered = true;
-			other.transform.root.GetComponent<Schiffssteuerung>().setMovement(false);
-			spawnEnemyShips(other.transform.root.transform);
-			makeChildrenItems(other.transform.parent.gameObject);
-			ExplodeAt(other.transform.parent.transform.position);
-			makeShipWalkable();
-			this.GetComponent<Collider>().enabled = false;
-			eventTrigger2.enabled = true;
-			eventTrigger2.GetComponent<BoxCollider>().enabled = true;
-			eventTrigger2.setEnemyShips(enemyShips[0], enemyShips[1]);
+			if (GameObject.Find ("Schiff").GetComponent<MoveShip> () != null)
+			{
+				GameObject ship = GameObject.Find("Schiff");
+				ship.GetComponent<Schiffssteuerung>().setMovement(false);
+				print (other.transform.parent.name);
+				/*spawnEnemyShips(ship.transform);
+				makeChildrenItems(other.transform.parent.gameObject);
+				ExplodeAt(other.transform.parent.transform.position);
+				//makeShipWalkable();
+				this.GetComponent<Collider>().enabled = false;
+				eventTrigger2.enabled = true;
+				eventTrigger2.GetComponent<BoxCollider>().enabled = true;
+				eventTrigger2.setEnemyShips(enemyShips[0], enemyShips[1]);*/
+			}else
+			{
+				other.transform.root.GetComponent<Schiffssteuerung>().setMovement(false);
+				spawnEnemyShips(other.transform.root.transform);
+				makeChildrenItems(other.transform.parent.gameObject);
+				ExplodeAt(other.transform.parent.transform.position);
+				makeShipWalkable();
+				this.GetComponent<Collider>().enabled = false;
+				eventTrigger2.enabled = true;
+				eventTrigger2.GetComponent<BoxCollider>().enabled = true;
+				eventTrigger2.setEnemyShips(enemyShips[0], enemyShips[1]);
+			}
+
+
 		}
 		//print (other.name);
 	}
