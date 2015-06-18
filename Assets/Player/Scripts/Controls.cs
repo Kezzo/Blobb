@@ -4,6 +4,7 @@ using System.Collections;
 public class Controls : MonoBehaviour 
 {
 	SixenseInput.Controller hydra;
+
 	public bool isRightHydra;
 	public GameObject hand;
 	SphereCollider handCollider;
@@ -25,7 +26,13 @@ public class Controls : MonoBehaviour
 	MeshRenderer grabIndicator;
 
 	Vector3 previousHandPosition =  Vector3.zero;
+	Vector3 basePosition;
+	Vector3 initialPosition;
+	bool hydraStop = false;
 	Vector3 controllerPosition;
+
+	Rigidbody blobbRigid;
+	bool isGrabbingWorld = false;
 
 	public bool itemInTrigger{get; set;}
 	public GameObject item{get; set;}
@@ -48,6 +55,7 @@ public class Controls : MonoBehaviour
 
 	void Awake()
 	{
+		blobbRigid = this.GetComponent<Rigidbody>();
 		targetGrab = target.GetComponent<WorldTrigger>();
 		if(isRightHydra)
 		{
@@ -78,6 +86,7 @@ public class Controls : MonoBehaviour
 		if(isRightHydra)
 		{
 			hydra = SixenseInput.Controllers[1];
+			this.transform.Rotate(new Vector3(0.0f, hydra.JoystickX * Time.deltaTime * 100.0f, 0.0f));
 		}
 		else
 		{
@@ -86,7 +95,11 @@ public class Controls : MonoBehaviour
 
 		MoveHands();
 		CheckWhichGrab();
-
+		
+		if(isGrabbingWorld)
+		{
+			RotationMode();
+		}
 		previousHandPosition = hand.transform.position;
 	}
 
@@ -101,7 +114,7 @@ public class Controls : MonoBehaviour
 			}
 			else if(targetGrab.worldTrigger || (targetGrab.worldTrigger && targetGrab.playerTrigger && !itemInTrigger))
 			{
-
+				isGrabbingWorld = true;
 				GrabWorld(true);
 			}
 		}
@@ -113,6 +126,7 @@ public class Controls : MonoBehaviour
 			}
 			else
 			{
+				isGrabbingWorld = false;
 				GrabWorld(false);
 			}
 		}
@@ -137,36 +151,50 @@ public class Controls : MonoBehaviour
 		}
 	}
 
+	void RotationMode()
+	{
+		if(hydra.GetButtonDown(SixenseButtons.BUMPER))
+		{
+			blobbRigid.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+		}
+		else if(hydra.GetButtonUp(SixenseButtons.BUMPER))
+		{
+			blobbRigid.constraints = RigidbodyConstraints.None;
+			blobbRigid.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+		}
+	}
+
 	void MoveHands()
 	{
 		controllerPosition = new Vector3(hydra.Position.x * Sensitivity.x,
-		                                 hydra.Position.y * Sensitivity.y,
-		                                 hydra.Position.z * Sensitivity.z );
+		                                 hydra.Position.y * Sensitivity.y - controllerOffsetY,
+		                                 hydra.Position.z * Sensitivity.z + controllerOffsetZ );
 
-		if (hydra.GetButtonDown (SixenseButtons.START)) {
+		if (hydra.GetButtonDown (SixenseButtons.START) && !isGrabbingWorld) 
+		{
+			hydraStop = !hydraStop;
+			basePosition = controllerPosition;
 
-			controllerOffsetY = Mathf.Abs(controllerPosition.y - 1.0f);
+			initialPosition = target.gameObject.transform.localPosition;
 
-			controllerOffsetZ = Mathf.Abs(controllerPosition.z - 2.5f);
 		}
 
-		controllerPosition.y -= controllerOffsetY;
-		
-		controllerPosition.z += controllerOffsetZ;
-
-		if(_hydraActive)
+		if(!hydraStop)
 		{
-			target.transform.localPosition = controllerPosition;
-			target.transform.localRotation = hydra.Rotation;
-		}
-		else
-		{
-			configJoint.targetPosition = controllerPosition;
-			jDrive.mode = JointDriveMode.Position;
-			
-			configJoint.xDrive = jDrive;
-			configJoint.yDrive = jDrive;
-			configJoint.zDrive = jDrive;
+			if(_hydraActive)
+			{
+				target.transform.localPosition = controllerPosition - basePosition + initialPosition;
+				target.transform.localRotation = hydra.Rotation;
+			}
+			else
+			{
+				configJoint.targetPosition = controllerPosition - basePosition + initialPosition;
+				jDrive.mode = JointDriveMode.Position;
+				
+				configJoint.xDrive = jDrive;
+				configJoint.yDrive = jDrive;
+				configJoint.zDrive = jDrive;
+			}
 		}
 	}
 
@@ -203,8 +231,6 @@ public class Controls : MonoBehaviour
 						itemParent = item.transform.parent;
 					}
 				}
-
-
 			}
 
 			item.transform.parent = hand.transform;
@@ -241,7 +267,8 @@ public class Controls : MonoBehaviour
 				itemRigid.WakeUp();
 			}
 
-			itemRigid.AddForce(resultingDirection * 100.0f,ForceMode.VelocityChange);
+			itemRigid.AddForce(resultingDirection * 1/Time.deltaTime * 2.0f,ForceMode.VelocityChange);
+
 			print ("Added Force!");
 
 			Collider[] colliders = item.GetComponents<Collider>();
@@ -317,11 +344,15 @@ public class Controls : MonoBehaviour
 			handCollider.enabled = true;
 
 			grabIndicator.enabled = false;
+
+			blobbRigid.constraints = RigidbodyConstraints.None;
+			blobbRigid.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 		}
 	}
 
 	public void unGrabWorld()
 	{
+		isGrabbingWorld = false;
 		GrabWorld (false);
 	}
 
