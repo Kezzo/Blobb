@@ -8,12 +8,6 @@ public class elevatorcontroll : Button {
 	public bool status=false;
 	public bool controller=true;
 
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
 	// Update is called once per frame
 	void Update () {
 		if (controller == true) {
