@@ -4,6 +4,7 @@ using System.Collections;
 public class elevatorcontroll : Button {
 	public GameObject door;
 	public GameObject otherButton;
+	public bool levelSwitchCheck;
 
 	public bool status=false;
 	public bool controller=true;
@@ -26,6 +27,10 @@ public class elevatorcontroll : Button {
 		base.OnButtonActivation();
 		status = !status;
 		otherButton.SendMessage ("changeStatus");
+		if(levelSwitchCheck)
+		{
+			CheckForLevelSwitch();
+		}
 	}
 
 	void changeStatus(){
@@ -33,5 +38,13 @@ public class elevatorcontroll : Button {
 		status = !status;
 	}
 
+	void CheckForLevelSwitch()
+	{
+		GameObject levelTrigger = GameObject.Find("LevelSwitchTrigger");
+		if(levelTrigger != null)
+		{
+			levelTrigger.SendMessage("ChangeButtonState", true, SendMessageOptions.DontRequireReceiver);
+		}
+	}
 
 }

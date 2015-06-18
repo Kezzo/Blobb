@@ -2236,7 +2236,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 459516, guid: a19a6ad86aac42949aaa3a9b4d005044, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.83000004
+      value: 7.46000004
       objectReference: {fileID: 0}
     - target: {fileID: 459516, guid: a19a6ad86aac42949aaa3a9b4d005044, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2265,22 +2265,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a19a6ad86aac42949aaa3a9b4d005044, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &483094860 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 154290, guid: a19a6ad86aac42949aaa3a9b4d005044, type: 2}
-  m_PrefabInternal: {fileID: 483094859}
---- !u!114 &483094861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 483094860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b800bc27c18a9245bd02d6f3f295bfa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  staging: 1
 --- !u!1001 &495417876
 Prefab:
   m_ObjectHideFlags: 0
@@ -8217,7 +8201,7 @@ GameObject:
   - 4: {fileID: 1289387741}
   - 114: {fileID: 1289387740}
   m_Layer: 14
-  m_Name: StartingPoint
+  m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8241,7 +8225,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1289387739}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.58000004, z: 41.4799995}
+  m_LocalPosition: {x: -.0299999993, y: 1.58000004, z: 29.8299999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -11113,6 +11097,7 @@ MonoBehaviour:
   m_Script: {fileID: 1997211142, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_AllowActivationOnStandalone: 0
 --- !u!114 &1794864633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11124,6 +11109,12 @@ MonoBehaviour:
   m_Script: {fileID: 1077351063, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_AllowActivationOnMobileDevice: 0
 --- !u!114 &1794864634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11135,6 +11126,9 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 5
 --- !u!4 &1794864635
 Transform:
   m_ObjectHideFlags: 0
@@ -12685,7 +12679,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 457966, guid: 669277823f6adac4ea43cc7ab1861196, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -.769999981
       objectReference: {fileID: 0}
     - target: {fileID: 457966, guid: 669277823f6adac4ea43cc7ab1861196, type: 2}
       propertyPath: m_LocalPosition.y
@@ -12722,6 +12716,22 @@ Prefab:
     - target: {fileID: 11494234, guid: 669277823f6adac4ea43cc7ab1861196, type: 2}
       propertyPath: levelName
       value: pirates
+      objectReference: {fileID: 0}
+    - target: {fileID: 11466324, guid: 669277823f6adac4ea43cc7ab1861196, type: 2}
+      propertyPath: isLocked
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 496474, guid: 669277823f6adac4ea43cc7ab1861196, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 4.38000011
+      objectReference: {fileID: 0}
+    - target: {fileID: 11494234, guid: 669277823f6adac4ea43cc7ab1861196, type: 2}
+      propertyPath: buttonNeeded
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 496474, guid: 669277823f6adac4ea43cc7ab1861196, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 3.33999991
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 669277823f6adac4ea43cc7ab1861196, type: 2}
@@ -14079,52 +14089,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2094667041}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &2120096412
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 457966, guid: 669277823f6adac4ea43cc7ab1861196, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -19.3199997
-      objectReference: {fileID: 0}
-    - target: {fileID: 457966, guid: 669277823f6adac4ea43cc7ab1861196, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 457966, guid: 669277823f6adac4ea43cc7ab1861196, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 25.7900009
-      objectReference: {fileID: 0}
-    - target: {fileID: 457966, guid: 669277823f6adac4ea43cc7ab1861196, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 457966, guid: 669277823f6adac4ea43cc7ab1861196, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -.707106829
-      objectReference: {fileID: 0}
-    - target: {fileID: 457966, guid: 669277823f6adac4ea43cc7ab1861196, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 457966, guid: 669277823f6adac4ea43cc7ab1861196, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: .707106709
-      objectReference: {fileID: 0}
-    - target: {fileID: 457966, guid: 669277823f6adac4ea43cc7ab1861196, type: 2}
-      propertyPath: m_RootOrder
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 11494234, guid: 669277823f6adac4ea43cc7ab1861196, type: 2}
-      propertyPath: levelName
-      value: pirates
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 669277823f6adac4ea43cc7ab1861196, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &2123297917
 GameObject:
   m_ObjectHideFlags: 0

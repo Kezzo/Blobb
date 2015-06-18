@@ -4,7 +4,7 @@ using System.Collections;
 public class AsynchronousLevelChange : MonoBehaviour {
 
 	public string levelName;
-	public bool returning;
+	public bool buttonNeeded;
 
 	GameObject player;
 	GameObject leftTarget;
@@ -44,15 +44,19 @@ public class AsynchronousLevelChange : MonoBehaviour {
 		}
 	}
 
+	void ChangeButtonState(bool value)
+	{
+		buttonNeeded = value;
+	}
+
 	void ChangeLevel()
 	{
 		if(leftTarget.transform.IsChildOf(player.transform) == true && rightTarget.transform.IsChildOf(player.transform) == true)
 		{
-			if(returning)
+			if(buttonNeeded)
 			{
-				GameManagement.returning = true;
+				Application.LoadLevelAsync(levelName);
 			}
-			Application.LoadLevelAsync(levelName);
 		}
 	}
 }

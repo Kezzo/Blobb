@@ -10,17 +10,23 @@ public class PlayerTransform : MonoBehaviour {
 	void Start()
 	{
 		player = GameObject.Find("Player");
+		if(player != null)
+		{
+			player.transform.localPosition = Vector3.zero;
+			player.transform.position = Vector3.zero;
+		}
 	}
 
 	void Update()
 	{
-		if(GameObject.Find("Player") != null && !positioned)
+		if(player != null && !positioned)
 		{
 
-			player.transform.localPosition = Vector3.zero;
-			player.transform.position = Vector3.zero;
-			player.transform.parent = null;
-			player.transform.localScale = Vector3.one;
+			//player.transform.localPosition = Vector3.zero;
+			//player.transform.position = Vector3.zero;
+			//player.transform.parent = null;
+			//player.transform.localScale = Vector3.one;
+
 			//print ("Player found");
 			//player.transform.localPosition = Vector3.zero;
 			//player.transform.position = this.transform.position;

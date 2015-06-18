@@ -3,8 +3,6 @@ using System.Collections;
 
 public class GameManagement : MonoBehaviour {
 
-	public static bool returning = false;
-
 	private static GameManagement privateGameManagerInstance;
 	
 	public static GameManagement publicPGameManagerInstance
@@ -49,19 +47,6 @@ public class GameManagement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Application.LoadLevelAsync(1);
-	}
-
-	void OnLevelWasLoaded(int level)
-	{
-		if(level == 1)
-		{
-			if(returning)
-			{
-				GameObject.Find("Statue_Passage").SendMessage("ReturnHub", true, SendMessageOptions.DontRequireReceiver);
-				returning = false;
-			}
-		}
-		//print (level);
 	}
 
 	void OnApplicationQuit()
