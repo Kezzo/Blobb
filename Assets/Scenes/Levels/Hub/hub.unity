@@ -44,7 +44,7 @@ LevelGameManager:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 5
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_LightmapsMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -68,7 +68,7 @@ LightmapSettings:
     m_TextureCompression: 1
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
-  m_LightmapSnapshot: {fileID: 112000000, guid: 732bc111aca9b1e4d91c3efbae8fd082,
+  m_LightmapSnapshot: {fileID: 112000000, guid: 65d390ac58e1e814e842994bba39d232,
     type: 2}
   m_RuntimeCPUUsage: 25
 --- !u!196 &5
@@ -303,13 +303,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc986cf6bbf153344be4099ca5a96f25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isLocked: 0
   leftDoorPart: {fileID: 1551059790}
   rightDoorPart: {fileID: 951439986}
-  DoorHeight: 6
   openDoor: 0
   leftSpeed: 10
   rightSpeed: 8
+  openHorizontal: 0
+  isLocked: 0
+  doorOpenedOffSet: .100000001
 --- !u!65 &58675192
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2279,7 +2280,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b800bc27c18a9245bd02d6f3f295bfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statuePassaging: 0
   staging: 1
 --- !u!1001 &495417876
 Prefab:

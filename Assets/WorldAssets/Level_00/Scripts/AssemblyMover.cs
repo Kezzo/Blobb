@@ -27,4 +27,13 @@ public class AssemblyMover : MonoBehaviour {
 	{
 		move = false;
 	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		print (other.name);
+		if(toMove == null && other.name.Contains("Blobb"))
+		{
+			toMove = other.transform.root.gameObject;
+		}
+	}
 }
