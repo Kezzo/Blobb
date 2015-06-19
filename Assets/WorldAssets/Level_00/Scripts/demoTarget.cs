@@ -6,6 +6,7 @@ public class demoTarget : MonoBehaviour {
 	public Material wasHitMaterial;
 	public Material notHitMaterial;
 	public GameObject activateThis;
+	public GameObject deactivateThis;
 	MeshRenderer meshRenderer;
 	Material[] materials;
 	bool change=false;
@@ -43,6 +44,9 @@ public class demoTarget : MonoBehaviour {
 		change = true;
 		if (activateThis) {
 			activateThis.SendMessage("openDoor");
+		}
+		if (deactivateThis) {
+			deactivateThis.SendMessage("deactivate");
 		}
 	}
 }
