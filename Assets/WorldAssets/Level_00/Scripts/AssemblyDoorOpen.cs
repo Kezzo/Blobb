@@ -7,12 +7,18 @@ public class AssemblyDoorOpen : MonoBehaviour {
 	public bool lockIt;
 	public bool openOnTrigger=true;
 	bool locked = false;
+	public bool down=false;
 	Vector3 startPos;
 	Vector3 upPos;
+
 	// Use this for initialization
 	void Start () {
 		startPos = transform.position;
-		upPos = transform.position + new Vector3(0, 4.0f, 0);
+		if (down == false) {
+			upPos = transform.position + new Vector3 (0, 4.0f, 0);
+		} else {
+			upPos = transform.position + new Vector3 (0, -4.0f, 0);
+		}
 	}
 	
 	// Update is called once per frame
@@ -40,7 +46,14 @@ public class AssemblyDoorOpen : MonoBehaviour {
 				//print ("enter");
 				open=true;
 				close=false;
-			}}
+
+			}
+			if (enter.CompareTag ("Mover")) {
+				//print ("enter");
+				open=true;
+				close=false;
+			}
+		}
 
 
 	}
@@ -48,6 +61,12 @@ public class AssemblyDoorOpen : MonoBehaviour {
 	{
 		if (openOnTrigger == true) {
 			if (exit.CompareTag ("Player")) {
+				//print ("exit");
+				open=false;
+				close=true;
+				//
+			}
+			if (exit.CompareTag ("Mover")) {
 				//print ("exit");
 				open=false;
 				close=true;

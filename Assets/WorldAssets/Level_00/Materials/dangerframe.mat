@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: threadmill other
+  m_Name: dangerframe
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _NORMALMAP
   m_LightmapFlags: 5
@@ -18,14 +18,14 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 5, y: 1}
+          m_Texture: {fileID: 2800000, guid: a74a5888e32d1244a8775a1abc1d13ed, type: 3}
+          m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _BumpMap
         second:
-          m_Texture: {fileID: 2800000, guid: cb1d041ed6e67c942b72e6ae0ff572bc, type: 3}
+          m_Texture: {fileID: 2800000, guid: ea860c76e75258f4c8e3c92f527ab4bc, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -40,7 +40,7 @@ Material:
           name: _EmissionMap
         second:
           m_Texture: {fileID: 0}
-          m_Scale: {x: 5, y: 1}
+          m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
@@ -105,7 +105,7 @@ Material:
       data:
         first:
           name: _BumpScale
-        second: 3.77999997
+        second: 1
       data:
         first:
           name: _OcclusionStrength
@@ -138,7 +138,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .0588235259, g: .0588235259, b: .0588235259, a: 1}
+        second: {r: .800000012, g: .800000012, b: .800000012, a: 1}
       data:
         first:
           name: _EmissionColorUI
