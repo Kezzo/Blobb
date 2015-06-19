@@ -16,6 +16,7 @@ public class destroyDemoBalls : MonoBehaviour {
 	void OnTriggerEnter(Collider enter)
 	{
 		if (enter.CompareTag ("Item")) {
+
 			Destroy (enter.gameObject, destroytime);
 		}
 
