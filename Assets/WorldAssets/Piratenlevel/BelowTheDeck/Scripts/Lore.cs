@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Lore : MonoBehaviour {
 
-	public Transform rift;
+	Transform rift;
 	// Use this for initialization
 	void Start () {
 	
@@ -13,6 +13,10 @@ public class Lore : MonoBehaviour {
 	void Update () 
 	{
 		this.transform.Translate(Vector3.forward * 2 * Time.deltaTime);
+
+		this.transform.Translate(Vector3.right *Time.deltaTime * 15.0f * Input.GetAxis("Horizontal")/8.0f);
+
+		/*
 		if(rift.transform.localEulerAngles.z > 180.0f)
 		{
 			this.transform.Translate(Vector3.right *Time.deltaTime * 15.0f * (1.0f - rift.transform.localEulerAngles.z/360));
@@ -21,6 +25,15 @@ public class Lore : MonoBehaviour {
 		{
 			this.transform.Translate(Vector3.left * Time.deltaTime * 15.0f * rift.transform.localEulerAngles.z/360.0f);
 		}
+		*/
 
+	}
+
+	void OnCollisionEnter(Collision info)
+	{
+		if(info.collider.tag == "Player")
+		{
+			info.collider.transform.parent.parent = this.transform;
+		}
 	}
 }
