@@ -68,11 +68,11 @@ public class Lamp : MonoBehaviour,Item  {
 
 		if(equipped)
 		{
-			if(Mathf.Abs(positionNow.x + positionNow.y + positionNow.z - positionLastFrame.x - positionLastFrame.y - positionLastFrame.z) > .05f)
+			if(Mathf.Abs(positionNow.x + positionNow.y + positionNow.z - positionLastFrame.x - positionLastFrame.y - positionLastFrame.z) > .03f)
 			{
 				shakeCounter++;
 
-				if(shakeCounter > 25)
+				if(shakeCounter > 20)
 				{
 					print ("Shake");
 					flickering = false;
