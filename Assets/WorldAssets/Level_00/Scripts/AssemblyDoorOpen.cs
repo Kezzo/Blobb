@@ -2,11 +2,11 @@
 using System.Collections;
 
 public class AssemblyDoorOpen : MonoBehaviour {
-	bool open=false;
+	public bool open=false;
 	bool close=false;
 	public bool lockIt;
 	public bool openOnTrigger=true;
-	bool locked = false;
+	public bool locked = false;
 	public bool down=false;
 	Vector3 startPos;
 	Vector3 upPos;
@@ -78,8 +78,16 @@ public class AssemblyDoorOpen : MonoBehaviour {
 
 	void openDoor(){
 
-		open=true;
-		close=false;
+		if(!locked)
+		{
+			open=true;
+			close=false;
+		}
+		else
+		{
+			locked = false;
+		}
+
 	}
 
 	void closeDoor(){

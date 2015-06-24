@@ -82,7 +82,7 @@ public class AssemblyMover : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		print (other.name);
+//		print (other.name);
 		if(toMove == null && other.name.Contains("Blobb"))
 		{
 			toMove = other.transform.root.gameObject;

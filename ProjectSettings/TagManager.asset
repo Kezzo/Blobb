@@ -9,6 +9,7 @@ TagManager:
   - Targets
   - UsableWorld
   - Mover
+  - Fire
   layers:
   - Default
   - TransparentFX
@@ -26,10 +27,10 @@ TagManager:
   - CurrentItem
   - Usable
   - IgnoreItems
-  - DontCollideWithItSelf
-  - 3rdPerson Player Model
-  - 1stPerson Player Model
-  - "BlockerSchieber\xE4stel"
+  - DontCollideWithSelf
+  - 3rdPPModel
+  - 1stPPModel
+  - "BlockSchiebr\xE4stel"
   - 
   - 
   - 

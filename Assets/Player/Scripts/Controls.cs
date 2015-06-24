@@ -249,11 +249,13 @@ public class Controls : MonoBehaviour
 	void ThrowOrStoreItem()
 	{
 		Vector3 resultingDirection = (hand.transform.position - previousHandPosition);
+
+		// To track if handmovement is quick enough that the player wants to throw
 		float maxThrowForce = Mathf.Abs(Mathf.Max(resultingDirection.x, resultingDirection.y, resultingDirection.z)) * 10.0f;
 
 		//Debug.Log(maxThrowForce);
 
-		if(inventory.isItemTouchingInventory(item.gameObject) && maxThrowForce < 0.1f)
+		if(inventory.isItemTouchingInventory(item.gameObject) && maxThrowForce < 0.01f)
 		{
 			inventory.storeItem(item, itemIsUsable, itemParent);
 		}
@@ -269,7 +271,7 @@ public class Controls : MonoBehaviour
 
 			itemRigid.AddForce(resultingDirection * 1/Time.deltaTime * 2.0f,ForceMode.VelocityChange);
 
-			print ("Added Force!");
+			//print ("Added Force!");
 
 			Collider[] colliders = item.GetComponents<Collider>();
 			for(int i=0; i<colliders.Length; i++)

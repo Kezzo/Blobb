@@ -25,12 +25,13 @@ public class demoTarget : MonoBehaviour {
 			materials[1] = wasHitMaterial;
 			meshRenderer.materials = materials;
 			counter-=Time.deltaTime;
-			if(counter<0)
+
+			/*if(counter<0)
 			{
 				change=false;
 				changeback=true;
 				counter=0.2f;
-			}
+			}*/
 		}
 		if (changeback == true) {
 			materials[1] = notHitMaterial;
@@ -41,12 +42,15 @@ public class demoTarget : MonoBehaviour {
 
 	void OnCollisionEnter(Collision enter)
 	{
-		change = true;
-		if (activateThis) {
-			activateThis.SendMessage("openDoor");
-		}
-		if (deactivateThis) {
-			deactivateThis.SendMessage("deactivate");
+		if((enter.collider.name.Contains("Ball") || enter.collider.name.Contains("Bullet"))  && !change)
+		{
+			change = true;
+			if (activateThis) {
+				activateThis.SendMessage("openDoor");
+			}
+			if (deactivateThis) {
+				//deactivateThis.SendMessage("deactivate");
+			}
 		}
 	}
 }
