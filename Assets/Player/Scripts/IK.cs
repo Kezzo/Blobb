@@ -12,6 +12,9 @@ public class IK : MonoBehaviour
 	public Transform centerEye;
 	public bool ikActive = false;
 
+	public Transform targetFollowLeft;
+	public Transform targetFollowRight;
+
 	void Awake () 
 	{
 		animator = this.GetComponent<Animator>();
@@ -27,13 +30,13 @@ public class IK : MonoBehaviour
 				if(rightTarget != null) {
 					animator.SetIKPositionWeight(AvatarIKGoal.RightHand,2);
 					animator.SetIKRotationWeight(AvatarIKGoal.RightHand,2);  
-					animator.SetIKPosition(AvatarIKGoal.RightHand,rightTarget.position);
+					animator.SetIKPosition(AvatarIKGoal.RightHand,targetFollowRight.position);
 					animator.SetIKRotation(AvatarIKGoal.RightHand,rightTarget.rotation);
 				}   
 				if(leftTarget != null) {
 					animator.SetIKPositionWeight(AvatarIKGoal.LeftHand,2);
 					animator.SetIKRotationWeight(AvatarIKGoal.LeftHand,2);  
-					animator.SetIKPosition(AvatarIKGoal.LeftHand,leftTarget.position);
+					animator.SetIKPosition(AvatarIKGoal.LeftHand,targetFollowLeft.position);
 					animator.SetIKRotation(AvatarIKGoal.LeftHand,leftTarget.rotation);
 				} 
 				if(centerEye != null) {
@@ -55,7 +58,7 @@ public class IK : MonoBehaviour
 	void LateUpdate()
 	{
 		//allow the Tentacles to follow their Targets, i.e stretching
-		rightHand.transform.position = rightTarget.transform.position;
-		leftHand.transform.position = leftTarget.transform.position;
+		rightHand.position = targetFollowRight.position;
+		leftHand.position = targetFollowLeft.position;
 	}
 }
