@@ -27,7 +27,6 @@ public class demoball_spawner : MonoBehaviour {
 	}
 
 	public void deactivate(){
-
 		active = false;
 	}
 }

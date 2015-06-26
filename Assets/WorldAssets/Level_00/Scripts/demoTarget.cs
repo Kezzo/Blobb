@@ -46,7 +46,7 @@ public class demoTarget : MonoBehaviour {
 		{
 			change = true;
 			if (activateThis) {
-				activateThis.SendMessage("openDoor");
+				activateThis.SendMessage("OpenDoor");
 			}
 			if (deactivateThis) {
 				//deactivateThis.SendMessage("deactivate");

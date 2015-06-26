@@ -41,39 +41,29 @@ public class AssemblyDoorOpen : MonoBehaviour {
 
 	void OnTriggerEnter(Collider enter)
 	{
-		if (openOnTrigger == true) {
-			if (enter.CompareTag ("Player")) {
+		if (openOnTrigger == true) 
+		{
+			if (enter.gameObject.name.Contains("Blobb")) 
+			{
 				//print ("enter");
-				open=true;
-				close=false;
-
-			}
-			if (enter.CompareTag ("Mover")) {
-				//print ("enter");
-				open=true;
-				close=false;
+				//print (enter.name);
+				//open=true;
+				//close=false;
 			}
 		}
-
-
 	}
+
 	void OnTriggerExit(Collider exit)
 	{
-		if (openOnTrigger == true) {
-			if (exit.CompareTag ("Player")) {
+		if (openOnTrigger == true) 
+		{
+			if (exit.gameObject.name.Contains("Blobb")) 
+			{
 				//print ("exit");
 				open=false;
-				close=true;
-				//
+				//close=true;
 			}
-			if (exit.CompareTag ("Mover")) {
-				//print ("exit");
-				open=false;
-				close=true;
-				//
-			}}
-
-	
+		}
 	}
 
 	void openDoor(){

@@ -55,6 +55,8 @@ public class Controls : MonoBehaviour
 
 	public Transform targetFollower;
 
+	public GameObject keybindUI = null;
+
 	void Awake()
 	{
 		blobbRigid = this.GetComponent<Rigidbody>();
@@ -88,12 +90,13 @@ public class Controls : MonoBehaviour
 		if(isRightHydra)
 		{
 			hydra = SixenseInput.Controllers[1];
-			this.transform.Rotate(new Vector3(0.0f, hydra.JoystickX * Time.deltaTime * 100.0f, 0.0f));
 		}
 		else
 		{
 			hydra = SixenseInput.Controllers[0];
 		}
+
+		this.transform.Rotate(new Vector3(0.0f, hydra.JoystickX * Time.deltaTime * 100.0f, 0.0f));
 
 		MoveHands();
 		CheckWhichGrab();
@@ -103,6 +106,11 @@ public class Controls : MonoBehaviour
 			RotationMode();
 		}
 		previousHandPosition = hand.transform.position;
+
+		if(keybindUI != null)
+		{
+			ToogleKeyBindUI();
+		}
 	}
 
 	void CheckWhichGrab()
@@ -363,6 +371,14 @@ public class Controls : MonoBehaviour
 	public bool getHydraStatus()
 	{
 		return _hydraActive;
+	}
+
+	void ToogleKeyBindUI()
+	{
+		if(hydra.GetButtonDown(SixenseButtons.JOYSTICK))
+		{
+			keybindUI.SetActive(!keybindUI.activeInHierarchy);
+		}
 	}
 
 	//After we ungrab an item, to check if item under the world, if then teleport over world

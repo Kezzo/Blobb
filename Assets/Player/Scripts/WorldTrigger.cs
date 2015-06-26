@@ -16,10 +16,6 @@ public class WorldTrigger : MonoBehaviour {
 		if(info.tag == "World")
 		{
 			worldInTrigger = true;
-			if(this.name.Contains("Right"))
-			{
-				print (info.name);
-			}
 		}
 		if(info.tag == "Player")
 		{
@@ -35,7 +31,7 @@ public class WorldTrigger : MonoBehaviour {
 		}
 		else
 		{
-			worldInTrigger = false;
+			//worldInTrigger = false;
 		}
 
 		if(info.tag == "Player")

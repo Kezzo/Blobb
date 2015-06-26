@@ -3,8 +3,7 @@ using System.Collections;
 
 public class DoorOpener : MonoBehaviour
 {
-	public GameObject leftDoorPart;
-	public GameObject rightDoorPart;
+	public GameObject[] doorParts;
 
 	public bool openDoor = false;
 
@@ -14,33 +13,29 @@ public class DoorOpener : MonoBehaviour
 	[Range(1.0f,20.0f)]
 	public float rightSpeed = 8f;
 
+	float[] openingSteps = new float[2];
+
 	public bool openHorizontal;
 
 	bool isMoving;
 	public bool isLocked = true;
 
-	
-	Vector3 leftDoorPosition;
-	Vector3 rightDoorPosition;
 	public float doorOpenedOffSet = 0.1f;  // to ensure no mesh clipping is happening
 
-	Vector3[] doorPositions = new Vector3[6];
-
-	float leftStep;
-	float rightStep;
+	Vector3[,] doorPositions;
 
 	Vector3 previousRootPosition;
 
 	void Start()
 	{
+		doorPositions = new Vector3[doorParts.Length,3];
+		
 		ConfigureBasePositions(true);
 	}
 
 	// Update is called once per frame
 	void Update ()
 	{
-		//ConfigureBasePositions();
-
 		if(previousRootPosition != this.transform.position)
 		{
 			isMoving = true;
@@ -52,31 +47,37 @@ public class DoorOpener : MonoBehaviour
 
 		if(!isMoving && !isLocked)
 		{
-			float leftStep = leftSpeed * Time.deltaTime;
-			float rightStep = rightSpeed * Time.deltaTime;
+			openingSteps[0] = leftSpeed * Time.deltaTime;
+			openingSteps[1] = rightSpeed * Time.deltaTime;
 			
 			if (!openDoor) 
 			{
-				leftDoorPart.transform.localPosition = Vector3.MoveTowards (leftDoorPart.transform.localPosition, doorPositions[0], leftStep);
-				rightDoorPart.transform.localPosition = Vector3.MoveTowards (rightDoorPart.transform.localPosition, doorPositions[1], rightStep);		
+				for(int i=0; i<doorParts.Length; i++)
+				{
+					doorParts[i].transform.localPosition = Vector3.MoveTowards (doorParts[i].transform.localPosition, doorPositions[i,0], openingSteps[i]);
+				}		
 			}
 			else
 			{
 				if(openHorizontal)
 				{
-					leftDoorPart.transform.localPosition = Vector3.MoveTowards (leftDoorPart.transform.localPosition, doorPositions[2], leftStep);
-					rightDoorPart.transform.localPosition = Vector3.MoveTowards (rightDoorPart.transform.localPosition, doorPositions[3], rightStep);
+					for(int i=0; i<doorParts.Length; i++)
+					{
+						doorParts[i].transform.localPosition = Vector3.MoveTowards (doorParts[i].transform.localPosition, doorPositions[i,1], openingSteps[i]);
+					}
 				}
 				else
 				{
-					leftDoorPart.transform.localPosition = Vector3.MoveTowards (leftDoorPart.transform.localPosition, doorPositions[4], leftStep);
-					rightDoorPart.transform.localPosition = Vector3.MoveTowards (rightDoorPart.transform.localPosition, doorPositions[5], rightStep);
+					for(int i=0; i<doorParts.Length; i++)
+					{
+						doorParts[i].transform.localPosition = Vector3.MoveTowards (doorParts[i].transform.localPosition, doorPositions[i,2], openingSteps[i]);
+					}
 				}
 			}
 		}
 		else
 		{
-			if(leftDoorPosition != leftDoorPart.transform.position || rightDoorPosition != rightDoorPart.transform.position)
+			if(doorPositions[0,0] != doorParts[0].transform.position)
 			{
 				ConfigureBasePositions(false);
 			}
@@ -88,30 +89,32 @@ public class DoorOpener : MonoBehaviour
 
 	void ConfigureBasePositions(bool isOnStart)
 	{
-		leftDoorPosition = leftDoorPart.transform.localPosition;
-		rightDoorPosition = rightDoorPart.transform.localPosition;
-
 		// Closed Door Positions
-		doorPositions[0] = leftDoorPosition;
-		doorPositions[1] = rightDoorPosition;
-		
+		for(int i=0; i<doorParts.Length; i++)
+		{
+			doorPositions[i,0] = doorParts[i].transform.localPosition;
+		}
+
 		// Opened Door Position
-		doorPositions[2] = new Vector3(leftDoorPosition.x - leftDoorPart.GetComponent<MeshRenderer>().bounds.size.x + doorOpenedOffSet, 
-		                               leftDoorPosition.y, 
-		                               leftDoorPosition.z);
+		doorPositions[0,1] = new Vector3(doorPositions[0,0].x - doorParts[0].GetComponent<MeshRenderer>().bounds.size.x + doorOpenedOffSet, 
+		                                 doorPositions[0,0].y, 
+		                                 doorPositions[0,0].z);
 
-		doorPositions[3] = new Vector3(rightDoorPosition.x + rightDoorPart.GetComponent<MeshRenderer>().bounds.size.x - doorOpenedOffSet, 
-		                               rightDoorPosition.y, 
-		                               rightDoorPosition.z);
+		doorPositions[0,2] = new Vector3(doorPositions[0,0].x, 
+		                                 doorPositions[0,0].y - doorParts[0].GetComponent<MeshRenderer>().bounds.size.y - doorOpenedOffSet, 
+		                                 doorPositions[0,0].z);
 
-		doorPositions[4] = new Vector3(leftDoorPosition.x, 
-		                               leftDoorPosition.y - leftDoorPart.GetComponent<MeshRenderer>().bounds.size.y - doorOpenedOffSet, 
-		                               leftDoorPosition.z);
-		
-		doorPositions[5] = new Vector3(rightDoorPosition.x, 
-		                               rightDoorPosition.y - rightDoorPart.GetComponent<MeshRenderer>().bounds.size.y - doorOpenedOffSet, 
-		                               rightDoorPosition.z);
-		
+		if(doorParts.Length > 1)
+		{
+			doorPositions[1,1] = new Vector3(doorPositions[1,0].x + doorParts[1].GetComponent<MeshRenderer>().bounds.size.x - doorOpenedOffSet, 
+			                                 doorPositions[1,0].y, 
+			                                 doorPositions[1,0].z);
+			
+			doorPositions[1,2] = new Vector3(doorPositions[1,0].x, 
+			                                 doorPositions[1,0].y - doorParts[1].GetComponent<MeshRenderer>().bounds.size.y - doorOpenedOffSet, 
+			                                 doorPositions[1,0].z);
+		}
+
 	}
 
 	void OnTriggerEnter (Collider objectCollider)
@@ -134,6 +137,19 @@ public class DoorOpener : MonoBehaviour
 		{
 			openDoor = false;
 		}
+	}
+
+	void OpenDoor(){
+		
+		if(!isLocked)
+		{
+			openDoor=true;
+		}
+		else
+		{
+			isLocked = false;
+		}
+		
 	}
 }
 

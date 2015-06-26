@@ -44,7 +44,7 @@ LevelGameManager:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 5
-  m_GIWorkflowMode: 1
+  m_GIWorkflowMode: 0
   m_LightmapsMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -132,6 +132,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc986cf6bbf153344be4099ca5a96f25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorParts:
+  - {fileID: 448615476}
+  - {fileID: 999236426}
   leftDoorPart: {fileID: 448615476}
   rightDoorPart: {fileID: 999236426}
   openDoor: 0

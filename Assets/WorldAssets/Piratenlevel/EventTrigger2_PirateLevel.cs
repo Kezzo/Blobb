@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class EventTrigger2_PirateLevel : MonoBehaviour {
 	
-	int enemyShipsSanked = 0;
+//	int enemyShipsSanked = 0;
 	int cargoOnBoard = 0;
 	bool allShipsSank;
 	bool allCargoOnBoard;

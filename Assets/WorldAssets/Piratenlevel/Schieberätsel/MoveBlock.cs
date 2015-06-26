@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MoveBlock : MonoBehaviour {
 
-	SixenseInput.Controller hydra;
+	//SixenseInput.Controller hydra;
 
 	float step = 0.2f;
 	bool pushBlock = true;
@@ -12,7 +12,7 @@ public class MoveBlock : MonoBehaviour {
 	}
 
 	void Update () {
-		hydra = SixenseInput.Controllers[1];
+		//hydra = SixenseInput.Controllers[1];
 	}
 	void OnTriggerEnter (Collider objectCollider)
 	{

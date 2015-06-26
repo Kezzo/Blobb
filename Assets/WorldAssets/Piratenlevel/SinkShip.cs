@@ -6,13 +6,13 @@ public class SinkShip : MonoBehaviour
 	int hits;
 	bool isSinking;
 
-	Vector3 startPosition;
-	Vector3 endPosition;
+	//Vector3 startPosition;
+	//Vector3 endPosition;
 
 	void Start()
 	{
-		startPosition = this.transform.position;
-		endPosition = new Vector3(startPosition.x, startPosition.y-50.0f, startPosition.z);
+		//startPosition = this.transform.position;
+		//endPosition = new Vector3(startPosition.x, startPosition.y-50.0f, startPosition.z);
 	}
 
 	void Update()

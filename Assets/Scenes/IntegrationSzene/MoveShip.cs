@@ -2,13 +2,13 @@
 using System.Collections;
 
 public class MoveShip : MonoBehaviour {
-	
-	Schiffssteuerung schiffsteuerung;
+
+	//Schiffssteuerung schiffsteuerung;
 
 	Rigidbody rb;
 	// Use this for initialization
 	void Start () {
-		schiffsteuerung = GameObject.Find ("Schiff").GetComponent<Schiffssteuerung> ();
+		//schiffsteuerung = GameObject.Find ("Schiff").GetComponent<Schiffssteuerung> ();
 
 		rb = GetComponent<Rigidbody> ();
 		rb.AddForce (0, 0, 5);

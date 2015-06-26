@@ -5,6 +5,11 @@ public class OnCollisionTest : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision)
 	{
-		print (collision.collider.name);
+		print ("CollisionTest: "+collision.collider.name);
+	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		print ("TriggerTest: "+other.name);
 	}
 }
