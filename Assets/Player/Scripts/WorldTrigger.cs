@@ -3,20 +3,39 @@ using System.Collections;
 
 public class WorldTrigger : MonoBehaviour {
 
-	public bool worldTrigger{get; set;}
+	public bool worldInTrigger{get; set;}
 	public bool playerTrigger{get; set;}
-	
-	void OnTriggerStay(Collider info)
+
+	void Update()
 	{
-		//print ("TriggerEnter "+info.tag+" "+info.name);
-		
+
+	}
+
+	void OnTriggerEnter(Collider info)
+	{
 		if(info.tag == "World")
 		{
-			worldTrigger = true;
+			worldInTrigger = true;
+			if(this.name.Contains("Right"))
+			{
+				print (info.name);
+			}
+		}
+		if(info.tag == "Player")
+		{
+			playerTrigger = true;
+		}
+	}
+
+	void OnTriggerStay(Collider info)
+	{
+		if(info.tag == "World")
+		{
+			worldInTrigger = true;
 		}
 		else
 		{
-			worldTrigger = false;
+			worldInTrigger = false;
 		}
 
 		if(info.tag == "Player")
@@ -35,7 +54,7 @@ public class WorldTrigger : MonoBehaviour {
 		//print ("TriggerExit"+info.tag);
 		if(info.tag == "World")
 		{
-			worldTrigger = false;
+			worldInTrigger = false;
 		}
 
 		if(info.tag == "Player")

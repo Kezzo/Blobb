@@ -4,7 +4,7 @@ using System.Collections;
 public class FollowTargets2 : MonoBehaviour {
 
 	bool collided;
-	Collider collider;
+	Collider currentCollider;
 
 	public Transform shoulder;
 	public Transform inputTarget;
@@ -21,12 +21,12 @@ public class FollowTargets2 : MonoBehaviour {
 			Ray ray = new Ray(shoulder.position, inputTarget.position - shoulder.position);
 			RaycastHit hit;
 			
-			Vector3 dir = inputTarget.position - shoulder.position;
+			Vector3 raycastDirection = inputTarget.position - shoulder.position;
 			//int rcLayers = Physics.DefaultRaycastLayers & ~(1<<9);
-			if (Physics.Raycast(ray, out hit, dir.magnitude + 0.05f, rcLayers))
+			if (Physics.Raycast(ray, out hit, raycastDirection.magnitude + 0.1f, rcLayers))
 			{
-				print(hit.collider.gameObject.name);
-				Vector3 contactPoint = hit.point - dir.normalized * 0.05f;
+				//				print(hit.collider.gameObject.name);
+				Vector3 contactPoint = hit.point - raycastDirection.normalized * 0.1f;
 				transform.position = contactPoint;
 			} else
 				transform.position = inputTarget.position;
@@ -38,14 +38,14 @@ public class FollowTargets2 : MonoBehaviour {
 	public void OnTriggerEnter(Collider other) {
 		if (!collided && other.gameObject.layer == 11) {
 			collided = true;
-			collider = other;
+			currentCollider = other;
 		}
 	}
 	
 	public void OnTriggerExit(Collider other) {
-		if (collided && other == collider) {
+		if (collided && other == currentCollider) {
 			collided = false;
-			collider = null;
+			currentCollider = null;
 		}
 	}
 }

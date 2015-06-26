@@ -10,6 +10,8 @@ public class AsynchronousLevelChange : MonoBehaviour {
 	GameObject leftTarget;
 	GameObject rightTarget;
 
+	Collider playerCollider;
+
 	void Start()
 	{
 		player = GameObject.Find("Player");
@@ -30,8 +32,7 @@ public class AsynchronousLevelChange : MonoBehaviour {
 	{
 		if(other.tag == "Player")
 		{
-			other.GetComponent<Rigidbody>().velocity = Vector3.zero;
-			ChangeLevel();
+			playerCollider = other;
 		}
 	}
 
@@ -39,18 +40,19 @@ public class AsynchronousLevelChange : MonoBehaviour {
 	{
 		if(other.tag == "Player")
 		{
-			other.GetComponent<Rigidbody>().velocity = Vector3.zero;
-			ChangeLevel();
+			playerCollider = other;
 		}
 	}
 
 	void ChangeButtonState(bool value)
 	{
 		buttonNeeded = value;
+		ChangeLevel();
 	}
 
 	void ChangeLevel()
 	{
+		playerCollider.GetComponent<Rigidbody>().velocity = Vector3.zero;
 		if(leftTarget.transform.IsChildOf(player.transform) == true && rightTarget.transform.IsChildOf(player.transform) == true)
 		{
 			if(buttonNeeded)

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class FollowTargets : MonoBehaviour {
@@ -16,7 +16,7 @@ public class FollowTargets : MonoBehaviour {
 
 	void Update()
 	{
-		if(worldTrigger.worldTrigger)
+		if(worldTrigger.worldInTrigger)
 		{
 			print ("Under Ground!");
 			this.transform.position = new Vector3(targetToFollow.transform.position.x, yPositionOnCollision,targetToFollow.transform.position.z);

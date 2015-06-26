@@ -3,12 +3,12 @@ using System.Collections;
 
 public class TutorialThrow : MonoBehaviour {
 
-	public Animation animation;
+	public Animation anim;
 
 	// Use this for initialization
 	void Start () 
 	{
-		animation["throw"].wrapMode = WrapMode.Once;
+		anim["throw"].wrapMode = WrapMode.Once;
 	}
 
 	void OnTriggerEnter(Collider other)
@@ -17,7 +17,7 @@ public class TutorialThrow : MonoBehaviour {
 		{
 			other.attachedRigidbody.isKinematic = true;
 			other.transform.parent = this.transform;
-			animation.Play("throw");
+			anim.Play("throw");
 		}
 	}
 }

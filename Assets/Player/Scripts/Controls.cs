@@ -53,6 +53,8 @@ public class Controls : MonoBehaviour
 
 	public LayerMask layerMaskForUnderWorldCheck;
 
+	public Transform targetFollower;
+
 	void Awake()
 	{
 		blobbRigid = this.GetComponent<Rigidbody>();
@@ -74,7 +76,7 @@ public class Controls : MonoBehaviour
 
 		handCollider = hand.GetComponents<SphereCollider>()[0];
 
-		grabIndicator = target.GetChild (0).GetComponent<MeshRenderer> ();
+		grabIndicator = targetFollower.GetChild (0).GetComponent<MeshRenderer> ();
 
 	}
 
@@ -112,7 +114,7 @@ public class Controls : MonoBehaviour
 			{
 				GrabItem();
 			}
-			else if(targetGrab.worldTrigger || (targetGrab.worldTrigger && targetGrab.playerTrigger && !itemInTrigger))
+			else if(targetGrab.worldInTrigger || (targetGrab.worldInTrigger && targetGrab.playerTrigger && !itemInTrigger))
 			{
 				isGrabbingWorld = true;
 				GrabWorld(true);

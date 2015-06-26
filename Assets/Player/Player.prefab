@@ -1519,7 +1519,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 490494}
   m_Father: {fileID: 496062}
   m_RootOrder: 0
 --- !u!4 &441522
@@ -1531,8 +1532,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .5, y: .5, z: .5}
-  m_Children:
-  - {fileID: 466488}
+  m_Children: []
   m_Father: {fileID: 464424}
   m_RootOrder: 1
 --- !u!4 &442294
@@ -1619,8 +1619,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .5, y: .5, z: .5}
-  m_Children:
-  - {fileID: 490494}
+  m_Children: []
   m_Father: {fileID: 464424}
   m_RootOrder: 0
 --- !u!4 &457852
@@ -1708,10 +1707,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192026}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: .5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: .300000012}
+  m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children: []
-  m_Father: {fileID: 441522}
+  m_Father: {fileID: 478034}
   m_RootOrder: 0
 --- !u!4 &469888
 Transform:
@@ -1822,7 +1821,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 466488}
   m_Father: {fileID: 496062}
   m_RootOrder: 1
 --- !u!4 &479032
@@ -1922,10 +1922,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 108720}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: .5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: .300000012}
+  m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children: []
-  m_Father: {fileID: 449366}
+  m_Father: {fileID: 436840}
   m_RootOrder: 0
 --- !u!4 &491768
 Transform:
@@ -2455,6 +2455,7 @@ MonoBehaviour:
   layerMaskForUnderWorldCheck:
     serializedVersion: 2
     m_Bits: 2048
+  targetFollower: {fileID: 478034}
 --- !u!114 &11403172
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2848,6 +2849,7 @@ MonoBehaviour:
   layerMaskForUnderWorldCheck:
     serializedVersion: 2
     m_Bits: 2048
+  targetFollower: {fileID: 436840}
 --- !u!124 &12411320
 Behaviour:
   m_ObjectHideFlags: 1
