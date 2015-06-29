@@ -13,7 +13,7 @@ public class TutorialThrow : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		if(other.name.Contains("Sphere"))
+		if(other.name.Contains("Ball"))
 		{
 			other.attachedRigidbody.isKinematic = true;
 			other.transform.parent = this.transform;

@@ -10,7 +10,7 @@ public class TutorialBallThrow : MonoBehaviour {
 
 	void OnTriggerExit(Collider other)
 	{
-		if(other.name.Contains("Sphere"))
+		if(other.name.Contains("Ball"))
 		{
 			//print ("ThrowBall");
 			other.transform.parent = null;
