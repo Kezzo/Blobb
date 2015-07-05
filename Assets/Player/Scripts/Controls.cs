@@ -57,6 +57,8 @@ public class Controls : MonoBehaviour
 
 	public GameObject keybindUI = null;
 
+	public Material[] grabIndicatorMaterials;
+
 	void Awake()
 	{
 		blobbRigid = this.GetComponent<Rigidbody>();
@@ -100,6 +102,7 @@ public class Controls : MonoBehaviour
 
 		MoveHands();
 		CheckWhichGrab();
+		ProcessGrabIndicator();
 		
 		if(isGrabbingWorld)
 		{
@@ -253,6 +256,7 @@ public class Controls : MonoBehaviour
 
 			itemIsInHand = true;
 			item.layer = 13;
+			grabIndicator.enabled = false;
 		}
 	}
 
@@ -340,6 +344,7 @@ public class Controls : MonoBehaviour
 			target.transform.parent = null;
 			target.transform.position = worldPosition;
 
+			grabIndicator.material = grabIndicatorMaterials[0];
 			grabIndicator.enabled = true;
 		}
 		else
@@ -371,6 +376,22 @@ public class Controls : MonoBehaviour
 	public bool getHydraStatus()
 	{
 		return _hydraActive;
+	}
+
+	void ProcessGrabIndicator()
+	{
+		if(!isGrabbingWorld && !itemIsInHand)
+		{
+			if(targetGrab.worldInTrigger)
+			{
+				grabIndicator.material = grabIndicatorMaterials[1];
+				grabIndicator.enabled = true;
+			}
+			else
+			{
+				grabIndicator.enabled = false;
+			}
+		}
 	}
 
 	void ToogleKeyBindUI()

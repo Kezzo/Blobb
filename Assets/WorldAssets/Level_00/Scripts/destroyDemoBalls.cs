@@ -3,21 +3,20 @@ using System.Collections;
 
 public class destroyDemoBalls : MonoBehaviour {
 	public float destroytime=8.0f;
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+	public demoball_spawner spawner;
+	public bool callSpawner;
 
 	void OnTriggerEnter(Collider enter)
 	{
 		if (enter.CompareTag ("Item")) {
 
 			Destroy (enter.gameObject, destroytime);
+			if(callSpawner)
+			{
+				spawner.ReduceBallCountBy(1);
+			}
+
 		}
 
 	}

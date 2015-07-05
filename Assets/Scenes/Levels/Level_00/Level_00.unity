@@ -693,6 +693,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroytime: 2
+  spawner: {fileID: 0}
+  callSpawner: 0
 --- !u!65 &81814107
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2843,6 +2845,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroytime: 2
+  spawner: {fileID: 0}
+  callSpawner: 0
 --- !u!65 &400629142
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2898,6 +2902,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroytime: 20
+  spawner: {fileID: 0}
+  callSpawner: 0
 --- !u!65 &409153034
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3334,6 +3340,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroytime: 2
+  spawner: {fileID: 0}
+  callSpawner: 0
 --- !u!65 &454227596
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4587,6 +4595,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroytime: 2
+  spawner: {fileID: 1654762792}
+  callSpawner: 1
 --- !u!65 &613077781
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4598,8 +4608,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7.23000002, y: 1, z: 8.13000011}
-  m_Center: {x: -.709999979, y: 0, z: 1.14999998}
+  m_Size: {x: 7.23000002, y: .370000005, z: 8.13000011}
+  m_Center: {x: -.620000005, y: -.340000004, z: 1.14999998}
 --- !u!1 &619889197
 GameObject:
   m_ObjectHideFlags: 0
@@ -8060,6 +8070,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroytime: 20
+  spawner: {fileID: 0}
+  callSpawner: 0
 --- !u!65 &1082048035
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11001,6 +11013,7 @@ MonoBehaviour:
   balls: {fileID: 164680, guid: a7708427ebb91344ca62e138cee67538, type: 2}
   spawnspeed: 5
   active: 1
+  maxBalls: 0
 --- !u!1 &1363959679
 GameObject:
   m_ObjectHideFlags: 0
@@ -11433,6 +11446,7 @@ MonoBehaviour:
   balls: {fileID: 164680, guid: a7708427ebb91344ca62e138cee67538, type: 2}
   spawnspeed: 5
   active: 1
+  maxBalls: 0
 --- !u!4 &1374909134
 Transform:
   m_ObjectHideFlags: 0
@@ -11795,6 +11809,7 @@ MonoBehaviour:
   balls: {fileID: 164680, guid: a7708427ebb91344ca62e138cee67538, type: 2}
   spawnspeed: 5
   active: 1
+  maxBalls: 0
 --- !u!1 &1426035781
 GameObject:
   m_ObjectHideFlags: 0
@@ -12363,7 +12378,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1490256735
 Transform:
   m_ObjectHideFlags: 0
@@ -12383,12 +12398,14 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1490256734}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53c7df992e393404e999b04670c3c65b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   destroytime: 20
+  spawner: {fileID: 0}
+  callSpawner: 0
 --- !u!65 &1490256737
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13497,7 +13514,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 444922, guid: 16827e91596788345b0192c9b1a8bd51, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 13.3599997
+      value: 12.6999998
       objectReference: {fileID: 0}
     - target: {fileID: 444922, guid: 16827e91596788345b0192c9b1a8bd51, type: 2}
       propertyPath: m_LocalPosition.y
@@ -13526,14 +13543,6 @@ Prefab:
     - target: {fileID: 444922, guid: 16827e91596788345b0192c9b1a8bd51, type: 2}
       propertyPath: m_RootOrder
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 157466, guid: 16827e91596788345b0192c9b1a8bd51, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 161002, guid: 16827e91596788345b0192c9b1a8bd51, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 16827e91596788345b0192c9b1a8bd51, type: 2}
@@ -13923,8 +13932,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   balls: {fileID: 164680, guid: a7708427ebb91344ca62e138cee67538, type: 2}
-  spawnspeed: 5
+  spawnspeed: 3
   active: 1
+  maxBalls: 10
 --- !u!1 &1656403491
 GameObject:
   m_ObjectHideFlags: 0
@@ -15438,6 +15448,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroytime: 20
+  spawner: {fileID: 0}
+  callSpawner: 0
 --- !u!65 &1839091652
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16054,7 +16066,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 467306, guid: dd66703117e879341a766f834e1a3bf7, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 13.3599997
+      value: 12.6999998
       objectReference: {fileID: 0}
     - target: {fileID: 467306, guid: dd66703117e879341a766f834e1a3bf7, type: 2}
       propertyPath: m_LocalPosition.y
