@@ -269,7 +269,7 @@ public class Controls : MonoBehaviour
 
 		//Debug.Log(maxThrowForce);
 
-		if(inventory.isItemTouchingInventory(item.gameObject) && maxThrowForce < 0.01f)
+		if(inventory.isItemTouchingInventory(item.gameObject) && maxThrowForce < 0.2f)
 		{
 			inventory.storeItem(item, itemIsUsable, itemParent);
 		}
@@ -282,8 +282,15 @@ public class Controls : MonoBehaviour
 			{
 				itemRigid.WakeUp();
 			}
-
-			itemRigid.AddForce(resultingDirection * 1/Time.deltaTime * 2.0f,ForceMode.VelocityChange);
+			print ("Result" + resultingDirection);
+			if(maxThrowForce < .3f)
+			{
+				itemRigid.AddForce(resultingDirection * 1/Time.deltaTime,ForceMode.VelocityChange);
+			}
+			else
+			{
+				itemRigid.AddForce(resultingDirection * 1/Time.deltaTime * 2.0f,ForceMode.VelocityChange);
+			}
 
 			//print ("Added Force!");
 
@@ -298,7 +305,7 @@ public class Controls : MonoBehaviour
 			{
 				if(!itemParent.Equals(hand.transform) || !item.transform.parent.name.Contains("unterarm"))
 				{
-					//				print("Parent ist not hand");
+					//print("Parent ist not hand");
 					item.transform.parent = itemParent;
 				}
 			}
