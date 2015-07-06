@@ -17,9 +17,10 @@ public class GameFailPirateLevel : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-//		print (other.name);
-		if (other.name.Contains ("Piratenschiff") && other.name.Contains ("Collider")) {
-			other.transform.root.GetComponent<Schiffssteuerung>().setMovement(false);
+
+		if (other.name.Contains ("Terrain") || other.name.Contains ("wrack")) {
+			print (other.name);
+			this.transform.parent.GetComponent<Schiffssteuerung>().setMovement(false);
 			//TODO: reset Level!
 
 			StartCoroutine(ResetLevelAfter(3.0f));

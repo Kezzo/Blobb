@@ -3,6 +3,8 @@ using System.Collections;
 
 public class MakePlayerPersistent : MonoBehaviour 
 {
+	public bool pirateLevelPartTwo = false;
+
 	private static MakePlayerPersistent privatePlayerInstance;
 	
 	public static MakePlayerPersistent publicPlayerInstance

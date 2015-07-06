@@ -59,6 +59,7 @@ public class Controls : MonoBehaviour
 
 	public Material[] grabIndicatorMaterials;
 
+
 	void Awake()
 	{
 		blobbRigid = this.GetComponent<Rigidbody>();

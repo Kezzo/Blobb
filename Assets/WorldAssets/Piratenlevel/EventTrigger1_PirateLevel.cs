@@ -9,6 +9,7 @@ public class EventTrigger1_PirateLevel : MonoBehaviour {
 
 	public GameObject[] enemyShips;
 	public GameObject[] makeWorldGround;
+	public CapsuleCollider deactivateTrigger;
 
 	public EventTrigger2_PirateLevel eventTrigger2;
 	// Use this for initialization
@@ -64,6 +65,8 @@ public class EventTrigger1_PirateLevel : MonoBehaviour {
 			makeWorldGround[i].tag = "World";
 			makeWorldGround[i].layer = 11;
 		}
+
+		deactivateTrigger.enabled = false;
 	}
 
 	void spawnEnemyShips(Transform shipTransform)

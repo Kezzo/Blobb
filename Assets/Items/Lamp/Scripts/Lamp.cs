@@ -31,7 +31,7 @@ public class Lamp : MonoBehaviour,Item  {
 
 	void Update () 
 	{
-
+		
 		positionNow = this.transform.position;
 		if(spotlight.enabled)
 		{
