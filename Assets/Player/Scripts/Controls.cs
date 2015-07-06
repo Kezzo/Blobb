@@ -5,6 +5,8 @@ public class Controls : MonoBehaviour
 {
 	SixenseInput.Controller hydra;
 
+	public bool grabbingIsEnabled = true;
+
 	public bool isRightHydra;
 	public GameObject hand;
 	SphereCollider handCollider;
@@ -102,8 +104,11 @@ public class Controls : MonoBehaviour
 		this.transform.Rotate(new Vector3(0.0f, hydra.JoystickX * Time.deltaTime * 100.0f, 0.0f));
 
 		MoveHands();
-		CheckWhichGrab();
-		ProcessGrabIndicator();
+		if(grabbingIsEnabled)
+		{
+			CheckWhichGrab();
+			ProcessGrabIndicator();
+		}
 		
 		if(isGrabbingWorld)
 		{
@@ -379,6 +384,13 @@ public class Controls : MonoBehaviour
 	{
 		isGrabbingWorld = false;
 		GrabWorld (false);
+	}
+
+	public void disableGrabbing()
+	{
+		unGrabWorld();
+		grabbingIsEnabled = false;
+		grabIndicator.enabled = false;
 	}
 
 	public bool getHydraStatus()

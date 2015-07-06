@@ -6,15 +6,7 @@ public class EventTrigger3_PirateLevel : MonoBehaviour {
 	public GameObject[] makeWorldGround;
 	public CapsuleCollider deactivateTrigger;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-
-	}
+	public Button_StartBeiboot startBeiBootButton;
 
 	void OnTriggerEnter(Collider other)
 	{
@@ -28,11 +20,11 @@ public class EventTrigger3_PirateLevel : MonoBehaviour {
 	{
 		for(int i=0; i<makeWorldGround.Length; i++)
 		{
-			print(i);
 			makeWorldGround[i].tag = "World";
 			makeWorldGround[i].layer = 11;
 		}
 		
 		deactivateTrigger.enabled = false;
+		startBeiBootButton.enabled = true;
 	}
 }
