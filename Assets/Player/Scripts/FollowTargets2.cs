@@ -17,7 +17,8 @@ public class FollowTargets2 : MonoBehaviour {
 	}
 	
 	void Update() {
-		if (collided) {
+		if (collided) 
+		{
 			Ray ray = new Ray(shoulder.position, inputTarget.position - shoulder.position);
 			RaycastHit hit;
 			
@@ -28,11 +29,17 @@ public class FollowTargets2 : MonoBehaviour {
 				//				print(hit.collider.gameObject.name);
 				Vector3 contactPoint = hit.point - raycastDirection.normalized * 0.1f;
 				transform.position = contactPoint;
-			} else
+			} 
+			else
+			{
 				transform.position = inputTarget.position;
-		} else
+			}
+		} 
+		else
+		{
 			transform.position = inputTarget.position;
-		transform.rotation = inputTarget.rotation;
+			transform.rotation = inputTarget.rotation;
+		}
 	}
 
 	public void OnTriggerEnter(Collider other) {

@@ -11,6 +11,9 @@ public class CanonAction : MonoBehaviour {
 	Vector3 targetPositionDeckel;
 	Vector3 firstDeckelPosition;
 
+	public GameObject explosionPrefab;
+	public Transform explosionTransform;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -47,6 +50,7 @@ public class CanonAction : MonoBehaviour {
 		//print ("IEnumerator started!");
 		yield return new WaitForSeconds(secondsToWait);
 
+		Instantiate(explosionPrefab, explosionTransform.position, Quaternion.identity);
 		print ("Boom");
 		gameObjectToShoot.GetComponent<Rigidbody>().AddForce(this.transform.forward* 2000f);
 		closeDeckel = false;

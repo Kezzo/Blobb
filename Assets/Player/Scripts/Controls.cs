@@ -83,7 +83,7 @@ public class Controls : MonoBehaviour
 
 		handCollider = hand.GetComponents<SphereCollider>()[0];
 
-		grabIndicator = targetFollower.GetChild (0).GetComponent<MeshRenderer> ();
+		grabIndicator = hand.transform.GetChild (0).GetComponentInChildren<MeshRenderer> ();
 
 	}
 

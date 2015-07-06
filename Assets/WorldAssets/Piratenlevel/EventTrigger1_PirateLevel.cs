@@ -12,6 +12,8 @@ public class EventTrigger1_PirateLevel : MonoBehaviour {
 	public CapsuleCollider deactivateTrigger;
 
 	public EventTrigger2_PirateLevel eventTrigger2;
+
+	public GameObject explosionPrefab;
 	// Use this for initialization
 	void Start () {
 	
@@ -109,6 +111,8 @@ public class EventTrigger1_PirateLevel : MonoBehaviour {
 		//print ("IEnumerator started!");
 		//print("Explode!");
 
+		Instantiate(explosionPrefab, explosionPosition, Quaternion.identity);
+
 		Collider[] colliders = Physics.OverlapSphere(explosionPosition, 10.0f);
 		foreach (Collider hit in colliders) {
 			if(hit.name.Contains("Cargo"))
@@ -116,7 +120,10 @@ public class EventTrigger1_PirateLevel : MonoBehaviour {
 				Rigidbody rb = hit.GetComponent<Rigidbody>();
 				
 				if (rb != null)
+				{
 					rb.AddExplosionForce(50.0f, explosionPosition, 10.0f, 1.0f, ForceMode.VelocityChange);
+				}
+					
 			}
 		}
 	}
