@@ -64,6 +64,7 @@ public class AsynchronousLevelChange : MonoBehaviour {
 
 	void ChangeLevel()
 	{
+		print ("ChangeLevel: Done");
 		if(leftTarget.transform.IsChildOf(player.transform) == true && rightTarget.transform.IsChildOf(player.transform) == true)
 		{
 			if(buttonNeeded)

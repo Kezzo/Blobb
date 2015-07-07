@@ -58,4 +58,10 @@ public class WorldTrigger : MonoBehaviour {
 			playerTrigger = false;
 		}
 	}
+
+	void OnLevelWasLoaded()
+	{
+		print ("Trigger False");
+		worldInTrigger = false;
+	}
 }
