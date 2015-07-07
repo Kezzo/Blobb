@@ -6,18 +6,29 @@ public class PlayerTransform : MonoBehaviour {
 	private bool positioned = false;
 	//private bool parenting = false;
 	GameObject player;
+	GameObject blobb;
+
 
 	void Start()
 	{
 		player = GameObject.Find("Player");
 		if(player != null)
 		{
-			player.transform.localPosition = Vector3.zero;
-			player.transform.position = Vector3.zero;
+			player.transform.position = this.transform.position;
+			player.transform.rotation = this.transform.rotation;
+			blobb = player.transform.GetChild(2).gameObject;
+			//blobb.GetComponent<Rigidbody>().velocity = Vector3.zero;
+			//player.transform.localPosition = Vector3.zero;
+			//player.transform.position = Vector3.zero;
+			if(blobb.name == "Blobb")
+			{
+				blobb.transform.position = this.transform.position;
+				blobb.transform.rotation = this.transform.rotation;
+			}
 		}
 	}
 
-	void Update()
+	/*void Update()
 	{
 		if(player != null && !positioned)
 		{
@@ -50,8 +61,8 @@ public class PlayerTransform : MonoBehaviour {
 				print ("Player after Parent");
 				parenting = true;
 			}*/
-
+			/*
 			positioned = true;
 		}
-	}
+	}*/
 }

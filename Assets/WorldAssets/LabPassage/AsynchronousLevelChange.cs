@@ -6,26 +6,29 @@ public class AsynchronousLevelChange : MonoBehaviour {
 	public string levelName;
 	public bool buttonNeeded;
 
-	GameObject player;
-	GameObject leftTarget;
-	GameObject rightTarget;
+	private bool buttonActionDetected = false;
 
-	Collider playerCollider;
+	private AsyncOperation asyncLoader;
+	private bool loadingFinished = false;
+
+	private bool doOnce = false;
+
+	private GameObject player;
+	private GameObject leftTarget;
+	private GameObject rightTarget;
+
+	private Collider playerCollider;
 
 	void Start()
 	{
+
 		player = GameObject.Find("Player");
 		leftTarget = GameObject.Find ("LeftTarget");
 		rightTarget = GameObject.Find ("RightTarget");
-	}
+		StartCoroutine(Load());
+		asyncLoader.allowSceneActivation = false;
+		Application.backgroundLoadingPriority = ThreadPriority.Low;
 
-	void Update()
-	{
-		if(Input.GetKey(KeyCode.P))
-		{
-			Application.LoadLevelAsync(levelName);
-		}
-		//print("IsChildOf: " + GameObject.Find ("LeftTarget").transform.IsChildOf(GameObject.Find("Player").transform));
 	}
 
 	void OnTriggerEnter(Collider other)
@@ -34,6 +37,11 @@ public class AsynchronousLevelChange : MonoBehaviour {
 		{
 			playerCollider = other;
 		}
+
+		if(other.name == "MovingBlock")
+		{
+			ChangeLevel();
+		}
 	}
 
 	void OnTriggerStay(Collider other)
@@ -41,24 +49,56 @@ public class AsynchronousLevelChange : MonoBehaviour {
 		if(other.tag == "Player")
 		{
 			playerCollider = other;
+			if(!doOnce)
+			{
+				ChangeLevel();
+			}
 		}
 	}
 
 	void ChangeButtonState(bool value)
 	{
-		buttonNeeded = value;
+		buttonActionDetected = value;
 		ChangeLevel();
 	}
 
 	void ChangeLevel()
 	{
-		playerCollider.GetComponent<Rigidbody>().velocity = Vector3.zero;
 		if(leftTarget.transform.IsChildOf(player.transform) == true && rightTarget.transform.IsChildOf(player.transform) == true)
 		{
 			if(buttonNeeded)
 			{
-				Application.LoadLevelAsync(levelName);
+				if(buttonActionDetected)
+				{
+					if(loadingFinished)
+					{
+						//Application.LoadLevelAsync(levelName);
+						asyncLoader.allowSceneActivation = true;
+					}
+				}
+			}
+			else
+			{
+				if(loadingFinished)
+				{
+					//Application.LoadLevelAsync(levelName);
+					asyncLoader.allowSceneActivation = true;
+				}
 			}
 		}
+	}
+
+	IEnumerator Load()
+	{
+			asyncLoader = Application.LoadLevelAsync(levelName);
+			while(!asyncLoader.isDone){
+				if(asyncLoader.progress >= 0.9f){
+					asyncLoader.allowSceneActivation = false;
+					loadingFinished = true;
+					break;
+				}
+				yield return 0;
+			}
+			yield return asyncLoader;
 	}
 }

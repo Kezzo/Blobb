@@ -13,7 +13,7 @@ public class ParentPlayer : MonoBehaviour {
 		if(other.name == "Blobb" && !alreadyParented)
 		{
 			other.transform.root.transform.parent = this.transform.root.transform;
-			if(other.GetComponentInParent<MakePlayerPersistent>().pirateLevelPartTwo)
+			if(GameObject.FindObjectOfType<GameManagement>().pirateLevelPartTwo)
 			{
 				this.transform.root.transform.position = targetPosition.position;
 				this.transform.root.transform.rotation = targetPosition.rotation;

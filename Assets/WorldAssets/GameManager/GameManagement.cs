@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GameManagement : MonoBehaviour {
 
+	public bool pirateLevelPartTwo = false;
+
 	private static GameManagement privateGameManagerInstance;
 	
 	public static GameManagement publicPGameManagerInstance
@@ -42,11 +44,18 @@ public class GameManagement : MonoBehaviour {
 		}
 	}
 
-
-
 	// Use this for initialization
-	void Start () {
+	/*void Start () {
 		Application.LoadLevelAsync(1);
+	}*/
+
+	void OnLevelWasLoaded()
+	{
+		if(Application.loadedLevelName == "SchieberätselPart1")
+		{
+			pirateLevelPartTwo = true;
+		}
+		print("pirateLevelPartTwo: " + pirateLevelPartTwo);
 	}
 
 	void OnApplicationQuit()

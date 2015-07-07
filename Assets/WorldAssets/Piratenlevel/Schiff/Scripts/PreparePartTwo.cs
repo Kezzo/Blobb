@@ -7,7 +7,7 @@ public class PreparePartTwo : MonoBehaviour {
 	{
 		if(other.name == "Blobb")
 		{
-			other.GetComponentInParent<MakePlayerPersistent>().pirateLevelPartTwo = true;
+			other.GetComponentInParent<GameManagement>().pirateLevelPartTwo = true;
 		}
 	}
 }
