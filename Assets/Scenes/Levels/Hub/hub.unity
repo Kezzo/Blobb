@@ -12727,7 +12727,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11494234, guid: 669277823f6adac4ea43cc7ab1861196, type: 2}
       propertyPath: levelName
-      value: pirates
+      value: "Schieber\xE4tselPart2"
       objectReference: {fileID: 0}
     - target: {fileID: 11466324, guid: 669277823f6adac4ea43cc7ab1861196, type: 2}
       propertyPath: isLocked
@@ -14195,6 +14195,14 @@ Prefab:
     - target: {fileID: 161002, guid: 16827e91596788345b0192c9b1a8bd51, type: 2}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 157466, guid: 16827e91596788345b0192c9b1a8bd51, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 153480, guid: 16827e91596788345b0192c9b1a8bd51, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 16827e91596788345b0192c9b1a8bd51, type: 2}

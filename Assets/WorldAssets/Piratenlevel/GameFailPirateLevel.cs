@@ -34,6 +34,6 @@ public class GameFailPirateLevel : MonoBehaviour {
 		//print ("IEnumerator started!");
 		yield return new WaitForSeconds(secondsToWait);
 		//print("Explode!");
-		Application.LoadLevel(Application.loadedLevelName);
+		Application.LoadLevelAsync(Application.loadedLevel);
 	}
 }

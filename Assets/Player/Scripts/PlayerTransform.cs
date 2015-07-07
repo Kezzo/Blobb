@@ -15,8 +15,9 @@ public class PlayerTransform : MonoBehaviour {
 		player = GameObject.Find("Player");
 		if(player != null)
 		{
-			//player.transform.position = this.transform.position;
-			//player.transform.rotation = this.transform.rotation;
+			player.transform.parent = null;
+			player.transform.position = this.transform.position;
+			player.transform.rotation = this.transform.rotation;
 			blobb = player.transform.GetChild(2).gameObject;
 			blobb.GetComponent<Rigidbody>().velocity = Vector3.zero;
 			//player.transform.localPosition = Vector3.zero;

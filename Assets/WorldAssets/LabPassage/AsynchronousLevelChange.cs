@@ -8,8 +8,8 @@ public class AsynchronousLevelChange : MonoBehaviour {
 
 	private bool buttonActionDetected = false;
 
-	private AsyncOperation asyncLoader;
-	private bool loadingFinished = false;
+	//private AsyncOperation asyncLoader;
+	//private bool loadingFinished = false;
 
 	private bool doOnce = false;
 
@@ -25,9 +25,9 @@ public class AsynchronousLevelChange : MonoBehaviour {
 		player = GameObject.Find("Player");
 		leftTarget = GameObject.Find ("LeftTarget");
 		rightTarget = GameObject.Find ("RightTarget");
-		StartCoroutine(Load());
-		asyncLoader.allowSceneActivation = false;
-		Application.backgroundLoadingPriority = ThreadPriority.Low;
+		//StartCoroutine(Load());
+		//asyncLoader.allowSceneActivation = false;
+		//Application.backgroundLoadingPriority = ThreadPriority.Low;
 
 	}
 
@@ -49,10 +49,8 @@ public class AsynchronousLevelChange : MonoBehaviour {
 		if(other.tag == "Player")
 		{
 			playerCollider = other;
-			if(!doOnce)
-			{
-				ChangeLevel();
-			}
+			ChangeLevel();
+			
 		}
 	}
 
@@ -71,25 +69,29 @@ public class AsynchronousLevelChange : MonoBehaviour {
 			{
 				if(buttonActionDetected)
 				{
-					if(loadingFinished)
+					player.transform.parent = null;
+					Application.LoadLevelAsync(levelName);
+					/*if(loadingFinished)
 					{
-						//Application.LoadLevelAsync(levelName);
-						asyncLoader.allowSceneActivation = true;
-					}
+						Application.LoadLevelAsync(levelName);
+						//asyncLoader.allowSceneActivation = true;
+					}*/
 				}
 			}
 			else
 			{
-				if(loadingFinished)
+				player.transform.parent = null;
+				Application.LoadLevelAsync(levelName);
+				/*if(loadingFinished)
 				{
-					//Application.LoadLevelAsync(levelName);
-					asyncLoader.allowSceneActivation = true;
-				}
+					Application.LoadLevelAsync(levelName);
+					//asyncLoader.allowSceneActivation = true;
+				}*/
 			}
 		}
 	}
 
-	IEnumerator Load()
+	/*IEnumerator Load()
 	{
 			asyncLoader = Application.LoadLevelAsync(levelName);
 			while(!asyncLoader.isDone){
@@ -101,5 +103,5 @@ public class AsynchronousLevelChange : MonoBehaviour {
 				yield return 0;
 			}
 			yield return asyncLoader;
-	}
+	}*/
 }
