@@ -6,7 +6,7 @@ public class EventTrigger3_PirateLevel : MonoBehaviour {
 	public GameObject[] makeWorldGround;
 	public CapsuleCollider deactivateTrigger;
 
-	public Button_StartBeiboot startBeiBootButton;
+	public BoxCollider buttonCollider;
 
 	void OnTriggerEnter(Collider other)
 	{
@@ -25,6 +25,6 @@ public class EventTrigger3_PirateLevel : MonoBehaviour {
 		}
 		
 		deactivateTrigger.enabled = false;
-		startBeiBootButton.enabled = true;
+		buttonCollider.enabled = true;
 	}
 }

@@ -70,20 +70,21 @@ public class MagnetOMat : MonoBehaviour,Item
 
 	public void UseOnce()
 	{
+
 		if(!hasItem)
 		{
 			RaycastHit hit;
 			if(Physics.Raycast(magnet.transform.position, transform.forward ,out hit))
 			{
 				currentItem = hit.collider.gameObject;
-
+				
 				if(currentItem.tag == "Item")
 				{
 					print (currentItem.name + "picked Up");
 					itemRigid = currentItem.GetComponent<Rigidbody>();
 					hasItem = true;
 					pullingItem = true;
-
+					
 					if(currentItemId != null)
 					{
 						if(currentItemId.GetComponent<MeshRenderer>() != null)
@@ -95,20 +96,24 @@ public class MagnetOMat : MonoBehaviour,Item
 			}
 		}
 		/*
-		else if(pullingItem && hasItem)
-		{
-			hasItem = false;
-			pullingItem = false;
-			currentItem.transform.parent = null;
-		}
-		*/
+	else if(pullingItem && hasItem)
+	{
+		hasItem = false;
+		pullingItem = false;
+		currentItem.transform.parent = null;
+	}
+	*/
 		else
 		{
 			letItemGo();
 			//Vector3 directionFromGun = currentItem.transform.position - magnet.transform.position;
-			itemRigid.AddForce(transform.forward * 1000);
+			if(!currentItem.name.Contains("Cargo"))
+			{
+				itemRigid.AddForce(transform.forward * 1000);
+			}
 			
 		}
+
 	}
 
 	void letItemGo()

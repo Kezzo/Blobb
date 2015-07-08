@@ -8,8 +8,10 @@ public class EventTrigger2_PirateLevel : MonoBehaviour {
 	int cargoOnBoard = 0;
 	bool allShipsSank;
 	bool allCargoOnBoard;
+	bool playerEnteredDeck;
 
 	public GameObject belowDeckDoor;
+
 
 	SinkShip[] sinkShipScripts = new SinkShip[2];
 
@@ -39,7 +41,12 @@ public class EventTrigger2_PirateLevel : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		if(!allCargoOnBoard)
+		if(other.name == "Blobb" && !playerEnteredDeck)
+		{
+			playerEnteredDeck = true;
+		}
+
+		if(!allCargoOnBoard && playerEnteredDeck)
 		{
 			if(other.name == "Cargo")
 			{
@@ -47,7 +54,7 @@ public class EventTrigger2_PirateLevel : MonoBehaviour {
 				print ("Cargo Added! "+cargoOnBoard);
 			}
 			
-			if(cargoOnBoard == 6)
+			if(cargoOnBoard >= 4)
 			{
 				allCargoOnBoard = true;
 				print ("all Cargo on Board!");
@@ -57,10 +64,13 @@ public class EventTrigger2_PirateLevel : MonoBehaviour {
 
 	void OnTriggerExit(Collider other)
 	{
-		if(other.name == "Cargo" && !allCargoOnBoard)
+		if(other.name == "Cargo" && !allCargoOnBoard && playerEnteredDeck)
 		{
-			cargoOnBoard--;
-			print ("Cargo removed! "+cargoOnBoard);
+			if(cargoOnBoard > 0)
+			{
+				cargoOnBoard--;
+				print ("Cargo removed! "+cargoOnBoard);
+			}
 		}
 	}
 
