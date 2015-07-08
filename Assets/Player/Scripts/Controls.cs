@@ -101,8 +101,6 @@ public class Controls : MonoBehaviour
 			hydra = SixenseInput.Controllers[0];
 		}
 
-		this.transform.Rotate(new Vector3(0.0f, hydra.JoystickX * Time.deltaTime * 100.0f, 0.0f));
-
 		MoveHands();
 		if(grabbingIsEnabled)
 		{

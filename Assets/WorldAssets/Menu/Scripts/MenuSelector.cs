@@ -42,12 +42,16 @@ public class MenuSelector : MonoBehaviour {
 				hitItem.GetComponent<MeshRenderer>().material.color = Color.red;
 				buttonHighlited = hitItem.transform.parent.name;
 			}
+			else
+			{
+				buttonHighlited = "";
+			}
 			if(hitItem != lastHitItem)
 			{
 				if(lastHitItem != null && lastHitItem.layer == 5)
 				{
 					lastHitItem.GetComponent<MeshRenderer>().material.color = Color.white;
-					buttonHighlited = "";
+
 				}
 			}
 			lastHitItem = hitItem;

@@ -4347,7 +4347,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &907759678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12727,7 +12727,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11494234, guid: 669277823f6adac4ea43cc7ab1861196, type: 2}
       propertyPath: levelName
-      value: "Schieber\xE4tselPart2"
+      value: pirates
       objectReference: {fileID: 0}
     - target: {fileID: 11466324, guid: 669277823f6adac4ea43cc7ab1861196, type: 2}
       propertyPath: isLocked
@@ -14203,6 +14203,10 @@ Prefab:
     - target: {fileID: 153480, guid: 16827e91596788345b0192c9b1a8bd51, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 161002, guid: 16827e91596788345b0192c9b1a8bd51, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 16827e91596788345b0192c9b1a8bd51, type: 2}

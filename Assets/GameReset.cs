@@ -10,5 +10,10 @@ public class GameReset : MonoBehaviour {
 		{
 			Application.LoadLevel(Application.loadedLevel);
 		}
+		if(Input.GetKeyDown(KeyCode.Escape))
+		{
+			Application.LoadLevelAsync("Menu");
+		}
+
 	}
 }
