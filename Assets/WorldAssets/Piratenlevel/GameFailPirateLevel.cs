@@ -3,16 +3,12 @@ using System.Collections;
 
 public class GameFailPirateLevel : MonoBehaviour {
 
+	GameObject player;
+
 	// Use this for initialization
 	void Start () 
 	{
-	
-	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-	
+		player = GameObject.Find("Player");
 	}
 
 	void OnTriggerEnter(Collider other)
@@ -34,6 +30,7 @@ public class GameFailPirateLevel : MonoBehaviour {
 		//print ("IEnumerator started!");
 		yield return new WaitForSeconds(secondsToWait);
 		//print("Explode!");
-		Application.LoadLevelAsync(Application.loadedLevel);
+		player.transform.parent = null;
+		Application.LoadLevel(Application.loadedLevel);
 	}
 }

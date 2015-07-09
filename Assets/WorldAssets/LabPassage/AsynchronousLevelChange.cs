@@ -38,7 +38,7 @@ public class AsynchronousLevelChange : MonoBehaviour {
 			playerCollider = other;
 		}
 
-		if(other.name == "MovingBlock")
+		if(other.name == "MovingBlock" || other.name == "boat")
 		{
 			ChangeLevel();
 		}
