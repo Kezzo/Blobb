@@ -55,7 +55,12 @@ public class GameManagement : MonoBehaviour {
 		{
 			pirateLevelPartTwo = true;
 		}
-		print("pirateLevelPartTwo: " + pirateLevelPartTwo);
+
+		if(Application.loadedLevelName == "hub")
+		{
+			pirateLevelPartTwo = false;
+		}
+		//print("pirateLevelPartTwo: " + pirateLevelPartTwo);
 	}
 
 	void OnApplicationQuit()
