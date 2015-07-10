@@ -28,7 +28,7 @@ public class Reset_Button : Button {
 		resetGameObjects();
 	}
 
-	protected virtual void resetGameObjects()
+	public virtual void resetGameObjects()
 	{
 		if(!keepCurrentObjects)
 		{

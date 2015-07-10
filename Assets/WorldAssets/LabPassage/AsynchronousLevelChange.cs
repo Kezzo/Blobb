@@ -11,13 +11,13 @@ public class AsynchronousLevelChange : MonoBehaviour {
 	//private AsyncOperation asyncLoader;
 	//private bool loadingFinished = false;
 
-	private bool doOnce = false;
+//	private bool doOnce = false;
 
 	private GameObject player;
 	private GameObject leftTarget;
 	private GameObject rightTarget;
 
-	private Collider playerCollider;
+	//private Collider playerCollider;
 
 	void Start()
 	{
@@ -35,7 +35,7 @@ public class AsynchronousLevelChange : MonoBehaviour {
 	{
 		if(other.tag == "Player")
 		{
-			playerCollider = other;
+			//playerCollider = other;
 			ChangeLevel();
 		}
 
@@ -49,7 +49,7 @@ public class AsynchronousLevelChange : MonoBehaviour {
 	{
 		if(other.tag == "Player")
 		{
-			playerCollider = other;
+			//playerCollider = other;
 
 			
 		}
