@@ -36,6 +36,7 @@ public class AsynchronousLevelChange : MonoBehaviour {
 		if(other.tag == "Player")
 		{
 			playerCollider = other;
+			ChangeLevel();
 		}
 
 		if(other.name == "MovingBlock" || other.name == "boat")
@@ -49,7 +50,7 @@ public class AsynchronousLevelChange : MonoBehaviour {
 		if(other.tag == "Player")
 		{
 			playerCollider = other;
-			ChangeLevel();
+
 			
 		}
 	}
@@ -71,6 +72,7 @@ public class AsynchronousLevelChange : MonoBehaviour {
 				{
 					player.transform.parent = null;
 					Application.LoadLevelAsync(levelName);
+					player.GetComponentInChildren<FadeOutOnLevelLoad>().fade(0.0f);
 					/*if(loadingFinished)
 					{
 						Application.LoadLevelAsync(levelName);
@@ -82,6 +84,7 @@ public class AsynchronousLevelChange : MonoBehaviour {
 			{
 				player.transform.parent = null;
 				Application.LoadLevelAsync(levelName);
+				player.GetComponentInChildren<FadeOutOnLevelLoad>().fade(0.0f);
 				/*if(loadingFinished)
 				{
 					Application.LoadLevelAsync(levelName);

@@ -286,7 +286,8 @@ public class Controls : MonoBehaviour
 			{
 				itemRigid.WakeUp();
 			}
-			print ("Result" + resultingDirection);
+			itemRigid.AddForce(resultingDirection * 1/Time.deltaTime * 2.0f,ForceMode.VelocityChange);
+			/*
 			if(maxThrowForce < .3f)
 			{
 				itemRigid.AddForce(resultingDirection * 1/Time.deltaTime,ForceMode.VelocityChange);
@@ -295,7 +296,7 @@ public class Controls : MonoBehaviour
 			{
 				itemRigid.AddForce(resultingDirection * 1/Time.deltaTime * 2.0f,ForceMode.VelocityChange);
 			}
-
+			*/
 			//print ("Added Force!");
 
 			Collider[] colliders = item.GetComponents<Collider>();

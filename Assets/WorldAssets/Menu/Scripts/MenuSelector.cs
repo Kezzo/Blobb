@@ -20,10 +20,12 @@ public class MenuSelector : MonoBehaviour {
 			if(buttonHighlited == "StartTut")
 			{
 				Application.LoadLevelAsync("Level_00");
+				this.GetComponentInParent<FadeOutOnLevelLoad>().fade(0.0f);
 			}
 			else if(buttonHighlited == "StartHub")
 			{
 				Application.LoadLevelAsync("hub");
+				this.GetComponentInParent<FadeOutOnLevelLoad>().fade(0.0f);
 			}
 			else if(buttonHighlited == "Exit")
 			{
