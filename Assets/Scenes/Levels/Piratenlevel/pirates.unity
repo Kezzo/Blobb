@@ -11961,14 +11961,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 161002, guid: 16827e91596788345b0192c9b1a8bd51, type: 2}
       propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 153480, guid: 16827e91596788345b0192c9b1a8bd51, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 157466, guid: 16827e91596788345b0192c9b1a8bd51, type: 2}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

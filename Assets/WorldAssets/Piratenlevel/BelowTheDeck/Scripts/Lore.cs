@@ -5,7 +5,8 @@ public class Lore : MonoBehaviour {
 
 	Transform rift;
 	public bool movingForward = true;
-	
+
+
 	void Update () 
 	{
 		if(movingForward)
