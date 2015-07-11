@@ -19,22 +19,22 @@ SpeedTreeImporter:
     enableHue: 1
     windQuality: 5
   - height: .25
-    castShadows: 1
+    castShadows: 0
     receiveShadows: 1
     useLightProbes: 1
     reflectionProbeUsage: 1
     enableBump: 1
     enableHue: 1
     windQuality: 5
-  - height: .125
-    castShadows: 1
+  - height: .0981479511
+    castShadows: 0
     receiveShadows: 1
     useLightProbes: 1
     reflectionProbeUsage: 1
     enableBump: 1
     enableHue: 1
     windQuality: 5
-  - height: .00999999978
+  - height: .012833653
     castShadows: 0
     receiveShadows: 0
     useLightProbes: 0
@@ -48,3 +48,4 @@ SpeedTreeImporter:
   scaleFactor: .304800004
   userData: 
   assetBundleName: 
+  assetBundleVariant: 
