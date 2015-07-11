@@ -11983,7 +11983,7 @@ Prefab:
     - target: {fileID: 2300000, guid: 22ad1d231374c724586bb18b09dc97f6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 33d1798a82806ae458e34364617fd690, type: 2}
+      objectReference: {fileID: 2100000, guid: 4cb7f2edbb96c5c4d815cfa9cf4571f5, type: 2}
     - target: {fileID: 400000, guid: 22ad1d231374c724586bb18b09dc97f6, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.43089378
@@ -16571,7 +16571,7 @@ Terrain:
     serializedVersion: 2
     rgba: 4286545791
   m_LegacyShininess: .078125
-  m_MaterialTemplate: {fileID: 2100000, guid: 3010cfbad7f5baf4d949cc3a7c07923a, type: 2}
+  m_MaterialTemplate: {fileID: 0}
   m_BakeLightProbesForTrees: 1
   m_ScaleInLightmap: .0511999987
   m_LightmapParameters: {fileID: 15203, guid: 0000000000000000f000000000000000, type: 0}
