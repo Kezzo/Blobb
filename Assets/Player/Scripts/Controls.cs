@@ -27,7 +27,7 @@ public class Controls : MonoBehaviour
 	public Transform targets;
 
 
-	Vector3 previousHandPosition =  Vector3.zero;
+	Vector3 previousItemPosition =  Vector3.zero;
 	Vector3 basePosition;
 	Vector3 initialPosition;
 	bool hydraStop = false;
@@ -112,7 +112,11 @@ public class Controls : MonoBehaviour
 		{
 			RotationMode();
 		}
-		previousHandPosition = hand.transform.position;
+		if(itemIsInHand)
+		{
+			previousItemPosition = item.transform.position;
+		}
+
 
 		if(keybindUI != null)
 		{
@@ -266,7 +270,7 @@ public class Controls : MonoBehaviour
 
 	void ThrowOrStoreItem()
 	{
-		Vector3 resultingDirection = (hand.transform.position - previousHandPosition);
+		Vector3 resultingDirection = (item.transform.position - previousItemPosition);
 
 		// To track if handmovement is quick enough that the player wants to throw
 		float maxThrowForce = Mathf.Abs(Mathf.Max(resultingDirection.x, resultingDirection.y, resultingDirection.z)) * 10.0f;
@@ -286,7 +290,7 @@ public class Controls : MonoBehaviour
 			{
 				itemRigid.WakeUp();
 			}
-			itemRigid.AddForce(resultingDirection * 1/Time.deltaTime * 2.0f,ForceMode.VelocityChange);
+			itemRigid.AddForce(resultingDirection * 1/Time.deltaTime * 1.4f,ForceMode.VelocityChange);
 			/*
 			if(maxThrowForce < .3f)
 			{

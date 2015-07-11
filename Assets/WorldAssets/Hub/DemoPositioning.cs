@@ -22,7 +22,7 @@ public class DemoPositioning : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		player = GameObject.Find("Player");
+		player = GameObject.Find("Blobb");
 
 		resetPosition = new Vector3[resetAdditional.Length];
 		resetRotation = new Quaternion[resetAdditional.Length];
