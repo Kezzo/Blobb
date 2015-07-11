@@ -25,7 +25,7 @@ public class Controls : MonoBehaviour
 
 	public Transform target;
 	public Transform targets;
-	MeshRenderer grabIndicator;
+
 
 	Vector3 previousHandPosition =  Vector3.zero;
 	Vector3 basePosition;
@@ -60,7 +60,7 @@ public class Controls : MonoBehaviour
 	public GameObject keybindUI = null;
 
 	public Material[] grabIndicatorMaterials;
-
+	public MeshRenderer grabIndicator;
 
 	void Awake()
 	{
@@ -83,7 +83,7 @@ public class Controls : MonoBehaviour
 
 		handCollider = hand.GetComponents<SphereCollider>()[0];
 
-		grabIndicator = hand.transform.GetChild (0).GetComponentInChildren<MeshRenderer> ();
+		//grabIndicator = hand.transform.GetChild (0).GetComponentInChildren<MeshRenderer> ();
 
 	}
 

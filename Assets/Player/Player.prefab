@@ -643,7 +643,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &155562
 GameObject:
   m_ObjectHideFlags: 1
@@ -708,7 +708,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &157642
 GameObject:
   m_ObjectHideFlags: 1
@@ -1193,6 +1193,7 @@ Transform:
   m_LocalScale: {x: .99999994, y: 1, z: .999999821}
   m_Children:
   - {fileID: 413530}
+  - {fileID: 490494}
   m_Father: {fileID: 457852}
   m_RootOrder: 0
 --- !u!4 &404388
@@ -1298,8 +1299,7 @@ Transform:
   m_LocalRotation: {x: .717339337, y: -.0185315181, z: .017986495, w: .696245134}
   m_LocalPosition: {x: -.198560745, y: 1.42717624e-08, z: -4.11634531e-08}
   m_LocalScale: {x: 1.00000012, y: 1, z: 1}
-  m_Children:
-  - {fileID: 490494}
+  m_Children: []
   m_Father: {fileID: 404208}
   m_RootOrder: 0
 --- !u!4 &414642
@@ -1375,6 +1375,7 @@ Transform:
   m_LocalPosition: {x: -.75554949, y: 5.57926683e-08, z: -7.60456658e-08}
   m_LocalScale: {x: 1, y: .999999821, z: .99999994}
   m_Children:
+  - {fileID: 466488}
   - {fileID: 498344}
   m_Father: {fileID: 470654}
   m_RootOrder: 0
@@ -1614,8 +1615,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 161002}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.79999995, y: 0, z: 40.5999985}
+  m_LocalRotation: {x: 0, y: -.707106829, z: 0, w: .707106709}
+  m_LocalPosition: {x: 12.5, y: 1.20000005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 426596}
@@ -1752,11 +1753,11 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192026}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .50000006, y: .500000179, z: .500000298}
+  m_LocalRotation: {x: -.717145979, y: -.0137356799, z: -.0133434515, w: .696659863}
+  m_LocalPosition: {x: -.267731994, y: 0, z: -0}
+  m_LocalScale: {x: .5, y: .50000006, z: .500000238}
   m_Children: []
-  m_Father: {fileID: 498344}
+  m_Father: {fileID: 418740}
   m_RootOrder: 0
 --- !u!4 &469888
 Transform:
@@ -1966,12 +1967,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 108720}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .50000006, y: .500000477, z: .500000238}
+  m_LocalRotation: {x: .717339396, y: -.0185313318, z: .0179864913, w: .696245074}
+  m_LocalPosition: {x: -.198559105, y: 0, z: -0}
+  m_LocalScale: {x: .500000119, y: .500000536, z: .500000358}
   m_Children: []
-  m_Father: {fileID: 413530}
-  m_RootOrder: 0
+  m_Father: {fileID: 404208}
+  m_RootOrder: 1
 --- !u!4 &491768
 Transform:
   m_ObjectHideFlags: 1
@@ -2058,10 +2059,9 @@ Transform:
   m_LocalRotation: {x: -.717145979, y: -.0137357172, z: -.0133433854, w: .696659863}
   m_LocalPosition: {x: -.267733693, y: 2.13778151e-08, z: 2.8366216e-08}
   m_LocalScale: {x: .999999881, y: .999999881, z: .999999881}
-  m_Children:
-  - {fileID: 466488}
+  m_Children: []
   m_Father: {fileID: 418740}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!20 &2006222
 Camera:
   m_ObjectHideFlags: 1
@@ -2569,7 +2569,7 @@ MonoBehaviour:
   hand: {fileID: 149006}
   controllerOffsetY: .5
   controllerOffsetZ: 1.5
-  Sensitivity: {x: .00300000003, y: .00400000019, z: .00300000003}
+  Sensitivity: {x: .00300000003, y: .00499999989, z: .00400000019}
   target: {fileID: 441522}
   targets: {fileID: 464424}
   inventory: {fileID: 11472450}
@@ -2581,6 +2581,7 @@ MonoBehaviour:
   grabIndicatorMaterials:
   - {fileID: 2100000, guid: 3f90adca5fd393445b937000e270c5aa, type: 2}
   - {fileID: 2100000, guid: ac8b5a302b47d914a901fa8bad327c4c, type: 2}
+  grabIndicator: {fileID: 2382610}
 --- !u!114 &11410512
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2865,7 +2866,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea68630dbae0c04b82ff9434e39cc57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeSpeed: 1.5
   planeMat: {fileID: 2100000, guid: 3867cc04e57670c4aa435d1766144bef, type: 2}
 --- !u!114 &11487410
 MonoBehaviour:
@@ -2934,7 +2934,7 @@ MonoBehaviour:
   hand: {fileID: 192124}
   controllerOffsetY: .5
   controllerOffsetZ: 1.5
-  Sensitivity: {x: .00300000003, y: .00400000019, z: .00300000003}
+  Sensitivity: {x: .00300000003, y: .00499999989, z: .00400000019}
   target: {fileID: 449366}
   targets: {fileID: 464424}
   inventory: {fileID: 11472450}
@@ -2946,6 +2946,7 @@ MonoBehaviour:
   grabIndicatorMaterials:
   - {fileID: 2100000, guid: 3f90adca5fd393445b937000e270c5aa, type: 2}
   - {fileID: 2100000, guid: ac8b5a302b47d914a901fa8bad327c4c, type: 2}
+  grabIndicator: {fileID: 2377046}
 --- !u!124 &12411320
 Behaviour:
   m_ObjectHideFlags: 1
