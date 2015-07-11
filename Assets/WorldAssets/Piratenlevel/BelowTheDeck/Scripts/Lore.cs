@@ -4,7 +4,7 @@ using System.Collections;
 public class Lore : MonoBehaviour {
 
 	Transform rift;
-	bool movingForward = true;
+	public bool movingForward = true;
 	
 	void Update () 
 	{

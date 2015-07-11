@@ -13,16 +13,21 @@ public class GameFailPirateLevel : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-
 		if (other.name.Contains ("Terrain") || other.name.Contains ("wrack")) {
-			print (other.name);
+			//print (other.name);
 			this.transform.parent.GetComponent<Schiffssteuerung>().setMovement(false);
-			//TODO: reset Level!
-
 			StartCoroutine(ResetLevelAfter(3.0f));
 
 		}
+	}
 
+	void OnCollisionEnter(Collision collision)
+	{
+		if(collision.collider.name == "Blobb")
+		{
+			player.transform.parent = null;
+			StartCoroutine(ResetLevelAfter(3.0f));
+		}
 	}
 
 	public IEnumerator ResetLevelAfter(float secondsToWait)
