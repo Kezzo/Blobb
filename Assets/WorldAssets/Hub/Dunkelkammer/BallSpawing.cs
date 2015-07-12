@@ -59,8 +59,7 @@ public class BallSpawing : MonoBehaviour {
 					fieldPart.transform.parent = transform;
 					fieldPart.transform.localPosition = new Vector3 (-shiftX, y*-0.7f, z*-0.7f);
 					fieldPart.name = "lightBall";
-					fieldPart.tag = "Item";
-					fieldPart.layer = LayerMask.NameToLayer("Items");
+					fieldPart.layer = LayerMask.NameToLayer("Ignore Raycast");
 				}
 			}
 		}
