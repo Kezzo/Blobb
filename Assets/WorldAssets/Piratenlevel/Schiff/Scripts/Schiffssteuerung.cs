@@ -11,10 +11,13 @@ public class Schiffssteuerung : MonoBehaviour {
 
 	public bool shouldMove = true;
 	bool firstGrabHappened;
+	public bool canEnablefirstGrab;
 
 	// Use this for initialization
 	void Start () 
 	{
+		canEnablefirstGrab = false;
+		print (canEnablefirstGrab);
 		rotateWheel = schiffsRad.GetComponent<RotateWheel> ();
 	}
 	
@@ -22,6 +25,12 @@ public class Schiffssteuerung : MonoBehaviour {
 	void Update () 
 	{
 //		print("isGrabbing: "+rotateWheel.isGrabbing);
+		if(!firstGrabHappened && !canEnablefirstGrab)
+		{
+			StartCoroutine(enableDrivingAfter(2.0f));
+		}
+
+
 		if (!firstGrabHappened && rotateWheel.isGrabbing) {
 			firstGrabHappened = true;
 		}
@@ -59,6 +68,12 @@ public class Schiffssteuerung : MonoBehaviour {
 	public void setMovement(bool shouldMove)
 	{
 		this.shouldMove = shouldMove;
+	}
+
+	public IEnumerator enableDrivingAfter(float secondsToWait)
+	{
+		yield return new WaitForSeconds(secondsToWait);
+		canEnablefirstGrab = true;
 	}
 
 }

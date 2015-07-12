@@ -29,6 +29,8 @@ public class RotateWheel : MonoBehaviour {
 	public float wheelRotationMultiplier;
 	float wheelRotationSpeed;
 
+	public bool rotatingEnabled;
+
 	bool _isGrabbing;
 	public bool isGrabbing
 	{
@@ -40,12 +42,6 @@ public class RotateWheel : MonoBehaviour {
 		{
 			_isGrabbing = value;
 		}
-	}
-
-	// Use this for initialization
-	void Start () 
-	{
-
 	}
 	
 	// Update is called once per frame
@@ -189,7 +185,11 @@ public class RotateWheel : MonoBehaviour {
 			isRotation = IsRotation.Right;
 		}
 
-		this.transform.Rotate (Vector3.up, valueToChange * Time.deltaTime);
+
+		if(rotatingEnabled)
+		{
+			this.transform.Rotate (Vector3.up, valueToChange * Time.deltaTime);
+		}
 	}
 
 	void OnTriggerEnter(Collider other)

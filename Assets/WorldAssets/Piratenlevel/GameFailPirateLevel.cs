@@ -5,6 +5,9 @@ public class GameFailPirateLevel : MonoBehaviour {
 
 	GameObject player;
 
+	public bool shouldCollideWithTerrain;
+
+	public RotateWheel rotateWheel;
 	// Use this for initialization
 	void Start () 
 	{
@@ -13,9 +16,10 @@ public class GameFailPirateLevel : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.name.Contains ("Terrain") || other.name.Contains ("wrack")) {
+		if (other.name.Contains ("Terrain") || other.name.Contains ("wrack") || other.name.Contains ("Wall")) {
 			//print (other.name);
 			this.transform.parent.GetComponent<Schiffssteuerung>().setMovement(false);
+			rotateWheel.rotatingEnabled = false;
 			StartCoroutine(ResetLevelAfter(3.0f));
 
 		}
@@ -23,7 +27,7 @@ public class GameFailPirateLevel : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision)
 	{
-		if(collision.collider.name == "Blobb")
+		if(collision.collider.name == "Blobb" && shouldCollideWithTerrain)
 		{
 			player.transform.parent = null;
 			StartCoroutine(ResetLevelAfter(3.0f));

@@ -1,24 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class SpawnKanonenKugeln : MonoBehaviour {
 
-	int currentCount;
-	//public int maxCount = 16;
+	List<GameObject> cannonballs = new List<GameObject>();
 
 	public GameObject currentPrefab;
 	public GameObject prefabToSpawn;
-
-	void Update()
-	{
-		print (currentCount);
-	}
-
+	
 	void OnTriggerEnter(Collider other)
 	{
 		if(other.name.Contains("Kanonenkugel"))
 		{
-			currentCount++;
+			if(!cannonballs.Contains(other.gameObject))
+			{
+				cannonballs.Add(other.gameObject);
+			}
 		}
 	}
 
@@ -26,9 +24,12 @@ public class SpawnKanonenKugeln : MonoBehaviour {
 	{
 		if(other.name.Contains("Kanonenkugel"))
 		{
-			currentCount--;
+			if(cannonballs.Contains(other.gameObject))
+			{
+				cannonballs.Remove(other.gameObject);
+			}
 
-			if(currentCount < 1)
+			if(cannonballs.Count < 1)
 			{
 				Destroy(currentPrefab);
 				currentPrefab = Instantiate(prefabToSpawn, transform.position, Quaternion.identity) as GameObject;

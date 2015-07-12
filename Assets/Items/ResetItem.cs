@@ -12,6 +12,6 @@ public class ResetItem : MonoBehaviour {
 		{
 			this.transform.position = resetPosition.position;
 		}
-		print (collision.collider.name);
+//		print (collision.collider.name);
 	}
 }
