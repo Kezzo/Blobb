@@ -2,8 +2,9 @@
 using System.Collections;
 
 public class LoseCondition : MonoBehaviour {
-
+	
 	Lore boatScript;
+	
 	void Start()
 	{
 		boatScript = GetComponent<Lore>();
@@ -14,6 +15,7 @@ public class LoseCondition : MonoBehaviour {
 		if(other.name == "Terrain")
 		{
 			boatScript.movingForward = false;
+			GameObject.Find("Player").transform.parent = null;
 			StartCoroutine(ResetLevelAfter(3.0f));
 		}
 	}

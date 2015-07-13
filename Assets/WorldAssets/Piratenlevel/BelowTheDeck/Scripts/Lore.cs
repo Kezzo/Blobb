@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Lore : MonoBehaviour {
 
-	Transform rift;
+	public Transform rift;
 	public bool movingForward = true;
 
 
@@ -33,6 +33,12 @@ public class Lore : MonoBehaviour {
 		if(info.collider.gameObject.tag == "Player")
 		{
 			info.collider.transform.parent.parent = this.transform;
+			Controls[] bothControls = info.collider.GetComponents<Controls>();
+			foreach(Controls cont in bothControls)
+			{
+				cont.grabbingIsEnabled = true;
+			}
+
 			if(this.enabled)
 			{
 				rift = GameObject.Find("CenterEyeAnchor").transform;

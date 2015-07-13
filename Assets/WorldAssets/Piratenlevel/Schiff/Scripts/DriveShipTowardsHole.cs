@@ -31,6 +31,7 @@ public class DriveShipTowardsHole : MonoBehaviour {
 		{
 			waterBeiboot.disableLetBoatDown();
 			lorenControls.enabled = true;
+			lorenControls.rift = GameObject.Find("CenterEyeAnchor").transform;
 			ship = other.gameObject;
 			targetPosition = holeEntrance.position;
 			StartCoroutine(startAfter(1.0f));
