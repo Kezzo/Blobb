@@ -52,7 +52,7 @@ public class CanonAction : MonoBehaviour {
 
 		Instantiate(explosionPrefab, explosionTransform.position, Quaternion.identity);
 		print ("Boom");
-		gameObjectToShoot.GetComponent<Rigidbody>().AddForce(this.transform.forward* 2000f);
+		gameObjectToShoot.GetComponent<Rigidbody>().AddForce(this.transform.forward* 4000f);
 		closeDeckel = false;
 	}
 }

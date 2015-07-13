@@ -7,10 +7,18 @@ public class MenuSelector : MonoBehaviour {
 
 	RaycastHit hit;
 	GameObject lastHitItem;
+	GameManagement manager;
+
 	SixenseInput.Controller hydraLeft;
 	SixenseInput.Controller hydraRight;
 
+
 	string buttonHighlited;
+
+	void Start()
+	{
+		manager = GameObject.Find("GameManager").GetComponent<GameManagement>();
+	}
 
 	void Update()
 	{
@@ -28,6 +36,37 @@ public class MenuSelector : MonoBehaviour {
 			else if(buttonHighlited == "StartHub")
 			{
 				Application.LoadLevelAsync("hub");
+				keybindsUi.SetActive(true);
+				this.GetComponentInParent<FadeOutOnLevelLoad>().fade(0.0f);
+			}
+			else if(buttonHighlited == "PiratesPart1")
+			{
+				Application.LoadLevelAsync("pirates");
+				keybindsUi.SetActive(true);
+				this.GetComponentInParent<FadeOutOnLevelLoad>().fade(0.0f);
+			}
+			else if(buttonHighlited == "PiratesSchiebe")
+			{
+				Application.LoadLevelAsync("SchiebeRätselPart1");
+				keybindsUi.SetActive(true);
+				this.GetComponentInParent<FadeOutOnLevelLoad>().fade(0.0f);
+			}
+			else if(buttonHighlited == "PiratesDark")
+			{
+				Application.LoadLevelAsync("BelowTheDeck");
+				keybindsUi.SetActive(true);
+				this.GetComponentInParent<FadeOutOnLevelLoad>().fade(0.0f);
+			}
+			else if(buttonHighlited == "PiratesPart2")
+			{
+				Application.LoadLevelAsync("pirates");
+				manager.pirateLevelPartTwo = true;
+				keybindsUi.SetActive(true);
+				this.GetComponentInParent<FadeOutOnLevelLoad>().fade(0.0f);
+			}
+			else if(buttonHighlited == "PiratesSchiebe2")
+			{
+				Application.LoadLevelAsync("SchieberätselPart2");
 				keybindsUi.SetActive(true);
 				this.GetComponentInParent<FadeOutOnLevelLoad>().fade(0.0f);
 			}
@@ -56,7 +95,7 @@ public class MenuSelector : MonoBehaviour {
 			{
 				if(lastHitItem != null && lastHitItem.layer == 5)
 				{
-					lastHitItem.GetComponent<MeshRenderer>().material.color = Color.white;
+					lastHitItem.GetComponent<MeshRenderer>().material.color = new Color(108.0f/255.0f,171.0f/255.0f,50.0f/255.0f);
 
 				}
 			}
